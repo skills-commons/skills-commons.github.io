@@ -101,10 +101,10 @@ skills-commons.org</div>
   <p class="subtitle">Size is easy. <em>Trust is the point.</em></p>
 
   <h2><span class="no">Abstract</span></h2>
-  <p class="abstract">A skill is a plain-text method (<code>SKILL.md</code>) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.</p>
+  <p class="abstract">A skill is a plain-text method (a single <code>.md</code> file) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.</p>
 
   <h2><span class="no">1.</span>Problem statement</h2>
-  <p>Public skill hubs have already shipped malware disguised as a weather skill: one poisoned file among 286, quietly reading credentials. A <code>SKILL.md</code> is an unsigned set of instructions. The ecosystem has plenty of large collections — what it lacks is a library you can install from with your eyes closed.</p>
+  <p>Public skill hubs have already shipped malware disguised as a weather skill: one poisoned file among 286, quietly reading credentials. A skill file is an unsigned set of instructions. The ecosystem has plenty of large collections — what it lacks is a library you can install from with your eyes closed.</p>
 
   <h2><span class="no">2.</span>What every skill in this library guarantees</h2>
   <ol class="clauses">
@@ -118,14 +118,30 @@ skills-commons.org</div>
 
   <h2><span class="no">3.</span>Example (excerpt from the seed library)</h2>
   <div class="file">
-    <div class="bar"><span>skills/honest-status-report/SKILL.md</span><span>v1.0.0 · reviewed</span></div>
+    <div class="bar"><span>skills/agents/honest-status-report.md</span><span>v1.0.0 · reviewed</span></div>
     <pre><span class="ln" data-n="1"><span class="cm">---</span></span><span class="ln" data-n="2"><span class="key">name:</span> honest-status-report</span><span class="ln" data-n="3"><span class="key">description:</span> Status reports that declare failures,</span><span class="ln" data-n="4">  blockers and partial results as visibly as successes.</span><span class="ln" data-n="5"><span class="cm">---</span></span><span class="rev"><b>✓ review</b> — frontmatter matches folder name; description states when to activate</span><span class="ln" data-n="22">2. Classify each item, strictly:</span><span class="ln" data-n="23">   - Done &amp; verified — completed AND checked.</span><span class="ln" data-n="24">   - Failed / errored — attempted, went wrong.</span><span class="ln" data-n="25">   - Silently skipped — planned, then untouched.</span><span class="rev"><b>✓ review</b> — zero hidden instructions; zero external fetches; degradation declared</span><span class="ln" data-n="41">The order is fixed: problems before achievements.</span></pre>
   </div>
   <p>The seed skills come from methods used daily in a production AI newsroom (200+ sourced articles, three languages, a weekly print magazine). They were reviewed the same way yours will be.</p>
 
-  <h2><span class="no">4.</span>How to participate</h2>
+  <h2><span class="no">4.</span>Using a skill — on any assistant</h2>
+  <p>The library holds <strong>22 reviewed skills</strong> in four categories — <code>workplace/</code>, <code>writing/</code>, <code>engineering/</code>, <code>agents/</code> — one identifying <code>.md</code> file each. Installation, by assistant:</p>
   <ol class="steps">
-    <li>Browse the library, copy a skill folder into your assistant's skills directory, ask for the task.</li>
+    <li><strong>Claude Code / Claude Desktop</strong> — create a folder named after the skill in your skills directory and save the file inside it as <code>SKILL.md</code> (e.g. <code>~/.claude/skills/commit-message-pro/SKILL.md</code>). It activates when you ask for the task.</li>
+    <li><strong>Claude.ai, ChatGPT, Gemini</strong> — paste the file into a Project's instructions (or a custom GPT / Gem). Ask for the task.</li>
+    <li><strong>Any other assistant</strong> — paste the file as your first message, then make your request.</li>
+  </ol>
+  <h3>FAQ</h3>
+  <ol class="clauses">
+    <li><strong>Does it work with any AI?</strong> Yes, by design: skills are model-agnostic — they name capabilities ("when code execution is available") rather than one vendor's tools. A stronger assistant executes more of the method; every skill declares how it degrades when a capability is missing.</li>
+    <li><strong>What is a skill for?</strong> It turns a general assistant into a specialist for one task: method, inputs, output format and quality rules, written down and reviewed. An improvised prompt becomes a repeatable procedure you can trust twice.</li>
+    <li><strong>How does it work?</strong> Your assistant reads the file as its operating instructions: it asks for the stated inputs, runs the steps, delivers the stated output. Plain markdown — what you read is exactly what it executes.</li>
+    <li><strong>Is it safe?</strong> Every merge passes two human reviews (quality + security); encoded blobs and remote instruction loading are rejected at review. And the format itself is the safety net: read the file before you install it.</li>
+    <li><strong>What does it cost?</strong> The library is free, Apache-2.0, commercial use included — keep the license notice.</li>
+  </ol>
+
+  <h2><span class="no">5.</span>How to participate</h2>
+  <ol class="steps">
+    <li>Browse the library, install the skill file as described in section 4, ask for the task.</li>
     <li>Contribute one skill per pull request — the template mirrors the security checklist.</li>
     <li>Two human reviews (quality + security) merge it. Credit lands in the skill itself.</li>
     <li>Found something dangerous in a merged skill? <a href="https://github.com/skills-commons/skills-commons/security">Report it privately</a> or write to <a href="mailto:hello@kaimakiweb.com">hello@kaimakiweb.com</a>: removal, advisory, credit.</li>
