@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills Commons — RFT 2: Write Your First Skill</title>
+<meta name="description" content="The anatomy of a reviewable AI skill, an annotated example, the mistakes reviews reject, and a self-service editor that generates a spec-conformant SKILL.md.">
+<meta property="og:title" content="Skills Commons — RFT 2: Write Your First Skill">
+<meta property="og:description" content="Learn the craft, generate the file, open the pull request. The review is the product.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skills-commons.org/write/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='6' fill='%23f4f1ea'/%3E%3Ctext x='7' y='31' font-family='monospace' font-size='17' font-weight='bold' fill='%231f241c'%3E.md%3C/text%3E%3Crect x='6' y='36' width='36' height='4' fill='%23bb3a2a'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper:#f4f1ea; --paper2:#ece8de; --ink:#1f241c; --dim:#6b6f62;
+    --rule:#d7d2c4; --stamp:#bb3a2a; --ok:#2f6b45; --link:#1f5aa8;
+    --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.75; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(#00000006 1px, transparent 1px); background-size:4px 4px; }
+  .sheet { max-width:860px; margin:0 auto; padding:48px 28px 90px; position:relative; }
+  .rfchead { display:flex; justify-content:space-between; gap:16px; color:var(--dim); font-size:13px;
+    border-bottom:3px double var(--rule); padding-bottom:14px; }
+  .rfchead div { white-space:pre-line; }
+  .rfchead .r { text-align:right; }
+  h1 { font-size:clamp(24px,4.6vw,36px); font-weight:700; text-align:center; margin:52px 0 6px; letter-spacing:-0.5px; }
+  .subtitle { text-align:center; color:var(--dim); margin-bottom:40px; }
+  .subtitle em { font-style:normal; border-bottom:2px solid var(--stamp); }
+  h2 { font-size:16px; margin:46px 0 12px; font-weight:700; }
+  h2 .no { color:var(--dim); margin-right:10px; }
+  h3 { font-size:14.5px; margin:22px 0 8px; }
+  p { margin:12px 0; }
+  .abstract { border-left:4px solid var(--rule); padding:4px 0 4px 18px; color:#3a4034; }
+  .clauses { list-style:none; counter-reset:cl; }
+  .clauses li { counter-increment:cl; margin:14px 0; padding-left:52px; position:relative; }
+  .clauses li::before { content:counter(cl) "."; position:absolute; left:0; color:var(--dim); }
+  .kw { font-weight:700; letter-spacing:.03em; }
+  .kw.ok { color:var(--ok); }
+  .kw.no { color:var(--stamp); }
+  .file { margin:22px 0; border:1px solid var(--rule); border-radius:8px; background:#fbfaf6; overflow:hidden;
+    box-shadow:3px 3px 0 var(--paper2); }
+  .file .bar { display:flex; justify-content:space-between; background:var(--paper2); color:var(--dim);
+    font-size:12.5px; padding:7px 14px; border-bottom:1px solid var(--rule); }
+  .file pre { padding:14px 16px; overflow-x:auto; font-size:13px; line-height:1.7; white-space:pre-wrap; }
+  .file .cm { color:var(--dim); }
+  .file .key { color:#7a4a12; }
+  .rev { display:block; margin:6px 0; border:1px dashed var(--ok); border-radius:6px;
+    color:var(--ok); font-size:12.5px; padding:5px 10px; background:#f2f6ef; }
+  .rev b { letter-spacing:.05em; }
+  .rej { display:block; margin:6px 0; border:1px dashed var(--stamp); border-radius:6px;
+    color:var(--stamp); font-size:12.5px; padding:5px 10px; background:#faf1ef; }
+  a { color:var(--link); }
+  .steps { list-style:none; }
+  .steps li { margin:12px 0; padding-left:34px; position:relative; }
+  .steps li::before { content:"$"; position:absolute; left:8px; color:var(--stamp); font-weight:700; }
+  /* Editor */
+  .ed { border:1px solid var(--rule); border-radius:10px; background:#fbfaf6; padding:20px;
+    box-shadow:3px 3px 0 var(--paper2); margin:18px 0; }
+  .ed label { display:block; font-size:12.5px; font-weight:700; color:#3a4034; margin:14px 0 4px; }
+  .ed label span { font-weight:400; color:var(--dim); }
+  .ed input, .ed textarea, .ed select { width:100%; font-family:var(--mono); font-size:13.5px;
+    padding:8px 10px; border:1px solid var(--rule); border-radius:6px; background:#fff; color:var(--ink); }
+  .ed textarea { min-height:56px; resize:vertical; }
+  .ed .row { display:flex; gap:8px; align-items:flex-start; margin:6px 0; }
+  .ed .row textarea, .ed .row input { flex:1; }
+  .ed .mini { flex:none; font-family:var(--mono); font-size:12.5px; font-weight:700; padding:8px 10px;
+    border:1.5px solid var(--ink); border-radius:6px; background:var(--paper); cursor:pointer; }
+  .ed .mini:hover { background:var(--paper2); }
+  .btn { display:inline-block; font-family:var(--mono); font-size:14px; font-weight:700; text-decoration:none;
+    padding:12px 22px; border-radius:8px; border:2px solid var(--ink); color:var(--ink);
+    box-shadow:3px 3px 0 var(--ink); background:var(--paper); margin:14px 8px 0 0; cursor:pointer; transition:transform .08s; }
+  .btn:hover { transform:translate(1px,1px); box-shadow:2px 2px 0 var(--ink); }
+  .btn.primary { background:var(--ink); color:var(--paper); }
+  #preview { display:none; }
+  .foot { margin-top:70px; border-top:3px double var(--rule); padding-top:16px; color:var(--dim);
+    font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .foot a { color:var(--dim); }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="rfchead">
+    <div>Skills Commons
+Request For Trust: 2
+Category: Craft</div>
+    <div class="r">Status: LIVING DOCUMENT
+License: Apache-2.0
+<a href="/">← RFT 1: the library</a></div>
+  </div>
+
+  <h1>Write Your First Skill</h1>
+  <p class="subtitle">Learn the anatomy, study a reviewed example, <em>generate the file below</em>.</p>
+
+  <h2><span class="no">Abstract</span></h2>
+  <p class="abstract">A skill is a plain-text method your reader hands to an AI assistant. Writing one is closer to writing a procedure for a sharp new colleague than to prompt tinkering: you define the inputs, the steps, the output contract, and the rules that hold when things get ambiguous. This document teaches the anatomy, shows a reviewed example, lists what reviews reject, and ends with an editor that generates a spec-conformant file.</p>
+
+  <h2><span class="no">1.</span>Anatomy of a skill</h2>
+  <ol class="clauses">
+    <li><strong>Frontmatter.</strong> <code>name</code> in kebab-case, matching the filename. <code>description</code> carries two jobs in one paragraph: what the skill does, and — crucially — <em>when to activate it</em> ("Use when asked to…"). Assistants pick skills by this field; a vague description means a skill that sleeps forever. Version, license, authors close the block.</li>
+    <li><strong>Identity paragraph.</strong> Two or three sentences after the title, second person: who the assistant becomes and what it refuses to compromise on. This is voice and standard in one breath: "You write commit messages worthy of the permanent record."</li>
+    <li><strong>Inputs.</strong> The numbered list of what the skill needs, with the required ones marked and a rule for gaps (ask and stop, or proceed with labeled assumptions). Ask once — a skill that interrogates in rounds exhausts its user.</li>
+    <li><strong>Method.</strong> Numbered steps, each one decidable: an instruction the assistant can follow or verify, with the judgment rules spelled out ("when X exceeds Y, do Z"). Steps that say "be thorough" delegate the hard part back to chance.</li>
+    <li><strong>Output format.</strong> The contract: sections, order, lengths where they matter. Two runs of the same skill should produce the same shape — the format section is what makes a skill repeatable instead of improvised.</li>
+    <li><strong>Rules.</strong> The invariants that survive every edge case: what gets refused, what gets labeled, what degrades and how. State how the skill behaves when a capability is missing — "mark N.A. with a reason" beats a guessed success.</li>
+  </ol>
+
+  <h2><span class="no">2.</span>A reviewed example, annotated</h2>
+  <div class="file">
+    <div class="bar"><span>skills/agents/honest-status-report.md</span><span>v1.0.0 · merged</span></div>
+    <pre><span class="cm">---</span>
+<span class="key">name:</span> honest-status-report
+<span class="key">description:</span> Status reports that declare failures,
+  blockers and partial results as visibly as successes.
+  Use when asked for a status update, a progress report,
+  or an end-of-task summary.
+<span class="cm">---</span><span class="rev"><b>✓ review</b> — name matches filename; description states the trigger ("Use when…"): the assistant knows when to wake this skill</span>
+2. Classify each item, strictly:
+   - Done &amp; verified — completed AND checked.
+   - Failed / errored — attempted, went wrong.
+   - Silently skipped — planned, then untouched.<span class="rev"><b>✓ review</b> — each category is decidable: two readers classify the same item the same way</span>
+The order is fixed: problems before achievements.<span class="rev"><b>✓ review</b> — an output contract, stated as a rule: the shape survives every run</span></pre>
+  </div>
+
+  <h2><span class="no">3.</span>What reviews reject</h2>
+  <p>Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:</p>
+  <ol class="clauses">
+    <li><span class="kw no">REJECTED</span> — <strong>Undecidable steps.</strong> "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Missing degradation.</strong> The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Hidden or encoded content.</strong> Base64 blobs, zero-width characters, instructions to fetch remote content at runtime. Plain readable markdown is the deal: what the reader sees is what the agent executes.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Exfiltration paths.</strong> Steps that send user data anywhere. A skill transforms what it is given, in place.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Vendor lock phrasing.</strong> "Use the WebFetch tool", "call Code Interpreter". Name capabilities ("when live web access is available"), and the skill works on every assistant.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Marketing in the method.</strong> Superlatives about the skill itself, links to products, self-promotion. The method speaks through its steps.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>A missing output contract.</strong> Ten sharp method steps, and zero words on what the deliverable looks like. The format section is half the value.</li>
+  </ol>
+
+  <h2><span class="no">4.</span>The editor — generate your file</h2>
+  <p>Fill the sections; the editor assembles a spec-conformant <code>.md</code>. Everything runs in this page — your draft touches zero servers.</p>
+
+  <div class="ed" id="editor">
+    <label>Skill name <span>— a few words; the filename becomes kebab-case automatically</span></label>
+    <input id="f-name" placeholder="Meeting Minutes Pro" maxlength="60">
+
+    <label>What it does <span>— one sentence, concrete</span></label>
+    <input id="f-what" placeholder="Turns raw meeting notes into minutes with decisions, owners and deadlines" maxlength="200">
+
+    <label>Use when… <span>— the activation trigger the assistant will match</span></label>
+    <input id="f-when" placeholder="asked for meeting minutes, a recap of a call, or action items from notes" maxlength="200">
+
+    <label>Category</label>
+    <select id="f-cat">
+      <option value="workplace">workplace</option>
+      <option value="writing">writing</option>
+      <option value="engineering">engineering</option>
+      <option value="agents">agents</option>
+    </select>
+
+    <label>Identity paragraph <span>— second person: who the assistant becomes, what it refuses to compromise on</span></label>
+    <textarea id="f-identity" placeholder="You turn messy notes into minutes people can act on. A decision with an owner and a date is the unit of value; everything else supports it."></textarea>
+
+    <label>Inputs <span>— one per box; mark the required ones</span></label>
+    <div id="inputs"></div>
+    <button class="mini" type="button" onclick="addRow('inputs','The raw notes (required)')">+ add input</button>
+
+    <label>Method steps <span>— one per box; each step decidable</span></label>
+    <div id="steps"></div>
+    <button class="mini" type="button" onclick="addRow('steps','Extract every decision: what was decided, who owns it, by when. An owner-less decision goes to the open-questions list.')">+ add step</button>
+
+    <label>Output format <span>— the contract: sections, order, lengths where they matter</span></label>
+    <textarea id="f-output" placeholder="Decisions (owner, deadline) · Action items · Open questions · Attendees. Chronology stays out: minutes are organized by weight."></textarea>
+
+    <label>Rules <span>— one per box: invariants, refusals, degradation</span></label>
+    <div id="rules"></div>
+    <button class="mini" type="button" onclick="addRow('rules','Every decision carries an owner and a date, or it is listed as an open question.')">+ add rule</button>
+
+    <label>Author <span>— your name or handle, credited in the file</span></label>
+    <input id="f-author" placeholder="your-handle" maxlength="60">
+
+    <div>
+      <button class="btn primary" type="button" onclick="generate()">Generate the file</button>
+      <button class="btn" type="button" id="dl" style="display:none" onclick="download()">Download .md</button>
+    </div>
+  </div>
+
+  <div class="file" id="preview">
+    <div class="bar"><span id="pv-name">skills/…</span><span>generated · draft</span></div>
+    <pre id="pv-body"></pre>
+  </div>
+
+  <h2><span class="no">5.</span>Submit it</h2>
+  <ol class="steps">
+    <li>Run your skill on a real case first — the sample output tells you where the method is thin.</li>
+    <li>Fork <a href="https://github.com/skills-commons/skills-commons">the library</a>, add your file under <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, open one pull request per skill.</li>
+    <li>Two human reviews follow (quality + security). Credit lands in the file itself.</li>
+  </ol>
+
+  <div class="foot">
+    <span>Seeded &amp; maintained by <a href="https://agora-intelligence.com">AGORÀ Intelligence</a> — every merge reviewed by the team</span>
+    <span><a href="/">RFT 1: the library</a> · Apache-2.0</span>
+  </div>
+
+</div>
+<script>
+function addRow(zone, ph) {
+  const d = document.createElement('div');
+  d.className = 'row';
+  d.innerHTML = '<textarea placeholder="' + ph.replace(/"/g, '&quot;') + '"></textarea>' +
+    '<button class="mini" type="button" onclick="this.parentNode.remove()">×</button>';
+  document.getElementById(zone).appendChild(d);
+}
+addRow('inputs', 'The raw notes (required)');
+addRow('inputs', 'Attendees and context, when available');
+addRow('steps', 'First step — concrete and decidable');
+addRow('steps', 'Second step');
+addRow('rules', 'First invariant');
+
+const kebab = (s) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const vals = (zone) => [...document.querySelectorAll('#' + zone + ' textarea')].map((t) => t.value.trim()).filter(Boolean);
+let currentMd = '', currentFile = '';
+
+function generate() {
+  const name = document.getElementById('f-name').value.trim() || 'my-skill';
+  const slug = kebab(name);
+  const what = document.getElementById('f-what').value.trim() || 'Describe what the skill does.';
+  const when = document.getElementById('f-when').value.trim() || 'describe the trigger';
+  const cat = document.getElementById('f-cat').value;
+  const identity = document.getElementById('f-identity').value.trim() || 'Describe who the assistant becomes.';
+  const output = document.getElementById('f-output').value.trim() || 'Describe the deliverable.';
+  const author = document.getElementById('f-author').value.trim() || 'anonymous';
+  const inputs = vals('inputs');
+  const steps = vals('steps');
+  const rules = vals('rules');
+
+  const md = ['---',
+    'name: ' + slug,
+    'description: >-',
+    '  ' + what + (what.endsWith('.') ? '' : '.'),
+    '  Use when ' + when + (when.endsWith('.') ? '' : '.'),
+    'version: "0.1.0"',
+    'license: Apache-2.0',
+    'authors: [' + author + ']',
+    '---',
+    '',
+    '# ' + name,
+    '',
+    identity,
+    '',
+    '## Inputs',
+    '',
+    ...inputs.map((v, i) => (i + 1) + '. ' + v),
+    '',
+    '## Method',
+    '',
+    ...steps.map((v, i) => (i + 1) + '. ' + v),
+    '',
+    '## Output format',
+    '',
+    output,
+    '',
+    '## Rules',
+    '',
+    ...rules.map((v) => '- ' + v),
+    ''].join('\n');
+
+  currentMd = md;
+  currentFile = slug + '.md';
+  document.getElementById('pv-name').textContent = 'skills/' + cat + '/' + currentFile;
+  document.getElementById('pv-body').textContent = md;
+  document.getElementById('preview').style.display = 'block';
+  document.getElementById('dl').style.display = 'inline-block';
+  document.getElementById('preview').scrollIntoView({ behavior: 'smooth' });
+}
+
+function download() {
+  const blob = new Blob([currentMd], { type: 'text/markdown' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = currentFile;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
