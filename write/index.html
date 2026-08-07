@@ -69,6 +69,10 @@
   .ed .mini { flex:none; font-family:var(--mono); font-size:12.5px; font-weight:700; padding:8px 10px;
     border:1.5px solid var(--ink); border-radius:6px; background:var(--paper); cursor:pointer; }
   .ed .mini:hover { background:var(--paper2); }
+  .gaps { margin:18px 0 0; border:1px dashed var(--stamp); border-radius:6px; background:#fdf4f2;
+    color:var(--stamp); font-size:12.5px; padding:10px 12px; }
+  .gaps b { display:block; margin-bottom:4px; letter-spacing:.04em; }
+  .gaps ul { margin:0; padding-left:18px; }
   .btn { display:inline-block; font-family:var(--mono); font-size:14px; font-weight:700; text-decoration:none;
     padding:12px 22px; border-radius:8px; border:2px solid var(--ink); color:var(--ink);
     box-shadow:3px 3px 0 var(--ink); background:var(--paper); margin:14px 8px 0 0; cursor:pointer; transition:transform .08s; }
@@ -179,6 +183,8 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <label>Author <span>— your name or handle, credited in the file</span></label>
     <input id="f-author" placeholder="your-handle" maxlength="60">
 
+    <div id="gaps" class="gaps" style="display:none"></div>
+
     <div>
       <button class="btn primary" type="button" onclick="generate()">Generate the file</button>
       <button class="btn" type="button" id="dl" style="display:none" onclick="download()">Download .md</button>
@@ -194,6 +200,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
   <ol class="steps">
     <li>Run your skill on a real case first — the sample output tells you where the method is thin.</li>
     <li>Fork <a href="https://github.com/skills-commons/skills-commons">the library</a>, add your file under <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, open one pull request per skill.</li>
+    <li>Sign every commit with <code>git commit -s</code>. That one flag adds the <code>Signed-off-by</code> line certifying you may release the work under Apache-2.0 — the <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. A required check verifies it, so a PR merges once it is there. Already committed without it? <code>git commit --amend -s --no-edit</code> for the last one, <code>git rebase --signoff main</code> for several, then <code>git push --force-with-lease</code>.</li>
     <li>Two human reviews follow (quality + security). Credit lands in the file itself.</li>
   </ol>
 
@@ -217,22 +224,49 @@ addRow('steps', 'First step — concrete and decidable');
 addRow('steps', 'Second step');
 addRow('rules', 'First invariant');
 
-const kebab = (s) => s.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+const kebab = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const vals = (zone) => [...document.querySelectorAll('#' + zone + ' textarea')].map((t) => t.value.trim()).filter(Boolean);
 let currentMd = '', currentFile = '';
 
+const raw = (id) => document.getElementById(id).value.trim();
+
 function generate() {
-  const name = document.getElementById('f-name').value.trim() || 'my-skill';
-  const slug = kebab(name);
-  const what = document.getElementById('f-what').value.trim() || 'Describe what the skill does.';
-  const when = document.getElementById('f-when').value.trim() || 'describe the trigger';
-  const cat = document.getElementById('f-cat').value;
-  const identity = document.getElementById('f-identity').value.trim() || 'Describe who the assistant becomes.';
-  const output = document.getElementById('f-output').value.trim() || 'Describe the deliverable.';
-  const author = document.getElementById('f-author').value.trim() || 'anonymous';
   const inputs = vals('inputs');
   const steps = vals('steps');
   const rules = vals('rules');
+
+  const gaps = [];
+  if (!raw('f-name')) gaps.push('a skill name');
+  else if (!kebab(raw('f-name'))) gaps.push('a name containing at least one letter or digit');
+  if (!raw('f-what')) gaps.push('one sentence on what it does');
+  if (!raw('f-when')) gaps.push('the "use when" trigger — how the assistant knows to activate');
+  if (!raw('f-identity')) gaps.push('the identity paragraph');
+  if (!inputs.length) gaps.push('at least one input');
+  if (!steps.length) gaps.push('at least one method step');
+  if (!raw('f-output')) gaps.push('the output format');
+  if (!rules.length) gaps.push('at least one rule');
+
+  const gapBox = document.getElementById('gaps');
+  if (gaps.length) {
+    gapBox.innerHTML = '<b>A reviewable skill still needs:</b><ul>' +
+      gaps.map((g) => '<li>' + g + '</li>').join('') + '</ul>';
+    gapBox.style.display = 'block';
+    document.getElementById('preview').style.display = 'none';
+    document.getElementById('dl').style.display = 'none';
+    gapBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  gapBox.style.display = 'none';
+
+  const name = raw('f-name');
+  const slug = kebab(name);
+  const what = raw('f-what');
+  const when = raw('f-when');
+  const cat = raw('f-cat');
+  const identity = raw('f-identity');
+  const output = raw('f-output');
+  const author = raw('f-author') || 'anonymous';
 
   const md = ['---',
     'name: ' + slug,
@@ -241,7 +275,7 @@ function generate() {
     '  Use when ' + when + (when.endsWith('.') ? '' : '.'),
     'version: "0.1.0"',
     'license: Apache-2.0',
-    'authors: [' + author + ']',
+    'authors: [' + JSON.stringify(author) + ']',
     '---',
     '',
     '# ' + name,
