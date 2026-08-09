@@ -104,7 +104,9 @@ skills-commons.org</div>
   <p class="abstract">A skill is a plain-text method (a single <code>.md</code> file) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.</p>
 
   <h2><span class="no">1.</span>Problem statement</h2>
-  <p>Public skill hubs have already shipped malware disguised as a weather skill: one poisoned file among 286, quietly reading credentials. A skill file is an unsigned set of instructions. The ecosystem has plenty of large collections — what it lacks is a library you can install from with your eyes closed.</p>
+  <p>The scale is measured, not anecdotal. Scanning 3,984 skills across two public hubs on 5 February 2026, <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/">Snyk found</a> that <strong>36.82% carried at least one security flaw</strong> and <strong>13.4% at least one critical issue</strong> — plus 76 payloads built for credential theft, backdoors and exfiltration, 8 of which were still downloadable the day the research published.</p>
+  <p>The cause is structural rather than accidental. The first systematic security analysis of the format, <a href="https://arxiv.org/abs/2604.02837">Towards Secure Agent Skills</a> (Li, Wu, Ling, Cui and Luo, April 2026), maps seven threat categories across the skill lifecycle and names <em>the absence of mandatory marketplace security review</em> as one of three architectural weaknesses behind the worst of them.</p>
+  <p>A skill file is an unsigned set of instructions your agent runs with your permissions. The ecosystem has plenty of large collections; what it lacks is one you can install from with your eyes closed. This library is the answer to the sentence in that paper.</p>
 
   <h2><span class="no">2.</span>What every skill in this library guarantees</h2>
   <ol class="clauses">
