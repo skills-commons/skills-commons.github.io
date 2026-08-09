@@ -126,12 +126,13 @@ skills-commons.org</div>
   <p>The seed skills come from methods used daily in a production AI newsroom (200+ sourced articles, three languages, a weekly print magazine). They were reviewed the same way yours will be.</p>
 
   <h2><span class="no">4.</span>Using a skill — on any assistant</h2>
-  <p>The library holds <strong>22 reviewed skills</strong> in four categories — <code>workplace/</code>, <code>writing/</code>, <code>engineering/</code>, <code>agents/</code> — one identifying <code>.md</code> file each. Installation, by assistant:</p>
+  <p>The library holds <strong>22 reviewed skills</strong> in four categories — <code>workplace/</code>, <code>writing/</code>, <code>engineering/</code>, <code>agents/</code>. The <a href="https://github.com/skills-commons/skills-commons/releases/latest">release</a> ships them in the layout the <a href="https://agentskills.io/specification">Agent Skills specification</a> defines, so installing is copying a folder:</p>
   <ol class="steps">
-    <li><strong>Claude Code / Claude Desktop</strong> — create a folder named after the skill in your skills directory and save the file inside it as <code>SKILL.md</code> (e.g. <code>~/.claude/skills/commit-message-pro/SKILL.md</code>). It activates when you ask for the task.</li>
-    <li><strong>Claude.ai, ChatGPT, Gemini</strong> — paste the file into a Project's instructions (or a custom GPT / Gem). Ask for the task.</li>
+    <li><strong>Assistants that read a skills directory</strong> — download and unzip the release, then copy the skill you want:<br><code>cp -r skills-commons-v1.0.0/engineering/commit-message-pro ~/.claude/skills/</code><br>It activates when you ask for the task. Copy <code>*/*</code> to install all 22.</li>
+    <li><strong>Project instructions</strong> (Claude.ai, ChatGPT, Gemini) — paste the file's contents into a Project, custom GPT or Gem. Ask for the task.</li>
     <li><strong>Any other assistant</strong> — paste the file as your first message, then make your request.</li>
   </ol>
+  <p>Reading the file before you run it is the point, so the sources stay browsable one file per skill in <a href="https://github.com/skills-commons/skills-commons/tree/main/skills">the repository</a>. The release is the same content, shaped for installing.</p>
   <h3>FAQ</h3>
   <ol class="clauses">
     <li><strong>Does it work with any AI?</strong> Yes, by design: skills are model-agnostic — they name capabilities ("when code execution is available") rather than one vendor's tools. A stronger assistant executes more of the method; every skill declares how it degrades when a capability is missing.</li>
