@@ -173,7 +173,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
   </div>
 
   <h2><span class="no">3.</span>Was in der Prüfung abgelehnt wird</h2>
-  <p>Jede Einreichung durchläuft zwei menschliche Prüfungen (Qualität und Sicherheit). Das sind die wiederkehrenden Ablehnungsgründe — schreiben Sie mit dieser Liste vor Augen:</p>
+  <p>Jede Einreichung wird nach bestandenen automatischen Prüfungen von einem Maintainer Zeile für Zeile gelesen. Das sind die wiederkehrenden Ablehnungsgründe — schreiben Sie mit dieser Liste vor Augen:</p>
   <ol class="clauses">
     <li><span class="kw no">REJECTED</span> — <strong>Nicht entscheidbare Schritte.</strong> „Sorgfältig analysieren", „hilfreich sein", „nach bestem Ermessen" ohne jedes Kriterium. Ein Schritt verdient seinen Platz, wenn der Assistent feststellen kann, ob er ihn befolgt hat.</li>
     <li><span class="kw no">REJECTED</span> — <strong>Fehlende Degradation.</strong> Die Methode setzt Webzugriff, Codeausführung oder Dateiwerkzeuge voraus und sagt nichts darüber, was auf einem Assistenten ohne sie geschieht. Nennen Sie den Rückfall.</li>
@@ -244,7 +244,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <li>Lassen Sie Ihren Skill zuerst an einem echten Fall laufen — die Probeausgabe zeigt, wo die Methode dünn ist.</li>
     <li>Forken Sie <a href="https://github.com/skills-commons/skills-commons">die Bibliothek</a>, legen Sie Ihre Datei unter <code>skills/&lt;category&gt;/&lt;name&gt;.md</code> ab und öffnen Sie einen Pull Request pro Skill.</li>
     <li>Signieren Sie jeden Commit mit <code>git commit -s</code>. Dieses eine Flag fügt die Zeile <code>Signed-off-by</code> hinzu, mit der Sie bestätigen, die Arbeit unter Apache-2.0 freigeben zu dürfen — das <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Eine Pflichtprüfung kontrolliert das, der Pull Request lässt sich also zusammenführen, sobald sie da ist. Schon ohne committet? <code>git commit --amend -s --no-edit</code> für den letzten, <code>git rebase --signoff main</code> für mehrere, dann <code>git push --force-with-lease</code>.</li>
-    <li>Es folgen zwei menschliche Prüfungen (Qualität und Sicherheit). Die Nennung steht in der Datei selbst.</li>
+    <li>Die automatischen Prüfungen laufen, dann liest ein Maintainer sie Zeile für Zeile. Die Nennung steht in der Datei selbst.</li>
   </ol>
 
   <div class="foot">

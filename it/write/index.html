@@ -173,7 +173,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
   </div>
 
   <h2><span class="no">3.</span>Cosa viene respinto in revisione</h2>
-  <p>Ogni proposta passa da due revisioni umane (qualità e sicurezza). Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:</p>
+  <p>Ogni proposta viene letta riga per riga da un maintainer, dopo che i controlli automatici sono passati. Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:</p>
   <ol class="clauses">
     <li><span class="kw no">REJECTED</span> — <strong>Passi non decidibili.</strong> "Analizza con attenzione", "sii utile", "usa il buon senso" senza alcun criterio. Un passo si merita il suo posto quando l'assistente può dire se lo ha seguito.</li>
     <li><span class="kw no">REJECTED</span> — <strong>Degradazione assente.</strong> Il metodo dà per scontati accesso al web, esecuzione di codice o strumenti sui file, e tace su cosa succede su un assistente che ne è privo. Dichiara il ripiego.</li>
@@ -244,7 +244,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <li>Prima esegui la tua skill su un caso vero — il risultato di prova ti dice dove il metodo è sottile.</li>
     <li>Forka <a href="https://github.com/skills-commons/skills-commons">la libreria</a>, aggiungi il file sotto <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, apri una pull request per skill.</li>
     <li>Firma ogni commit con <code>git commit -s</code>. Quel flag aggiunge la riga <code>Signed-off-by</code> con cui certifichi di poter rilasciare il lavoro sotto Apache-2.0 — il <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Un controllo obbligatorio lo verifica, quindi la PR si unisce quando c'è. Hai già committato senza? <code>git commit --amend -s --no-edit</code> per l'ultimo, <code>git rebase --signoff main</code> per diversi, poi <code>git push --force-with-lease</code>.</li>
-    <li>Seguono due revisioni umane (qualità e sicurezza). Il credito finisce nel file stesso.</li>
+    <li>Girano i controlli automatici, poi un maintainer lo legge riga per riga. Il credito finisce nel file stesso.</li>
   </ol>
 
   <div class="foot">

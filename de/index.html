@@ -153,7 +153,7 @@ skills-commons.org</div>
 
   <h2><span class="no">2.</span>Was jeder Skill dieser Bibliothek garantiert</h2>
   <ol class="clauses">
-    <li>Jeder Skill <span class="kw ok">MUSS</span> vor der Aufnahme eine dokumentierte Sicherheits- und Qualitätsprüfung Zeile für Zeile bestehen. Auch Einreichungen der Maintainer: ein anderer Maintainer prüft.</li>
+    <li>Jeder Skill <span class="kw ok">MUSS</span> vor der Aufnahme Zeile für Zeile gelesen werden, von einem Menschen. Automatik allein nimmt nie etwas auf, und das Lesen geschieht offen, im Pull Request.</li>
     <li>Jeder Skill <span class="kw ok">MUSS</span> schlichtes, lesbares Markdown sein: was Sie lesen, ist genau das, was Ihr Agent ausführt.</li>
     <li>Kodierte Blobs, versteckte Anweisungen, Zero-Width-Tricks: <span class="kw no">ABGELEHNT</span> in der Prüfung.</li>
     <li>Nachladen entfernter Anweisungen und Wege zur Datenexfiltration: <span class="kw no">VERBOTEN</span>, ausdrücklich geprüft.</li>
@@ -181,7 +181,8 @@ skills-commons.org</div>
     <li><strong>Funktioniert das mit jeder KI?</strong> Ja, absichtlich: Skills sind modellunabhängig — sie benennen Fähigkeiten („wenn Codeausführung verfügbar ist“) statt der Werkzeuge eines Anbieters. Ein stärkerer Assistent führt mehr von der Methode aus; jeder Skill erklärt, wie er sich verhält, wenn eine Fähigkeit fehlt.</li>
     <li><strong>Wozu dient ein Skill?</strong> Er macht aus einem allgemeinen Assistenten einen Spezialisten für eine Aufgabe: Methode, Eingaben, Ausgabeformat und Qualitätsregeln, aufgeschrieben und geprüft. Aus einem improvisierten Prompt wird ein wiederholbares Verfahren, dem Sie zweimal vertrauen können.</li>
     <li><strong>Wie funktioniert das?</strong> Ihr Assistent liest die Datei als Betriebsanweisung: er fragt die genannten Eingaben ab, führt die Schritte aus und liefert die genannte Ausgabe. Schlichtes Markdown — was Sie lesen, ist genau das, was er ausführt.</li>
-    <li><strong>Ist das sicher?</strong> Jede Aufnahme durchläuft zwei menschliche Prüfungen (Qualität und Sicherheit); kodierte Blobs und das Nachladen entfernter Anweisungen werden abgelehnt. Und das Format selbst ist das Sicherheitsnetz: lesen Sie die Datei, bevor Sie sie installieren.</li>
+    <li><strong>Ist das sicher?</strong> Jeder Pull Request muss blockierende automatische Prüfungen bestehen — Struktur, innere Stimmigkeit, kodierte Inhalte, unsichtbare Zeichen, Abfragen von Zugangsdaten — und wird danach von einem Maintainer Zeile für Zeile gelesen. Beides ist öffentlich: Prüfungen und Review stehen im Pull Request, Sie können die Gründlichkeit also selbst beurteilen, statt uns zu glauben. Und das Format ist das letzte Netz: lesen Sie die Datei, bevor Sie sie installieren.</li>
+    <li><strong>Wer prüft?</strong> Heute das Team von AGORÀ Intelligence. Die Bibliothek ist jung und das Team klein — deshalb ist alles automatisiert, was sich automatisieren lässt, und jede Prüfung steht in einem öffentlichen Pull Request. Wächst die Bibliothek, muss die Prüfkapazität mitwachsen: ein Merge bedeutet hier nie weniger, als dass ein Mensch die Datei gelesen hat.</li>
     <li><strong>Was kostet das?</strong> Die Bibliothek ist kostenlos, Apache-2.0, kommerzielle Nutzung eingeschlossen — den Lizenzhinweis beibehalten.</li>
   </ol>
 
@@ -190,7 +191,7 @@ skills-commons.org</div>
     <li>Die Bibliothek durchsehen, die Skill-Datei wie in Abschnitt 4 beschrieben installieren, die Aufgabe stellen.</li>
     <li>Neu dabei? <a href="/write/">RFT 2: Write Your First Skill</a> — Aufbau, ein geprüftes Beispiel und ein Editor, der eine konforme Datei erzeugt. Der Leitfaden ist auf Englisch, wie die Skills selbst.</li>
     <li>Einen Skill pro Pull Request beitragen — die Vorlage spiegelt die Sicherheits-Checkliste.</li>
-    <li>Zwei menschliche Prüfungen (Qualität und Sicherheit) nehmen ihn auf. Die Nennung steht im Skill selbst.</li>
+    <li>Die automatischen Prüfungen laufen, ein Maintainer liest ihn Zeile für Zeile, dann wird er aufgenommen. Die Nennung steht im Skill selbst.</li>
     <li>Etwas Gefährliches in einem aufgenommenen Skill entdeckt? <a href="https://github.com/skills-commons/skills-commons/security">Vertraulich melden</a> oder an <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a> schreiben: Entfernung, Hinweis, Nennung.</li>
   </ol>
 

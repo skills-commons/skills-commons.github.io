@@ -173,7 +173,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
   </div>
 
   <h2><span class="no">3.</span>Qué se rechaza en la revisión</h2>
-  <p>Cada propuesta pasa dos revisiones humanas (calidad y seguridad). Estos son los rechazos recurrentes — escribe con esta lista abierta:</p>
+  <p>Cada propuesta la lee línea por línea un maintainer, después de que pasen las comprobaciones automáticas. Estos son los rechazos recurrentes — escribe con esta lista abierta:</p>
   <ol class="clauses">
     <li><span class="kw no">REJECTED</span> — <strong>Pasos no decidibles.</strong> "Analiza con cuidado", "sé útil", "usa tu criterio" sin criterio alguno. Un paso se gana su lugar cuando el asistente puede saber si lo ha cumplido.</li>
     <li><span class="kw no">REJECTED</span> — <strong>Degradación ausente.</strong> El método da por hechos el acceso web, la ejecución de código o las herramientas de archivos, y calla sobre qué ocurre en un asistente que carece de ellos. Declara la alternativa.</li>
@@ -244,7 +244,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <li>Ejecuta primero tu skill en un caso real — la salida de prueba te dice dónde el método es delgado.</li>
     <li>Haz un fork de <a href="https://github.com/skills-commons/skills-commons">la biblioteca</a>, añade tu archivo en <code>skills/&lt;category&gt;/&lt;name&gt;.md</code> y abre una pull request por skill.</li>
     <li>Firma cada commit con <code>git commit -s</code>. Ese único flag añade la línea <code>Signed-off-by</code> con la que certificas que puedes publicar el trabajo bajo Apache-2.0 — el <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Una comprobación obligatoria lo verifica, así que la PR se incorpora en cuanto está. ¿Ya has hecho commit sin ella? <code>git commit --amend -s --no-edit</code> para el último, <code>git rebase --signoff main</code> para varios, y luego <code>git push --force-with-lease</code>.</li>
-    <li>Siguen dos revisiones humanas (calidad y seguridad). El crédito queda en el propio archivo.</li>
+    <li>Se ejecutan las comprobaciones automáticas, luego un maintainer lo lee línea por línea. El crédito queda en el propio archivo.</li>
   </ol>
 
   <div class="foot">

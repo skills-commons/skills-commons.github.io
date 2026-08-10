@@ -153,7 +153,7 @@ skills-commons.org</div>
 
   <h2><span class="no">2.</span>Qué garantiza cada skill de esta biblioteca</h2>
   <ol class="clauses">
-    <li>Cada skill <span class="kw ok">DEBE</span> superar una revisión de seguridad y calidad documentada, línea por línea, antes de incorporarse. Incluidas las de los maintainers: las revisa otro maintainer.</li>
+    <li>Cada skill <span class="kw ok">DEBE</span> leerse línea por línea antes de incorporarse, por una persona. La automatización sola nunca incorpora nada, y la lectura ocurre a la vista, en la pull request.</li>
     <li>Cada skill <span class="kw ok">DEBE</span> ser markdown legible en claro: lo que lees es exactamente lo que ejecuta tu agente.</li>
     <li>Blobs codificados, instrucciones ocultas, trucos de ancho cero: <span class="kw no">RECHAZADOS</span> en la revisión.</li>
     <li>Carga remota de instrucciones y vías de exfiltración de datos: <span class="kw no">PROHIBIDAS</span>, verificadas de forma explícita.</li>
@@ -181,7 +181,8 @@ skills-commons.org</div>
     <li><strong>¿Funciona con cualquier IA?</strong> Sí, por diseño: las skills son independientes del modelo — nombran capacidades ("cuando hay ejecución de código disponible") en lugar de las herramientas de un proveedor. Un asistente más capaz ejecuta más partes del método; cada skill declara cómo se degrada cuando falta una capacidad.</li>
     <li><strong>¿Para qué sirve una skill?</strong> Convierte un asistente general en un especialista de una tarea: método, entradas, formato de salida y reglas de calidad, escritos y revisados. Un prompt improvisado se vuelve un procedimiento repetible en el que confiar dos veces.</li>
     <li><strong>¿Cómo funciona?</strong> Tu asistente lee el archivo como instrucciones operativas: pide las entradas declaradas, ejecuta los pasos y entrega la salida declarada. Markdown en claro — lo que lees es exactamente lo que ejecuta.</li>
-    <li><strong>¿Es seguro?</strong> Cada incorporación pasa dos revisiones humanas (calidad y seguridad); los blobs codificados y la carga remota de instrucciones se rechazan en la revisión. Y el formato mismo es la red de seguridad: lee el archivo antes de instalarlo.</li>
+    <li><strong>¿Es seguro?</strong> Cada pull request debe superar comprobaciones automáticas bloqueantes — estructura, coherencia interna, contenido codificado, caracteres invisibles, peticiones de credenciales — y después la lee línea por línea un maintainer. Ambas son públicas: las comprobaciones y la revisión constan en la pull request, así que puedes juzgar tú la profundidad en vez de creernos. Y el formato es la última red: lee el archivo antes de instalarlo.</li>
+    <li><strong>¿Quién revisa?</strong> Hoy, el equipo de AGORÀ Intelligence. La biblioteca es joven y el equipo pequeño: por eso todo lo automatizable está automatizado y cada revisión vive en una pull request pública. A medida que la biblioteca crece, la capacidad de revisión es lo que debe crecer con ella — un merge aquí nunca significará menos que una persona habiendo leído el archivo.</li>
     <li><strong>¿Cuánto cuesta?</strong> La biblioteca es gratuita, Apache-2.0, uso comercial incluido — conserva el aviso de licencia.</li>
   </ol>
 
@@ -190,7 +191,7 @@ skills-commons.org</div>
     <li>Explora la biblioteca, instala el archivo de la skill como se describe en la sección 4 y pide la tarea.</li>
     <li>¿Empiezas ahora? <a href="/write/">RFT 2: Write Your First Skill</a> — anatomía, un ejemplo revisado y un editor que genera un archivo conforme. La guía está en inglés, igual que las skills.</li>
     <li>Contribuye una skill por pull request — la plantilla refleja la lista de comprobación de seguridad.</li>
-    <li>Dos revisiones humanas (calidad y seguridad) la incorporan. El crédito queda en la propia skill.</li>
+    <li>Se ejecutan las comprobaciones automáticas, un maintainer la lee línea por línea y se incorpora. El crédito queda en la propia skill.</li>
     <li>¿Has encontrado algo peligroso en una skill incorporada? <a href="https://github.com/skills-commons/skills-commons/security">Repórtalo en privado</a> o escribe a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>: retirada, aviso público, crédito.</li>
   </ol>
 

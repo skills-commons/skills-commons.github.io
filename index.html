@@ -153,7 +153,7 @@ skills-commons.org</div>
 
   <h2><span class="no">2.</span>What every skill in this library guarantees</h2>
   <ol class="clauses">
-    <li>Every skill <span class="kw ok">MUST</span> pass a documented, line-by-line security and quality review before merge. Maintainer submissions included: a different maintainer reviews.</li>
+    <li>Every skill <span class="kw ok">MUST</span> be read line by line before merge, by a person. Automation alone never merges anything, and the reading happens in the open, in the pull request.</li>
     <li>Every skill <span class="kw ok">MUST</span> be plain, readable markdown: what you read is exactly what your agent executes.</li>
     <li>Encoded blobs, hidden instructions, zero-width tricks: <span class="kw no">REJECTED</span> at review.</li>
     <li>Remote instruction loading and data exfiltration paths: <span class="kw no">FORBIDDEN</span>, checked explicitly.</li>
@@ -181,7 +181,8 @@ skills-commons.org</div>
     <li><strong>Does it work with any AI?</strong> Yes, by design: skills are model-agnostic — they name capabilities ("when code execution is available") rather than one vendor's tools. A stronger assistant executes more of the method; every skill declares how it degrades when a capability is missing.</li>
     <li><strong>What is a skill for?</strong> It turns a general assistant into a specialist for one task: method, inputs, output format and quality rules, written down and reviewed. An improvised prompt becomes a repeatable procedure you can trust twice.</li>
     <li><strong>How does it work?</strong> Your assistant reads the file as its operating instructions: it asks for the stated inputs, runs the steps, delivers the stated output. Plain markdown — what you read is exactly what it executes.</li>
-    <li><strong>Is it safe?</strong> Every merge passes two human reviews (quality + security); encoded blobs and remote instruction loading are rejected at review. And the format itself is the safety net: read the file before you install it.</li>
+    <li><strong>Is it safe?</strong> Every pull request must pass blocking automated checks — structure, self-consistency, encoded content, invisible characters, credential requests — and is then read line by line by a maintainer. Both are public: the checks report in the pull request and so does the review, so you can judge the depth yourself instead of taking our word for it. And the format is the last safety net: read the file before you install it.</li>
+    <li><strong>Who reviews?</strong> Today, the AGORÀ Intelligence team. The library is young and the team is small, which is why every check that can be automated is automated and every review sits in a public pull request. As the library grows, review capacity is the thing that has to grow with it — a merge here will never mean less than a person having read the file.</li>
     <li><strong>What does it cost?</strong> The library is free, Apache-2.0, commercial use included — keep the license notice.</li>
   </ol>
 
@@ -190,7 +191,7 @@ skills-commons.org</div>
     <li>Browse the library, install the skill file as described in section 4, ask for the task.</li>
     <li>New to the craft? <a href="/write/">RFT 2: Write Your First Skill</a> — anatomy, a reviewed example, and an editor that generates a conformant file.</li>
     <li>Contribute one skill per pull request — the template mirrors the security checklist.</li>
-    <li>Two human reviews (quality + security) merge it. Credit lands in the skill itself.</li>
+    <li>The automated checks run, a maintainer reads it line by line, and it merges. Credit lands in the skill itself.</li>
     <li>Found something dangerous in a merged skill? <a href="https://github.com/skills-commons/skills-commons/security">Report it privately</a> or write to <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>: removal, advisory, credit.</li>
   </ol>
 

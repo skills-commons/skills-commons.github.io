@@ -173,7 +173,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
   </div>
 
   <h2><span class="no">3.</span>What reviews reject</h2>
-  <p>Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:</p>
+  <p>Every submission is read line by line by a maintainer, after the automated checks pass. These are the recurring rejections — write with this list open:</p>
   <ol class="clauses">
     <li><span class="kw no">REJECTED</span> — <strong>Undecidable steps.</strong> "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.</li>
     <li><span class="kw no">REJECTED</span> — <strong>Missing degradation.</strong> The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.</li>
@@ -244,7 +244,7 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <li>Run your skill on a real case first — the sample output tells you where the method is thin.</li>
     <li>Fork <a href="https://github.com/skills-commons/skills-commons">the library</a>, add your file under <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, open one pull request per skill.</li>
     <li>Sign every commit with <code>git commit -s</code>. That one flag adds the <code>Signed-off-by</code> line certifying you may release the work under Apache-2.0 — the <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. A required check verifies it, so a PR merges once it is there. Already committed without it? <code>git commit --amend -s --no-edit</code> for the last one, <code>git rebase --signoff main</code> for several, then <code>git push --force-with-lease</code>.</li>
-    <li>Two human reviews follow (quality + security). Credit lands in the file itself.</li>
+    <li>The automated checks run, then a maintainer reads it line by line. Credit lands in the file itself.</li>
   </ol>
 
   <div class="foot">

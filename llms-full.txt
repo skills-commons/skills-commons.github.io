@@ -32,7 +32,7 @@ A skill file is an unsigned set of instructions your agent runs with your permis
 
 ## 2. What every skill in this library guarantees
 
-- Every skill MUST pass a documented, line-by-line security and quality review before merge. Maintainer submissions included: a different maintainer reviews.
+- Every skill MUST be read line by line before merge, by a person. Automation alone never merges anything, and the reading happens in the open, in the pull request.
 - Every skill MUST be plain, readable markdown: what you read is exactly what your agent executes.
 - Encoded blobs, hidden instructions, zero-width tricks: REJECTED at review.
 - Remote instruction loading and data exfiltration paths: FORBIDDEN, checked explicitly.
@@ -61,7 +61,8 @@ Reading the file before you run it is the point, so the sources stay browsable o
 - **Does it work with any AI?** Yes, by design: skills are model-agnostic — they name capabilities ("when code execution is available") rather than one vendor's tools. A stronger assistant executes more of the method; every skill declares how it degrades when a capability is missing.
 - **What is a skill for?** It turns a general assistant into a specialist for one task: method, inputs, output format and quality rules, written down and reviewed. An improvised prompt becomes a repeatable procedure you can trust twice.
 - **How does it work?** Your assistant reads the file as its operating instructions: it asks for the stated inputs, runs the steps, delivers the stated output. Plain markdown — what you read is exactly what it executes.
-- **Is it safe?** Every merge passes two human reviews (quality + security); encoded blobs and remote instruction loading are rejected at review. And the format itself is the safety net: read the file before you install it.
+- **Is it safe?** Every pull request must pass blocking automated checks — structure, self-consistency, encoded content, invisible characters, credential requests — and is then read line by line by a maintainer. Both are public: the checks report in the pull request and so does the review, so you can judge the depth yourself instead of taking our word for it. And the format is the last safety net: read the file before you install it.
+- **Who reviews?** Today, the AGORÀ Intelligence team. The library is young and the team is small, which is why every check that can be automated is automated and every review sits in a public pull request. As the library grows, review capacity is the thing that has to grow with it — a merge here will never mean less than a person having read the file.
 - **What does it cost?** The library is free, Apache-2.0, commercial use included — keep the license notice.
 
 ## 5. How to participate
@@ -69,7 +70,7 @@ Reading the file before you run it is the point, so the sources stay browsable o
 - Browse the library, install the skill file as described in section 4, ask for the task.
 - New to the craft? [RFT 2: Write Your First Skill](/write/) — anatomy, a reviewed example, and an editor that generates a conformant file.
 - Contribute one skill per pull request — the template mirrors the security checklist.
-- Two human reviews (quality + security) merge it. Credit lands in the skill itself.
+- The automated checks run, a maintainer reads it line by line, and it merges. Credit lands in the skill itself.
 - Found something dangerous in a merged skill? [Report it privately](https://github.com/skills-commons/skills-commons/security) or write to [hello@agora-intelligence.com](mailto:hello@agora-intelligence.com): removal, advisory, credit.
 
 [Browse the library →](https://github.com/skills-commons/skills-commons)
@@ -131,7 +132,7 @@ The order is fixed: problems before achievements.**✓ review** — an output co
 
 ## 3. What reviews reject
 
-Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:
+Every submission is read line by line by a maintainer, after the automated checks pass. These are the recurring rejections — write with this list open:
 
 - REJECTED — **Undecidable steps.** "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.
 - REJECTED — **Missing degradation.** The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.
@@ -186,7 +187,7 @@ skills/…generated · draft
 - Run your skill on a real case first — the sample output tells you where the method is thin.
 - Fork [the library](https://github.com/skills-commons/skills-commons), add your file under `skills/<category>/<name>.md`, open one pull request per skill.
 - Sign every commit with `git commit -s`. That one flag adds the `Signed-off-by` line certifying you may release the work under Apache-2.0 — the [Developer Certificate of Origin](https://github.com/skills-commons/skills-commons/blob/main/DCO.txt). A required check verifies it, so a PR merges once it is there. Already committed without it? `git commit --amend -s --no-edit` for the last one, `git rebase --signoff main` for several, then `git push --force-with-lease`.
-- Two human reviews follow (quality + security). Credit lands in the file itself.
+- The automated checks run, then a maintainer reads it line by line. Credit lands in the file itself.
 
 Seeded & maintained by [AGORÀ Intelligence](https://agora-intelligence.com) — every merge reviewed by the team
 [RFT 1: the library](/) · Apache-2.0 · [Privacy](/privacy/) · [Cookies](#cookies)

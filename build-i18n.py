@@ -106,10 +106,10 @@ T: list[tuple[str, dict[str, str]]] = [
         "de": "Was jeder Skill dieser Bibliothek garantiert",
         "es": "Qué garantiza cada skill de esta biblioteca",
     }),
-    ('Every skill <span class="kw ok">MUST</span> pass a documented, line-by-line security and quality review before merge. Maintainer submissions included: a different maintainer reviews.', {
-        "it": 'Ogni skill <span class="kw ok">DEVE</span> superare una revisione di sicurezza e qualità documentata, riga per riga, prima di essere accettata. Comprese quelle dei maintainer: le rivede un altro maintainer.',
-        "de": 'Jeder Skill <span class="kw ok">MUSS</span> vor der Aufnahme eine dokumentierte Sicherheits- und Qualitätsprüfung Zeile für Zeile bestehen. Auch Einreichungen der Maintainer: ein anderer Maintainer prüft.',
-        "es": 'Cada skill <span class="kw ok">DEBE</span> superar una revisión de seguridad y calidad documentada, línea por línea, antes de incorporarse. Incluidas las de los maintainers: las revisa otro maintainer.',
+    ('Every skill <span class="kw ok">MUST</span> be read line by line before merge, by a person. Automation alone never merges anything, and the reading happens in the open, in the pull request.', {
+        "it": 'Ogni skill <span class="kw ok">DEVE</span> essere letta riga per riga prima di essere accettata, da una persona. Nulla viene accettato dalla sola automazione, e la lettura avviene alla luce del sole, dentro la pull request.',
+        "de": 'Jeder Skill <span class="kw ok">MUSS</span> vor der Aufnahme Zeile für Zeile gelesen werden, von einem Menschen. Automatik allein nimmt nie etwas auf, und das Lesen geschieht offen, im Pull Request.',
+        "es": 'Cada skill <span class="kw ok">DEBE</span> leerse línea por línea antes de incorporarse, por una persona. La automatización sola nunca incorpora nada, y la lectura ocurre a la vista, en la pull request.',
     }),
     ('Every skill <span class="kw ok">MUST</span> be plain, readable markdown: what you read is exactly what your agent executes.', {
         "it": 'Ogni skill <span class="kw ok">DEVE</span> essere markdown leggibile in chiaro: quello che leggi è esattamente quello che il tuo agente esegue.',
@@ -210,10 +210,15 @@ T: list[tuple[str, dict[str, str]]] = [
         "de": "<strong>Wie funktioniert das?</strong> Ihr Assistent liest die Datei als Betriebsanweisung: er fragt die genannten Eingaben ab, führt die Schritte aus und liefert die genannte Ausgabe. Schlichtes Markdown — was Sie lesen, ist genau das, was er ausführt.",
         "es": "<strong>¿Cómo funciona?</strong> Tu asistente lee el archivo como instrucciones operativas: pide las entradas declaradas, ejecuta los pasos y entrega la salida declarada. Markdown en claro — lo que lees es exactamente lo que ejecuta.",
     }),
-    ("<strong>Is it safe?</strong> Every merge passes two human reviews (quality + security); encoded blobs and remote instruction loading are rejected at review. And the format itself is the safety net: read the file before you install it.", {
-        "it": "<strong>È sicuro?</strong> Ogni accettazione passa da due revisioni umane (qualità e sicurezza); blob codificati e caricamento remoto di istruzioni vengono respinti in revisione. E il formato stesso è la rete di protezione: leggi il file prima di installarlo.",
-        "de": "<strong>Ist das sicher?</strong> Jede Aufnahme durchläuft zwei menschliche Prüfungen (Qualität und Sicherheit); kodierte Blobs und das Nachladen entfernter Anweisungen werden abgelehnt. Und das Format selbst ist das Sicherheitsnetz: lesen Sie die Datei, bevor Sie sie installieren.",
-        "es": "<strong>¿Es seguro?</strong> Cada incorporación pasa dos revisiones humanas (calidad y seguridad); los blobs codificados y la carga remota de instrucciones se rechazan en la revisión. Y el formato mismo es la red de seguridad: lee el archivo antes de instalarlo.",
+    ("<strong>Is it safe?</strong> Every pull request must pass blocking automated checks — structure, self-consistency, encoded content, invisible characters, credential requests — and is then read line by line by a maintainer. Both are public: the checks report in the pull request and so does the review, so you can judge the depth yourself instead of taking our word for it. And the format is the last safety net: read the file before you install it.", {
+        "it": "<strong>È sicuro?</strong> Ogni pull request deve superare controlli automatici bloccanti — struttura, coerenza interna, contenuto codificato, caratteri invisibili, richieste di credenziali — e poi viene letta riga per riga da un maintainer. Entrambi sono pubblici: i controlli e la revisione compaiono nella pull request, così puoi giudicare tu quanto è andata a fondo invece di crederci sulla parola. E il formato è l'ultima rete: leggi il file prima di installarlo.",
+        "de": "<strong>Ist das sicher?</strong> Jeder Pull Request muss blockierende automatische Prüfungen bestehen — Struktur, innere Stimmigkeit, kodierte Inhalte, unsichtbare Zeichen, Abfragen von Zugangsdaten — und wird danach von einem Maintainer Zeile für Zeile gelesen. Beides ist öffentlich: Prüfungen und Review stehen im Pull Request, Sie können die Gründlichkeit also selbst beurteilen, statt uns zu glauben. Und das Format ist das letzte Netz: lesen Sie die Datei, bevor Sie sie installieren.",
+        "es": "<strong>¿Es seguro?</strong> Cada pull request debe superar comprobaciones automáticas bloqueantes — estructura, coherencia interna, contenido codificado, caracteres invisibles, peticiones de credenciales — y después la lee línea por línea un maintainer. Ambas son públicas: las comprobaciones y la revisión constan en la pull request, así que puedes juzgar tú la profundidad en vez de creernos. Y el formato es la última red: lee el archivo antes de instalarlo.",
+    }),
+    ("<strong>Who reviews?</strong> Today, the AGORÀ Intelligence team. The library is young and the team is small, which is why every check that can be automated is automated and every review sits in a public pull request. As the library grows, review capacity is the thing that has to grow with it — a merge here will never mean less than a person having read the file.", {
+        "it": "<strong>Chi revisiona?</strong> Oggi il team di AGORÀ Intelligence. La libreria è giovane e il team è piccolo: per questo tutto ciò che si può automatizzare è automatizzato, e ogni revisione sta in una pull request pubblica. Man mano che la libreria cresce, la capacità di revisione è la cosa che deve crescere con lei — un merge qui non significherà mai meno di una persona che ha letto il file.",
+        "de": "<strong>Wer prüft?</strong> Heute das Team von AGORÀ Intelligence. Die Bibliothek ist jung und das Team klein — deshalb ist alles automatisiert, was sich automatisieren lässt, und jede Prüfung steht in einem öffentlichen Pull Request. Wächst die Bibliothek, muss die Prüfkapazität mitwachsen: ein Merge bedeutet hier nie weniger, als dass ein Mensch die Datei gelesen hat.",
+        "es": "<strong>¿Quién revisa?</strong> Hoy, el equipo de AGORÀ Intelligence. La biblioteca es joven y el equipo pequeño: por eso todo lo automatizable está automatizado y cada revisión vive en una pull request pública. A medida que la biblioteca crece, la capacidad de revisión es lo que debe crecer con ella — un merge aquí nunca significará menos que una persona habiendo leído el archivo.",
     }),
     ("<strong>What does it cost?</strong> The library is free, Apache-2.0, commercial use included — keep the license notice.", {
         "it": "<strong>Quanto costa?</strong> La libreria è gratuita, Apache-2.0, uso commerciale incluso — mantieni la nota di licenza.",
@@ -238,10 +243,10 @@ T: list[tuple[str, dict[str, str]]] = [
         "de": "Einen Skill pro Pull Request beitragen — die Vorlage spiegelt die Sicherheits-Checkliste.",
         "es": "Contribuye una skill por pull request — la plantilla refleja la lista de comprobación de seguridad.",
     }),
-    ("Two human reviews (quality + security) merge it. Credit lands in the skill itself.", {
-        "it": "Due revisioni umane (qualità e sicurezza) la accettano. Il credito finisce nella skill stessa.",
-        "de": "Zwei menschliche Prüfungen (Qualität und Sicherheit) nehmen ihn auf. Die Nennung steht im Skill selbst.",
-        "es": "Dos revisiones humanas (calidad y seguridad) la incorporan. El crédito queda en la propia skill.",
+    ("The automated checks run, a maintainer reads it line by line, and it merges. Credit lands in the skill itself.", {
+        "it": "I controlli automatici girano, un maintainer la legge riga per riga, e viene accettata. Il credito finisce nella skill stessa.",
+        "de": "Die automatischen Prüfungen laufen, ein Maintainer liest ihn Zeile für Zeile, dann wird er aufgenommen. Die Nennung steht im Skill selbst.",
+        "es": "Se ejecutan las comprobaciones automáticas, un maintainer la lee línea por línea y se incorpora. El crédito queda en la propia skill.",
     }),
     ('Found something dangerous in a merged skill? <a href="https://github.com/skills-commons/skills-commons/security">Report it privately</a> or write to <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>: removal, advisory, credit.', {
         "it": 'Hai trovato qualcosa di pericoloso in una skill accettata? <a href="https://github.com/skills-commons/skills-commons/security">Segnalalo in privato</a> o scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>: rimozione, avviso pubblico, credito.',
@@ -349,10 +354,10 @@ W: list[tuple[str, dict[str, str]]] = [
         "de": "Was in der Prüfung abgelehnt wird",
         "es": "Qué se rechaza en la revisión",
     }),
-    ("Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:", {
-        "it": "Ogni proposta passa da due revisioni umane (qualità e sicurezza). Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:",
-        "de": "Jede Einreichung durchläuft zwei menschliche Prüfungen (Qualität und Sicherheit). Das sind die wiederkehrenden Ablehnungsgründe — schreiben Sie mit dieser Liste vor Augen:",
-        "es": "Cada propuesta pasa dos revisiones humanas (calidad y seguridad). Estos son los rechazos recurrentes — escribe con esta lista abierta:",
+    ("Every submission is read line by line by a maintainer, after the automated checks pass. These are the recurring rejections — write with this list open:", {
+        "it": "Ogni proposta viene letta riga per riga da un maintainer, dopo che i controlli automatici sono passati. Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:",
+        "de": "Jede Einreichung wird nach bestandenen automatischen Prüfungen von einem Maintainer Zeile für Zeile gelesen. Das sind die wiederkehrenden Ablehnungsgründe — schreiben Sie mit dieser Liste vor Augen:",
+        "es": "Cada propuesta la lee línea por línea un maintainer, después de que pasen las comprobaciones automáticas. Estos son los rechazos recurrentes — escribe con esta lista abierta:",
     }),
     ('<strong>Undecidable steps.</strong> "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.', {
         "it": '<strong>Passi non decidibili.</strong> "Analizza con attenzione", "sii utile", "usa il buon senso" senza alcun criterio. Un passo si merita il suo posto quando l\'assistente può dire se lo ha seguito.',
@@ -417,10 +422,10 @@ W: list[tuple[str, dict[str, str]]] = [
         "de": 'Signieren Sie jeden Commit mit <code>git commit -s</code>. Dieses eine Flag fügt die Zeile <code>Signed-off-by</code> hinzu, mit der Sie bestätigen, die Arbeit unter Apache-2.0 freigeben zu dürfen — das <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Eine Pflichtprüfung kontrolliert das, der Pull Request lässt sich also zusammenführen, sobald sie da ist. Schon ohne committet? <code>git commit --amend -s --no-edit</code> für den letzten, <code>git rebase --signoff main</code> für mehrere, dann <code>git push --force-with-lease</code>.',
         "es": 'Firma cada commit con <code>git commit -s</code>. Ese único flag añade la línea <code>Signed-off-by</code> con la que certificas que puedes publicar el trabajo bajo Apache-2.0 — el <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Una comprobación obligatoria lo verifica, así que la PR se incorpora en cuanto está. ¿Ya has hecho commit sin ella? <code>git commit --amend -s --no-edit</code> para el último, <code>git rebase --signoff main</code> para varios, y luego <code>git push --force-with-lease</code>.',
     }),
-    ("Two human reviews follow (quality + security). Credit lands in the file itself.", {
-        "it": "Seguono due revisioni umane (qualità e sicurezza). Il credito finisce nel file stesso.",
-        "de": "Es folgen zwei menschliche Prüfungen (Qualität und Sicherheit). Die Nennung steht in der Datei selbst.",
-        "es": "Siguen dos revisiones humanas (calidad y seguridad). El crédito queda en el propio archivo.",
+    ("The automated checks run, then a maintainer reads it line by line. Credit lands in the file itself.", {
+        "it": "Girano i controlli automatici, poi un maintainer lo legge riga per riga. Il credito finisce nel file stesso.",
+        "de": "Die automatischen Prüfungen laufen, dann liest ein Maintainer sie Zeile für Zeile. Die Nennung steht in der Datei selbst.",
+        "es": "Se ejecutan las comprobaciones automáticas, luego un maintainer lo lee línea por línea. El crédito queda en el propio archivo.",
     }),
     ('<span><a href="/">RFT 1: the library</a> · Apache-2.0', {
         "it": '<span><a href="/it/">RFT 1: la libreria</a> · Apache-2.0',
