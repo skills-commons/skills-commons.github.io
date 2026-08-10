@@ -263,6 +263,175 @@ T: list[tuple[str, dict[str, str]]] = [
     }),
 ]
 
+# The guide at /write/. Explanations translate; the editor form, the annotated
+# example and everything the reader copies stay English, because what you type
+# into that form becomes the skill — and skills in this library are English.
+W: list[tuple[str, dict[str, str]]] = [
+    ("Skills Commons — RFT 2: Write Your First Skill", {
+        "it": "Skills Commons — RFT 2: Scrivi la tua prima skill",
+        "de": "Skills Commons — RFT 2: Schreiben Sie Ihren ersten Skill",
+        "es": "Skills Commons — RFT 2: Escribe tu primera skill",
+    }),
+    ("Write Your First Skill", {
+        "it": "Scrivi la tua prima skill",
+        "de": "Schreiben Sie Ihren ersten Skill",
+        "es": "Escribe tu primera skill",
+    }),
+    ("Request For Trust: 2\nCategory: Craft", {
+        "it": "Richiesta di Fiducia: 2\nCategoria: Mestiere",
+        "de": "Request For Trust: 2\nKategorie: Handwerk",
+        "es": "Solicitud de Confianza: 2\nCategoría: Oficio",
+    }),
+    ("Status: LIVING DOCUMENT", {
+        "it": "Stato: DOCUMENTO VIVO",
+        "de": "Status: LEBENDES DOKUMENT",
+        "es": "Estado: DOCUMENTO VIVO",
+    }),
+    ('<a href="/">← RFT 1: the library</a>', {
+        "it": '<a href="/it/">← RFT 1: la libreria</a>',
+        "de": '<a href="/de/">← RFT 1: die Bibliothek</a>',
+        "es": '<a href="/es/">← RFT 1: la biblioteca</a>',
+    }),
+    ("Learn the anatomy, study a reviewed example, <em>generate the file below</em>.", {
+        "it": "Impara l'anatomia, studia un esempio revisionato, <em>genera il file qui sotto</em>.",
+        "de": "Den Aufbau lernen, ein geprüftes Beispiel studieren, <em>die Datei unten erzeugen</em>.",
+        "es": "Aprende la anatomía, estudia un ejemplo revisado, <em>genera el archivo abajo</em>.",
+    }),
+    ("A skill is a plain-text method your reader hands to an AI assistant. Writing one is closer to writing a procedure for a sharp new colleague than to prompt tinkering: you define the inputs, the steps, the output contract, and the rules that hold when things get ambiguous. This document teaches the anatomy, shows a reviewed example, lists what reviews reject, and ends with an editor that generates a spec-conformant file.", {
+        "it": "Una skill è un metodo in testo semplice che il lettore consegna a un assistente AI. Scriverne una assomiglia più a redigere una procedura per un collega nuovo e sveglio che a smanettare con i prompt: definisci gli input, i passi, il contratto di uscita e le regole che reggono quando le cose diventano ambigue. Questo documento insegna l'anatomia, mostra un esempio revisionato, elenca cosa viene respinto in revisione e si chiude con un editor che genera un file conforme alla specifica.",
+        "de": "Ein Skill ist eine Methode in Klartext, die Ihr Leser einem KI-Assistenten übergibt. Einen zu schreiben ähnelt eher dem Verfassen einer Arbeitsanweisung für eine kluge neue Kollegin als dem Herumprobieren an Prompts: Sie legen die Eingaben fest, die Schritte, den Ausgabevertrag und die Regeln, die tragen, wenn es mehrdeutig wird. Dieses Dokument vermittelt den Aufbau, zeigt ein geprüftes Beispiel, listet die häufigen Ablehnungsgründe auf und endet mit einem Editor, der eine spezifikationskonforme Datei erzeugt.",
+        "es": "Una skill es un método en texto plano que tu lector entrega a un asistente de IA. Escribir una se parece más a redactar un procedimiento para un compañero nuevo y despierto que a trastear con prompts: defines las entradas, los pasos, el contrato de salida y las reglas que aguantan cuando las cosas se vuelven ambiguas. Este documento enseña la anatomía, muestra un ejemplo revisado, enumera lo que se rechaza en la revisión y termina con un editor que genera un archivo conforme a la especificación.",
+    }),
+
+    # --- 1. anatomy -------------------------------------------------------
+    ("Anatomy of a skill", {
+        "it": "Anatomia di una skill", "de": "Aufbau eines Skills", "es": "Anatomía de una skill",
+    }),
+    ('<strong>Frontmatter.</strong> <code>name</code> in kebab-case, matching the filename. <code>description</code> carries two jobs in one paragraph: what the skill does, and — crucially — <em>when to activate it</em> ("Use when asked to…"). Assistants pick skills by this field; a vague description means a skill that sleeps forever. Version, license, authors close the block.', {
+        "it": '<strong>Frontmatter.</strong> <code>name</code> in kebab-case, uguale al nome del file. <code>description</code> svolge due compiti in un paragrafo: cosa fa la skill e — soprattutto — <em>quando attivarla</em> ("Use when asked to…"). Gli assistenti scelgono le skill da questo campo; una descrizione vaga produce una skill che dorme per sempre. Versione, licenza e autori chiudono il blocco.',
+        "de": '<strong>Frontmatter.</strong> <code>name</code> in Kebab-Case, identisch mit dem Dateinamen. <code>description</code> erfüllt zwei Aufgaben in einem Absatz: was der Skill tut und — entscheidend — <em>wann er greifen soll</em> („Use when asked to…"). Assistenten wählen Skills über dieses Feld; eine vage Beschreibung ergibt einen Skill, der ewig schläft. Version, Lizenz und Autoren schließen den Block ab.',
+        "es": '<strong>Frontmatter.</strong> <code>name</code> en kebab-case, igual al nombre del archivo. <code>description</code> cumple dos funciones en un párrafo: qué hace la skill y — sobre todo — <em>cuándo activarla</em> ("Use when asked to…"). Los asistentes eligen skills por este campo; una descripción vaga produce una skill que duerme para siempre. Versión, licencia y autores cierran el bloque.',
+    }),
+    ('<strong>Identity paragraph.</strong> Two or three sentences after the title, second person: who the assistant becomes and what it refuses to compromise on. This is voice and standard in one breath: "You write commit messages worthy of the permanent record."', {
+        "it": '<strong>Paragrafo di identità.</strong> Due o tre frasi dopo il titolo, in seconda persona: chi diventa l\'assistente e su cosa rifiuta di transigere. È voce e standard in un respiro solo: "You write commit messages worthy of the permanent record."',
+        "de": '<strong>Identitätsabsatz.</strong> Zwei bis drei Sätze nach dem Titel, in der zweiten Person: wer der Assistent wird und wobei er keine Abstriche macht. Das ist Tonfall und Maßstab in einem Atemzug: „You write commit messages worthy of the permanent record."',
+        "es": '<strong>Párrafo de identidad.</strong> Dos o tres frases tras el título, en segunda persona: en quién se convierte el asistente y en qué se niega a transigir. Es voz y estándar en un mismo aliento: "You write commit messages worthy of the permanent record."',
+    }),
+    ("<strong>Inputs.</strong> The numbered list of what the skill needs, with the required ones marked and a rule for gaps (ask and stop, or proceed with labeled assumptions). Ask once — a skill that interrogates in rounds exhausts its user.", {
+        "it": "<strong>Inputs.</strong> L'elenco numerato di ciò che la skill richiede, con i campi obbligatori segnati e una regola per i buchi (chiedi e fermati, oppure procedi con assunzioni dichiarate). Chiedi una volta sola — una skill che interroga a raffica sfinisce chi la usa.",
+        "de": "<strong>Inputs.</strong> Die nummerierte Liste dessen, was der Skill braucht, mit markierten Pflichtangaben und einer Regel für Lücken (nachfragen und anhalten, oder mit ausgewiesenen Annahmen weitermachen). Einmal fragen — ein Skill, der in Runden verhört, zermürbt seine Nutzer.",
+        "es": "<strong>Inputs.</strong> La lista numerada de lo que la skill necesita, con los obligatorios marcados y una regla para los huecos (pregunta y detente, o sigue con supuestos declarados). Pregunta una sola vez — una skill que interroga por tandas agota a quien la usa.",
+    }),
+    ('<strong>Method.</strong> Numbered steps, each one decidable: an instruction the assistant can follow or verify, with the judgment rules spelled out ("when X exceeds Y, do Z"). Steps that say "be thorough" delegate the hard part back to chance.', {
+        "it": '<strong>Method.</strong> Passi numerati, ciascuno decidibile: un\'istruzione che l\'assistente può seguire o verificare, con le regole di giudizio esplicite ("quando X supera Y, fai Z"). I passi che dicono "sii accurato" restituiscono al caso la parte difficile.',
+        "de": '<strong>Method.</strong> Nummerierte Schritte, jeder entscheidbar: eine Anweisung, der der Assistent folgen oder die er prüfen kann, mit ausformulierten Ermessensregeln („wenn X über Y liegt, tue Z"). Schritte wie „sei gründlich" geben den schwierigen Teil an den Zufall zurück.',
+        "es": '<strong>Method.</strong> Pasos numerados, cada uno decidible: una instrucción que el asistente puede seguir o verificar, con las reglas de criterio explícitas ("cuando X supere Y, haz Z"). Los pasos que dicen "sé minucioso" devuelven al azar la parte difícil.',
+    }),
+    ("<strong>Output format.</strong> The contract: sections, order, lengths where they matter. Two runs of the same skill should produce the same shape — the format section is what makes a skill repeatable instead of improvised.", {
+        "it": "<strong>Output format.</strong> Il contratto: sezioni, ordine, lunghezze dove contano. Due esecuzioni della stessa skill devono produrre la stessa forma — la sezione del formato è ciò che rende una skill ripetibile invece che improvvisata.",
+        "de": "<strong>Output format.</strong> Der Vertrag: Abschnitte, Reihenfolge, Längen dort, wo sie zählen. Zwei Läufe desselben Skills sollten dieselbe Form ergeben — der Formatabschnitt macht einen Skill wiederholbar statt improvisiert.",
+        "es": "<strong>Output format.</strong> El contrato: secciones, orden y longitudes donde importan. Dos ejecuciones de la misma skill deben producir la misma forma — la sección de formato es lo que hace una skill repetible en lugar de improvisada.",
+    }),
+    ('<strong>Rules.</strong> The invariants that survive every edge case: what gets refused, what gets labeled, what degrades and how. State how the skill behaves when a capability is missing — "mark N.A. with a reason" beats a guessed success.', {
+        "it": '<strong>Rules.</strong> Gli invarianti che sopravvivono a ogni caso limite: cosa viene rifiutato, cosa viene etichettato, cosa degrada e come. Dichiara come si comporta la skill quando manca una capacità — "segna N.D. con una motivazione" vale più di un successo indovinato.',
+        "de": '<strong>Rules.</strong> Die Invarianten, die jeden Grenzfall überstehen: was abgelehnt wird, was gekennzeichnet wird, was wie degradiert. Halten Sie fest, wie sich der Skill verhält, wenn eine Fähigkeit fehlt — „mit Begründung als n. v. markieren" schlägt einen geratenen Erfolg.',
+        "es": '<strong>Rules.</strong> Los invariantes que sobreviven a cada caso límite: qué se rechaza, qué se etiqueta, qué se degrada y cómo. Declara cómo se comporta la skill cuando falta una capacidad — "marca N.D. con un motivo" vale más que un éxito adivinado.',
+    }),
+
+    # --- 2 & 3 ------------------------------------------------------------
+    ("A reviewed example, annotated", {
+        "it": "Un esempio revisionato, annotato",
+        "de": "Ein geprüftes Beispiel, kommentiert",
+        "es": "Un ejemplo revisado, anotado",
+    }),
+    ("What reviews reject", {
+        "it": "Cosa viene respinto in revisione",
+        "de": "Was in der Prüfung abgelehnt wird",
+        "es": "Qué se rechaza en la revisión",
+    }),
+    ("Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:", {
+        "it": "Ogni proposta passa da due revisioni umane (qualità e sicurezza). Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:",
+        "de": "Jede Einreichung durchläuft zwei menschliche Prüfungen (Qualität und Sicherheit). Das sind die wiederkehrenden Ablehnungsgründe — schreiben Sie mit dieser Liste vor Augen:",
+        "es": "Cada propuesta pasa dos revisiones humanas (calidad y seguridad). Estos son los rechazos recurrentes — escribe con esta lista abierta:",
+    }),
+    ('<strong>Undecidable steps.</strong> "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.', {
+        "it": '<strong>Passi non decidibili.</strong> "Analizza con attenzione", "sii utile", "usa il buon senso" senza alcun criterio. Un passo si merita il suo posto quando l\'assistente può dire se lo ha seguito.',
+        "de": '<strong>Nicht entscheidbare Schritte.</strong> „Sorgfältig analysieren", „hilfreich sein", „nach bestem Ermessen" ohne jedes Kriterium. Ein Schritt verdient seinen Platz, wenn der Assistent feststellen kann, ob er ihn befolgt hat.',
+        "es": '<strong>Pasos no decidibles.</strong> "Analiza con cuidado", "sé útil", "usa tu criterio" sin criterio alguno. Un paso se gana su lugar cuando el asistente puede saber si lo ha cumplido.',
+    }),
+    ("<strong>Missing degradation.</strong> The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.", {
+        "it": "<strong>Degradazione assente.</strong> Il metodo dà per scontati accesso al web, esecuzione di codice o strumenti sui file, e tace su cosa succede su un assistente che ne è privo. Dichiara il ripiego.",
+        "de": "<strong>Fehlende Degradation.</strong> Die Methode setzt Webzugriff, Codeausführung oder Dateiwerkzeuge voraus und sagt nichts darüber, was auf einem Assistenten ohne sie geschieht. Nennen Sie den Rückfall.",
+        "es": "<strong>Degradación ausente.</strong> El método da por hechos el acceso web, la ejecución de código o las herramientas de archivos, y calla sobre qué ocurre en un asistente que carece de ellos. Declara la alternativa.",
+    }),
+    ("<strong>Hidden or encoded content.</strong> Base64 blobs, zero-width characters, instructions to fetch remote content at runtime. Plain readable markdown is the deal: what the reader sees is what the agent executes.", {
+        "it": "<strong>Contenuto nascosto o codificato.</strong> Blob base64, caratteri a larghezza zero, istruzioni per scaricare contenuti remoti a runtime. Il patto è markdown leggibile in chiaro: quello che il lettore vede è quello che l'agente esegue.",
+        "de": "<strong>Versteckte oder kodierte Inhalte.</strong> Base64-Blobs, Zero-Width-Zeichen, Anweisungen zum Nachladen entfernter Inhalte zur Laufzeit. Die Abmachung lautet: schlichtes, lesbares Markdown — was der Leser sieht, führt der Agent aus.",
+        "es": "<strong>Contenido oculto o codificado.</strong> Blobs base64, caracteres de ancho cero, instrucciones para descargar contenido remoto en tiempo de ejecución. El trato es markdown legible en claro: lo que el lector ve es lo que el agente ejecuta.",
+    }),
+    ("<strong>Exfiltration paths.</strong> Steps that send user data anywhere. A skill transforms what it is given, in place.", {
+        "it": "<strong>Vie di esfiltrazione.</strong> Passi che spediscono i dati dell'utente da qualche parte. Una skill trasforma ciò che riceve, sul posto.",
+        "de": "<strong>Exfiltrationswege.</strong> Schritte, die Nutzerdaten irgendwohin senden. Ein Skill verarbeitet, was er bekommt, an Ort und Stelle.",
+        "es": "<strong>Vías de exfiltración.</strong> Pasos que envían los datos del usuario a alguna parte. Una skill transforma lo que recibe, en el sitio.",
+    }),
+    ('<strong>Vendor lock phrasing.</strong> "Use the WebFetch tool", "call Code Interpreter". Name capabilities ("when live web access is available"), and the skill works on every assistant.', {
+        "it": '<strong>Formule legate a un fornitore.</strong> "Usa lo strumento WebFetch", "chiama Code Interpreter". Nomina le capacità ("quando è disponibile l\'accesso live al web") e la skill funziona su ogni assistente.',
+        "de": '<strong>Anbieterspezifische Formulierungen.</strong> „Nutze das WebFetch-Tool", „rufe Code Interpreter auf". Benennen Sie Fähigkeiten („wenn Live-Webzugriff verfügbar ist"), dann läuft der Skill auf jedem Assistenten.',
+        "es": '<strong>Fórmulas atadas a un proveedor.</strong> "Usa la herramienta WebFetch", "llama a Code Interpreter". Nombra capacidades ("cuando hay acceso web en vivo") y la skill funciona en cualquier asistente.',
+    }),
+    ("<strong>Marketing in the method.</strong> Superlatives about the skill itself, links to products, self-promotion. The method speaks through its steps.", {
+        "it": "<strong>Marketing dentro il metodo.</strong> Superlativi sulla skill stessa, link a prodotti, autopromozione. Il metodo parla attraverso i suoi passi.",
+        "de": "<strong>Marketing in der Methode.</strong> Superlative über den Skill selbst, Produktlinks, Eigenwerbung. Die Methode spricht durch ihre Schritte.",
+        "es": "<strong>Marketing dentro del método.</strong> Superlativos sobre la propia skill, enlaces a productos, autopromoción. El método habla a través de sus pasos.",
+    }),
+    ("<strong>A missing output contract.</strong> Ten sharp method steps, and zero words on what the deliverable looks like. The format section is half the value.", {
+        "it": "<strong>Contratto di uscita mancante.</strong> Dieci passi di metodo affilati, e zero parole su che aspetto ha il risultato. La sezione del formato è metà del valore.",
+        "de": "<strong>Fehlender Ausgabevertrag.</strong> Zehn präzise Methodenschritte und kein Wort dazu, wie das Ergebnis aussieht. Der Formatabschnitt ist die halbe Miete.",
+        "es": "<strong>Contrato de salida ausente.</strong> Diez pasos de método afilados y ni una palabra sobre qué aspecto tiene el entregable. La sección de formato es la mitad del valor.",
+    }),
+
+    # --- 4 & 5 ------------------------------------------------------------
+    ("The editor — generate your file", {
+        "it": "L'editor — genera il tuo file",
+        "de": "Der Editor — Ihre Datei erzeugen",
+        "es": "El editor — genera tu archivo",
+    }),
+    ("Fill the sections; the editor assembles a spec-conformant <code>.md</code>. Everything runs in this page — your draft touches zero servers.", {
+        "it": "Compila le sezioni; l'editor assembla un <code>.md</code> conforme alla specifica. Tutto gira dentro questa pagina — la tua bozza non tocca alcun server. <strong>Il modulo resta in inglese: quello che scrivi diventa la skill, e le skill di questa libreria sono in inglese.</strong>",
+        "de": "Füllen Sie die Abschnitte aus; der Editor setzt eine spezifikationskonforme <code>.md</code> zusammen. Alles läuft in dieser Seite — Ihr Entwurf berührt keinen Server. <strong>Das Formular bleibt englisch: was Sie hineinschreiben, wird der Skill, und die Skills dieser Bibliothek sind englisch.</strong>",
+        "es": "Rellena las secciones; el editor ensambla un <code>.md</code> conforme a la especificación. Todo se ejecuta en esta página — tu borrador no toca ningún servidor. <strong>El formulario sigue en inglés: lo que escribas se convierte en la skill, y las skills de esta biblioteca están en inglés.</strong>",
+    }),
+    ("Submit it", {"it": "Proponila", "de": "Einreichen", "es": "Propónla"}),
+    ("Run your skill on a real case first — the sample output tells you where the method is thin.", {
+        "it": "Prima esegui la tua skill su un caso vero — il risultato di prova ti dice dove il metodo è sottile.",
+        "de": "Lassen Sie Ihren Skill zuerst an einem echten Fall laufen — die Probeausgabe zeigt, wo die Methode dünn ist.",
+        "es": "Ejecuta primero tu skill en un caso real — la salida de prueba te dice dónde el método es delgado.",
+    }),
+    ('Fork <a href="https://github.com/skills-commons/skills-commons">the library</a>, add your file under <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, open one pull request per skill.', {
+        "it": 'Forka <a href="https://github.com/skills-commons/skills-commons">la libreria</a>, aggiungi il file sotto <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, apri una pull request per skill.',
+        "de": 'Forken Sie <a href="https://github.com/skills-commons/skills-commons">die Bibliothek</a>, legen Sie Ihre Datei unter <code>skills/&lt;category&gt;/&lt;name&gt;.md</code> ab und öffnen Sie einen Pull Request pro Skill.',
+        "es": 'Haz un fork de <a href="https://github.com/skills-commons/skills-commons">la biblioteca</a>, añade tu archivo en <code>skills/&lt;category&gt;/&lt;name&gt;.md</code> y abre una pull request por skill.',
+    }),
+    ('Sign every commit with <code>git commit -s</code>. That one flag adds the <code>Signed-off-by</code> line certifying you may release the work under Apache-2.0 — the <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. A required check verifies it, so a PR merges once it is there. Already committed without it? <code>git commit --amend -s --no-edit</code> for the last one, <code>git rebase --signoff main</code> for several, then <code>git push --force-with-lease</code>.', {
+        "it": 'Firma ogni commit con <code>git commit -s</code>. Quel flag aggiunge la riga <code>Signed-off-by</code> con cui certifichi di poter rilasciare il lavoro sotto Apache-2.0 — il <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Un controllo obbligatorio lo verifica, quindi la PR si unisce quando c\'è. Hai già committato senza? <code>git commit --amend -s --no-edit</code> per l\'ultimo, <code>git rebase --signoff main</code> per diversi, poi <code>git push --force-with-lease</code>.',
+        "de": 'Signieren Sie jeden Commit mit <code>git commit -s</code>. Dieses eine Flag fügt die Zeile <code>Signed-off-by</code> hinzu, mit der Sie bestätigen, die Arbeit unter Apache-2.0 freigeben zu dürfen — das <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Eine Pflichtprüfung kontrolliert das, der Pull Request lässt sich also zusammenführen, sobald sie da ist. Schon ohne committet? <code>git commit --amend -s --no-edit</code> für den letzten, <code>git rebase --signoff main</code> für mehrere, dann <code>git push --force-with-lease</code>.',
+        "es": 'Firma cada commit con <code>git commit -s</code>. Ese único flag añade la línea <code>Signed-off-by</code> con la que certificas que puedes publicar el trabajo bajo Apache-2.0 — el <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Una comprobación obligatoria lo verifica, así que la PR se incorpora en cuanto está. ¿Ya has hecho commit sin ella? <code>git commit --amend -s --no-edit</code> para el último, <code>git rebase --signoff main</code> para varios, y luego <code>git push --force-with-lease</code>.',
+    }),
+    ("Two human reviews follow (quality + security). Credit lands in the file itself.", {
+        "it": "Seguono due revisioni umane (qualità e sicurezza). Il credito finisce nel file stesso.",
+        "de": "Es folgen zwei menschliche Prüfungen (Qualität und Sicherheit). Die Nennung steht in der Datei selbst.",
+        "es": "Siguen dos revisiones humanas (calidad y seguridad). El crédito queda en el propio archivo.",
+    }),
+    ('<span><a href="/">RFT 1: the library</a> · Apache-2.0</span>', {
+        "it": '<span><a href="/it/">RFT 1: la libreria</a> · Apache-2.0</span>',
+        "de": '<span><a href="/de/">RFT 1: die Bibliothek</a> · Apache-2.0</span>',
+        "es": '<span><a href="/es/">RFT 1: la biblioteca</a> · Apache-2.0</span>',
+    }),
+]
+
+# path relative to the site root -> its translation table
+PAGES: dict[str, list] = {"": T, "write/": W}
+
 SELECTOR_CSS = """
   .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
   .langs a { display:inline-block; padding:3px 9px; border:1px solid var(--rule); border-radius:5px;
@@ -272,29 +441,30 @@ SELECTOR_CSS = """
 """
 
 
-def selector(current: str) -> str:
+def selector(current: str, page: str) -> str:
+    """Links to the same page in the other languages, never to the front door."""
     items = []
     for code, label in [("en", "EN"), ("it", "IT"), ("de", "DE"), ("es", "ES")]:
-        href = "/" if code == "en" else f"/{code}/"
+        href = f"/{page}" if code == "en" else f"/{code}/{page}"
         cur = ' aria-current="page"' if code == current else ""
         items.append(f'<a href="{href}" hreflang="{code}" lang="{code}"{cur}>{label}</a>')
     return '  <nav class="langs" aria-label="Language">' + "".join(items) + "</nav>\n\n"
 
 
-def alternates() -> str:
-    out = [f'<link rel="alternate" hreflang="en" href="{BASE}/">']
+def alternates(page: str) -> str:
+    out = [f'<link rel="alternate" hreflang="en" href="{BASE}/{page}">']
     for code in LANGS:
-        out.append(f'<link rel="alternate" hreflang="{code}" href="{BASE}/{code}/">')
-    out.append(f'<link rel="alternate" hreflang="x-default" href="{BASE}/">')
+        out.append(f'<link rel="alternate" hreflang="{code}" href="{BASE}/{code}/{page}">')
+    out.append(f'<link rel="alternate" hreflang="x-default" href="{BASE}/{page}">')
     return "\n".join(out)
 
 
-def build(lang: str | None, source: str, check: bool) -> tuple[str, list[str]]:
+def build(lang: str | None, source: str, page: str, table: list, check: bool):
     """lang=None renders the English page (selector + alternates only)."""
     html = source
     missing = []
 
-    for english, translations in T:
+    for english, translations in table:
         if english not in html:
             missing.append(english[:70])
             continue
@@ -306,50 +476,55 @@ def build(lang: str | None, source: str, check: bool) -> tuple[str, list[str]]:
 
     code = lang or "en"
     html = html.replace('<html lang="en">', f'<html lang="{code}">', 1)
-    html = html.replace(
-        '<link rel="icon"',
-        alternates() + '\n<link rel="icon"', 1)
+    html = html.replace('<link rel="icon"', alternates(page) + '\n<link rel="icon"', 1)
     html = html.replace(
         "  @media (max-width:600px)",
         SELECTOR_CSS.rstrip() + "\n  @media (max-width:600px)", 1)
-    html = html.replace('<div class="sheet">\n\n', '<div class="sheet">\n\n' + selector(code), 1)
-    if lang:
-        html = html.replace(f'href="{BASE}/{lang}/"', f'href="{BASE}/{lang}/"', 1)
+    html = html.replace('<div class="sheet">\n\n', '<div class="sheet">\n\n' + selector(code, page), 1)
     return html, missing
+
+
+def strip_generated(html: str) -> str:
+    """Remove anything a previous run injected, so the build is idempotent."""
+    html = re.sub(r'  <nav class="langs".*?</nav>\n\n', "", html, flags=re.S)
+    html = re.sub(r'<link rel="alternate"[^>]*>\n', "", html)
+    return html.replace(SELECTOR_CSS.rstrip() + "\n", "")
 
 
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     check = "--check" in sys.argv
     root = os.path.dirname(os.path.abspath(__file__))
-    source = open(os.path.join(root, "index.html"), encoding="utf-8").read()
+    failed = False
 
-    # The English page must not already carry a selector, or we would stack them.
-    clean = re.sub(r'  <nav class="langs".*?</nav>\n\n', "", source, flags=re.S)
-    clean = re.sub(r'<link rel="alternate"[^>]*>\n', "", clean)
-    clean = re.sub(re.escape(SELECTOR_CSS.rstrip()) + "\n", "", clean)
+    for page, table in PAGES.items():
+        src_path = os.path.join(root, page, "index.html")
+        clean = strip_generated(open(src_path, encoding="utf-8").read())
+        label = page or "index.html"
 
-    _, missing = build(None, clean, check=True)
-    if missing:
-        print("Strings no longer found in index.html — the translation is stale:")
-        for m in missing:
-            print(f"  - {m}…")
-        return 1
-    print(f"all {len(T)} translated strings matched index.html")
-    if check:
-        return 0
+        _, missing = build(None, clean, page, table, check=True)
+        if missing:
+            failed = True
+            print(f"{label}: {len(missing)} string(s) no longer in the source — the translation is stale:")
+            for m in missing:
+                print(f"  - {m}…")
+            continue
+        print(f"{label}: all {len(table)} translated strings matched")
+        if check:
+            continue
 
-    en, _ = build(None, clean, check=False)
-    open(os.path.join(root, "index.html"), "w", encoding="utf-8", newline="\n").write(en)
-    print("  wrote index.html (selector + hreflang)")
+        en, _ = build(None, clean, page, table, check=False)
+        open(src_path, "w", encoding="utf-8", newline="\n").write(en)
+        print(f"  wrote {page}index.html (selector + hreflang)")
 
-    for lang in LANGS:
-        out, _ = build(lang, clean, check=False)
-        d = os.path.join(root, lang)
-        os.makedirs(d, exist_ok=True)
-        open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\n").write(out)
-        print(f"  wrote {lang}/index.html")
-    return 0
+        for lang in LANGS:
+            out, _ = build(lang, clean, page, table, check=False)
+            d = os.path.join(root, lang, page)
+            os.makedirs(d, exist_ok=True)
+            open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\n").write(out)
+            print(f"  wrote {lang}/{page}index.html")
+
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

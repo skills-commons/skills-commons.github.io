@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skills Commons — RFT 2: Write Your First Skill</title>
+<title>Skills Commons — RFT 2: Scrivi la tua prima skill</title>
 <meta name="description" content="The anatomy of a reviewable AI skill, an annotated example, the mistakes reviews reject, and a self-service editor that generates a spec-conformant SKILL.md.">
-<meta property="og:title" content="Skills Commons — RFT 2: Write Your First Skill">
+<meta property="og:title" content="Skills Commons — RFT 2: Scrivi la tua prima skill">
 <meta property="og:description" content="Learn the craft, generate the file, open the pull request. The review is the product.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://skills-commons.org/write/">
@@ -92,34 +92,34 @@
 <body>
 <div class="sheet">
 
-  <nav class="langs" aria-label="Language"><a href="/write/" hreflang="en" lang="en" aria-current="page">EN</a><a href="/it/write/" hreflang="it" lang="it">IT</a><a href="/de/write/" hreflang="de" lang="de">DE</a><a href="/es/write/" hreflang="es" lang="es">ES</a></nav>
+  <nav class="langs" aria-label="Language"><a href="/write/" hreflang="en" lang="en">EN</a><a href="/it/write/" hreflang="it" lang="it" aria-current="page">IT</a><a href="/de/write/" hreflang="de" lang="de">DE</a><a href="/es/write/" hreflang="es" lang="es">ES</a></nav>
 
   <div class="rfchead">
     <div>Skills Commons
-Request For Trust: 2
-Category: Craft</div>
-    <div class="r">Status: LIVING DOCUMENT
+Richiesta di Fiducia: 2
+Categoria: Mestiere</div>
+    <div class="r">Stato: DOCUMENTO VIVO
 License: Apache-2.0
-<a href="/">← RFT 1: the library</a></div>
+<a href="/it/">← RFT 1: la libreria</a></div>
   </div>
 
   <h1>Write Your First Skill</h1>
-  <p class="subtitle">Learn the anatomy, study a reviewed example, <em>generate the file below</em>.</p>
+  <p class="subtitle">Impara l'anatomia, studia un esempio revisionato, <em>genera il file qui sotto</em>.</p>
 
   <h2><span class="no">Abstract</span></h2>
-  <p class="abstract">A skill is a plain-text method your reader hands to an AI assistant. Writing one is closer to writing a procedure for a sharp new colleague than to prompt tinkering: you define the inputs, the steps, the output contract, and the rules that hold when things get ambiguous. This document teaches the anatomy, shows a reviewed example, lists what reviews reject, and ends with an editor that generates a spec-conformant file.</p>
+  <p class="abstract">Una skill è un metodo in testo semplice che il lettore consegna a un assistente AI. Scriverne una assomiglia più a redigere una procedura per un collega nuovo e sveglio che a smanettare con i prompt: definisci gli input, i passi, il contratto di uscita e le regole che reggono quando le cose diventano ambigue. Questo documento insegna l'anatomia, mostra un esempio revisionato, elenca cosa viene respinto in revisione e si chiude con un editor che genera un file conforme alla specifica.</p>
 
-  <h2><span class="no">1.</span>Anatomy of a skill</h2>
+  <h2><span class="no">1.</span>Anatomia di una skill</h2>
   <ol class="clauses">
-    <li><strong>Frontmatter.</strong> <code>name</code> in kebab-case, matching the filename. <code>description</code> carries two jobs in one paragraph: what the skill does, and — crucially — <em>when to activate it</em> ("Use when asked to…"). Assistants pick skills by this field; a vague description means a skill that sleeps forever. Version, license, authors close the block.</li>
-    <li><strong>Identity paragraph.</strong> Two or three sentences after the title, second person: who the assistant becomes and what it refuses to compromise on. This is voice and standard in one breath: "You write commit messages worthy of the permanent record."</li>
-    <li><strong>Inputs.</strong> The numbered list of what the skill needs, with the required ones marked and a rule for gaps (ask and stop, or proceed with labeled assumptions). Ask once — a skill that interrogates in rounds exhausts its user.</li>
-    <li><strong>Method.</strong> Numbered steps, each one decidable: an instruction the assistant can follow or verify, with the judgment rules spelled out ("when X exceeds Y, do Z"). Steps that say "be thorough" delegate the hard part back to chance.</li>
-    <li><strong>Output format.</strong> The contract: sections, order, lengths where they matter. Two runs of the same skill should produce the same shape — the format section is what makes a skill repeatable instead of improvised.</li>
-    <li><strong>Rules.</strong> The invariants that survive every edge case: what gets refused, what gets labeled, what degrades and how. State how the skill behaves when a capability is missing — "mark N.A. with a reason" beats a guessed success.</li>
+    <li><strong>Frontmatter.</strong> <code>name</code> in kebab-case, uguale al nome del file. <code>description</code> svolge due compiti in un paragrafo: cosa fa la skill e — soprattutto — <em>quando attivarla</em> ("Use when asked to…"). Gli assistenti scelgono le skill da questo campo; una descrizione vaga produce una skill che dorme per sempre. Versione, licenza e autori chiudono il blocco.</li>
+    <li><strong>Paragrafo di identità.</strong> Due o tre frasi dopo il titolo, in seconda persona: chi diventa l'assistente e su cosa rifiuta di transigere. È voce e standard in un respiro solo: "You write commit messages worthy of the permanent record."</li>
+    <li><strong>Inputs.</strong> L'elenco numerato di ciò che la skill richiede, con i campi obbligatori segnati e una regola per i buchi (chiedi e fermati, oppure procedi con assunzioni dichiarate). Chiedi una volta sola — una skill che interroga a raffica sfinisce chi la usa.</li>
+    <li><strong>Method.</strong> Passi numerati, ciascuno decidibile: un'istruzione che l'assistente può seguire o verificare, con le regole di giudizio esplicite ("quando X supera Y, fai Z"). I passi che dicono "sii accurato" restituiscono al caso la parte difficile.</li>
+    <li><strong>Output format.</strong> Il contratto: sezioni, ordine, lunghezze dove contano. Due esecuzioni della stessa skill devono produrre la stessa forma — la sezione del formato è ciò che rende una skill ripetibile invece che improvvisata.</li>
+    <li><strong>Rules.</strong> Gli invarianti che sopravvivono a ogni caso limite: cosa viene rifiutato, cosa viene etichettato, cosa degrada e come. Dichiara come si comporta la skill quando manca una capacità — "segna N.D. con una motivazione" vale più di un successo indovinato.</li>
   </ol>
 
-  <h2><span class="no">2.</span>A reviewed example, annotated</h2>
+  <h2><span class="no">2.</span>Un esempio revisionato, annotato</h2>
   <div class="file">
     <div class="bar"><span>skills/agents/honest-status-report.md</span><span>v1.0.0 · merged</span></div>
     <pre><span class="cm">---</span>
@@ -136,20 +136,20 @@ License: Apache-2.0
 The order is fixed: problems before achievements.<span class="rev"><b>✓ review</b> — an output contract, stated as a rule: the shape survives every run</span></pre>
   </div>
 
-  <h2><span class="no">3.</span>What reviews reject</h2>
-  <p>Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:</p>
+  <h2><span class="no">3.</span>Cosa viene respinto in revisione</h2>
+  <p>Ogni proposta passa da due revisioni umane (qualità e sicurezza). Questi sono i motivi di rifiuto ricorrenti — scrivi tenendo aperta questa lista:</p>
   <ol class="clauses">
-    <li><span class="kw no">REJECTED</span> — <strong>Undecidable steps.</strong> "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>Missing degradation.</strong> The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>Hidden or encoded content.</strong> Base64 blobs, zero-width characters, instructions to fetch remote content at runtime. Plain readable markdown is the deal: what the reader sees is what the agent executes.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>Exfiltration paths.</strong> Steps that send user data anywhere. A skill transforms what it is given, in place.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>Vendor lock phrasing.</strong> "Use the WebFetch tool", "call Code Interpreter". Name capabilities ("when live web access is available"), and the skill works on every assistant.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>Marketing in the method.</strong> Superlatives about the skill itself, links to products, self-promotion. The method speaks through its steps.</li>
-    <li><span class="kw no">REJECTED</span> — <strong>A missing output contract.</strong> Ten sharp method steps, and zero words on what the deliverable looks like. The format section is half the value.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Passi non decidibili.</strong> "Analizza con attenzione", "sii utile", "usa il buon senso" senza alcun criterio. Un passo si merita il suo posto quando l'assistente può dire se lo ha seguito.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Degradazione assente.</strong> Il metodo dà per scontati accesso al web, esecuzione di codice o strumenti sui file, e tace su cosa succede su un assistente che ne è privo. Dichiara il ripiego.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Contenuto nascosto o codificato.</strong> Blob base64, caratteri a larghezza zero, istruzioni per scaricare contenuti remoti a runtime. Il patto è markdown leggibile in chiaro: quello che il lettore vede è quello che l'agente esegue.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Vie di esfiltrazione.</strong> Passi che spediscono i dati dell'utente da qualche parte. Una skill trasforma ciò che riceve, sul posto.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Formule legate a un fornitore.</strong> "Usa lo strumento WebFetch", "chiama Code Interpreter". Nomina le capacità ("quando è disponibile l'accesso live al web") e la skill funziona su ogni assistente.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Marketing dentro il metodo.</strong> Superlativi sulla skill stessa, link a prodotti, autopromozione. Il metodo parla attraverso i suoi passi.</li>
+    <li><span class="kw no">REJECTED</span> — <strong>Contratto di uscita mancante.</strong> Dieci passi di metodo affilati, e zero parole su che aspetto ha il risultato. La sezione del formato è metà del valore.</li>
   </ol>
 
-  <h2><span class="no">4.</span>The editor — generate your file</h2>
-  <p>Fill the sections; the editor assembles a spec-conformant <code>.md</code>. Everything runs in this page — your draft touches zero servers.</p>
+  <h2><span class="no">4.</span>L'editor — genera il tuo file</h2>
+  <p>Compila le sezioni; l'editor assembla un <code>.md</code> conforme alla specifica. Tutto gira dentro questa pagina — la tua bozza non tocca alcun server. <strong>Il modulo resta in inglese: quello che scrivi diventa la skill, e le skill di questa libreria sono in inglese.</strong></p>
 
   <div class="ed" id="editor">
     <label>Skill name <span>— a few words; the filename becomes kebab-case automatically</span></label>
@@ -203,17 +203,17 @@ The order is fixed: problems before achievements.<span class="rev"><b>✓ review
     <pre id="pv-body"></pre>
   </div>
 
-  <h2><span class="no">5.</span>Submit it</h2>
+  <h2><span class="no">5.</span>Proponila</h2>
   <ol class="steps">
-    <li>Run your skill on a real case first — the sample output tells you where the method is thin.</li>
-    <li>Fork <a href="https://github.com/skills-commons/skills-commons">the library</a>, add your file under <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, open one pull request per skill.</li>
-    <li>Sign every commit with <code>git commit -s</code>. That one flag adds the <code>Signed-off-by</code> line certifying you may release the work under Apache-2.0 — the <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. A required check verifies it, so a PR merges once it is there. Already committed without it? <code>git commit --amend -s --no-edit</code> for the last one, <code>git rebase --signoff main</code> for several, then <code>git push --force-with-lease</code>.</li>
-    <li>Two human reviews follow (quality + security). Credit lands in the file itself.</li>
+    <li>Prima esegui la tua skill su un caso vero — il risultato di prova ti dice dove il metodo è sottile.</li>
+    <li>Forka <a href="https://github.com/skills-commons/skills-commons">la libreria</a>, aggiungi il file sotto <code>skills/&lt;category&gt;/&lt;name&gt;.md</code>, apri una pull request per skill.</li>
+    <li>Firma ogni commit con <code>git commit -s</code>. Quel flag aggiunge la riga <code>Signed-off-by</code> con cui certifichi di poter rilasciare il lavoro sotto Apache-2.0 — il <a href="https://github.com/skills-commons/skills-commons/blob/main/DCO.txt">Developer Certificate of Origin</a>. Un controllo obbligatorio lo verifica, quindi la PR si unisce quando c'è. Hai già committato senza? <code>git commit --amend -s --no-edit</code> per l'ultimo, <code>git rebase --signoff main</code> per diversi, poi <code>git push --force-with-lease</code>.</li>
+    <li>Seguono due revisioni umane (qualità e sicurezza). Il credito finisce nel file stesso.</li>
   </ol>
 
   <div class="foot">
     <span>Seeded &amp; maintained by <a href="https://agora-intelligence.com">AGORÀ Intelligence</a> — every merge reviewed by the team</span>
-    <span><a href="/">RFT 1: the library</a> · Apache-2.0</span>
+    <span><a href="/it/">RFT 1: la libreria</a> · Apache-2.0</span>
   </div>
 
 </div>
