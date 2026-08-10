@@ -9,6 +9,11 @@
 <meta property="og:description" content="The trusted open library of AI skills. Reviewed, readable, maintained.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://skills-commons.org/">
+<link rel="alternate" hreflang="en" href="https://skills-commons.org/">
+<link rel="alternate" hreflang="it" href="https://skills-commons.org/it/">
+<link rel="alternate" hreflang="de" href="https://skills-commons.org/de/">
+<link rel="alternate" hreflang="es" href="https://skills-commons.org/es/">
+<link rel="alternate" hreflang="x-default" href="https://skills-commons.org/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='6' fill='%23f4f1ea'/%3E%3Ctext x='7' y='31' font-family='monospace' font-size='17' font-weight='bold' fill='%231f241c'%3E.md%3C/text%3E%3Crect x='6' y='36' width='36' height='4' fill='%23bb3a2a'/%3E%3C/svg%3E">
 <style>
   :root {
@@ -80,11 +85,19 @@
   a { color:var(--link); }
   .foot a { color:var(--dim); }
 
+
+  .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
+  .langs a { display:inline-block; padding:3px 9px; border:1px solid var(--rule); border-radius:5px;
+    color:var(--dim); text-decoration:none; background:#fbfaf6; }
+  .langs a:hover { border-color:var(--ink); color:var(--ink); }
+  .langs a[aria-current="page"] { background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:700; }
   @media (max-width:600px){ .stamp { position:static; display:inline-block; margin:20px 0 0; transform:rotate(-3deg);} }
 </style>
 </head>
 <body>
 <div class="sheet">
+
+  <nav class="langs" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="page">EN</a><a href="/it/" hreflang="it" lang="it">IT</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/es/" hreflang="es" lang="es">ES</a></nav>
 
   <div class="rfchead">
     <div>Skills Commons

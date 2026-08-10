@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills Commons — RFT 1: Richiesta di Fiducia</title>
+<meta name="description" content="La libreria aperta e affidabile di skill per l'AI. Ogni skill supera una revisione di sicurezza e qualità documentata, riga per riga, prima di essere accettata. La dimensione è facile; la fiducia è il punto.">
+<meta property="og:title" content="Skills Commons — RFT 1: Request For Trust">
+<meta property="og:description" content="La libreria aperta e affidabile di skill per l'AI. Revisionata, leggibile, mantenuta.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skills-commons.org/">
+<link rel="alternate" hreflang="en" href="https://skills-commons.org/">
+<link rel="alternate" hreflang="it" href="https://skills-commons.org/it/">
+<link rel="alternate" hreflang="de" href="https://skills-commons.org/de/">
+<link rel="alternate" hreflang="es" href="https://skills-commons.org/es/">
+<link rel="alternate" hreflang="x-default" href="https://skills-commons.org/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='6' fill='%23f4f1ea'/%3E%3Ctext x='7' y='31' font-family='monospace' font-size='17' font-weight='bold' fill='%231f241c'%3E.md%3C/text%3E%3Crect x='6' y='36' width='36' height='4' fill='%23bb3a2a'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper:#f4f1ea; --paper2:#ece8de; --ink:#1f241c; --dim:#6b6f62;
+    --rule:#d7d2c4; --stamp:#bb3a2a; --ok:#2f6b45; --link:#1f5aa8;
+    --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.75; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(#00000006 1px, transparent 1px); background-size:4px 4px; }
+  .sheet { max-width:820px; margin:0 auto; padding:48px 28px 90px; position:relative; }
+
+  .rfchead { display:flex; justify-content:space-between; gap:16px; color:var(--dim); font-size:13px;
+    border-bottom:3px double var(--rule); padding-bottom:14px; }
+  .rfchead div { white-space:pre-line; }
+  .rfchead .r { text-align:right; }
+
+  h1 { font-size:clamp(24px,4.6vw,38px); font-weight:700; text-align:center; margin:56px 0 6px; letter-spacing:-0.5px; }
+  .subtitle { text-align:center; color:var(--dim); margin-bottom:40px; }
+  .subtitle em { font-style:normal; border-bottom:2px solid var(--stamp); }
+
+  .stamp { position:absolute; top:120px; right:8px; transform:rotate(8deg);
+    border:3px solid var(--stamp); color:var(--stamp); border-radius:6px;
+    padding:6px 14px; font-weight:700; font-size:13px; letter-spacing:.14em;
+    text-transform:uppercase; opacity:.85; background:rgba(244,241,234,.6); }
+  .stamp small { display:block; font-size:9px; letter-spacing:.08em; font-weight:400; text-align:center; }
+
+  h2 { font-size:16px; margin:46px 0 12px; font-weight:700; }
+  h2 .no { color:var(--dim); margin-right:10px; }
+  p { margin:12px 0; }
+  .abstract { border-left:4px solid var(--rule); padding:4px 0 4px 18px; color:#3a4034; }
+
+  .clauses { list-style:none; counter-reset:cl; }
+  .clauses li { counter-increment:cl; margin:14px 0; padding-left:52px; position:relative; }
+  .clauses li::before { content:"2." counter(cl); position:absolute; left:0; color:var(--dim); }
+  .kw { font-weight:700; letter-spacing:.03em; }
+  .kw.ok { color:var(--ok); }
+  .kw.no { color:var(--stamp); }
+
+  .file { margin:22px 0; border:1px solid var(--rule); border-radius:8px; background:#fbfaf6; overflow:hidden;
+    box-shadow:3px 3px 0 var(--paper2); }
+  .file .bar { display:flex; justify-content:space-between; background:var(--paper2); color:var(--dim);
+    font-size:12.5px; padding:7px 14px; border-bottom:1px solid var(--rule); }
+  .file pre { padding:14px 0; overflow-x:auto; font-size:13.5px; line-height:1.7; }
+  .file .ln { display:block; padding:0 16px 0 0; white-space:pre; }
+  .file .ln::before { content:attr(data-n); display:inline-block; width:44px; text-align:right;
+    padding-right:14px; color:#b9b4a5; user-select:none; }
+  .file .cm { color:var(--dim); }
+  .file .key { color:#7a4a12; }
+  .file .rev { display:block; margin:4px 16px 8px 58px; border:1px dashed var(--ok); border-radius:6px;
+    color:var(--ok); font-size:12.5px; padding:5px 10px; background:#f2f6ef; white-space:normal; }
+  .file .rev b { letter-spacing:.05em; }
+
+  .steps { list-style:none; }
+  .steps li { margin:12px 0; padding-left:34px; position:relative; }
+  .steps li::before { content:"$"; position:absolute; left:8px; color:var(--stamp); font-weight:700; }
+
+  .ctarow { margin:54px 0 0; text-align:center; }
+  .btn { display:inline-block; font-family:var(--mono); font-size:14.5px; font-weight:700; text-decoration:none;
+    padding:13px 24px; border-radius:8px; border:2px solid var(--ink); color:var(--ink);
+    box-shadow:3px 3px 0 var(--ink); background:var(--paper); margin:6px 8px; transition:transform .08s; }
+  .btn:hover { transform:translate(1px,1px); box-shadow:2px 2px 0 var(--ink); }
+  .btn.primary { background:var(--ink); color:var(--paper); }
+
+  .foot { margin-top:70px; border-top:3px double var(--rule); padding-top:16px; color:var(--dim);
+    font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  a { color:var(--link); }
+  .foot a { color:var(--dim); }
+
+
+  .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
+  .langs a { display:inline-block; padding:3px 9px; border:1px solid var(--rule); border-radius:5px;
+    color:var(--dim); text-decoration:none; background:#fbfaf6; }
+  .langs a:hover { border-color:var(--ink); color:var(--ink); }
+  .langs a[aria-current="page"] { background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:700; }
+  @media (max-width:600px){ .stamp { position:static; display:inline-block; margin:20px 0 0; transform:rotate(-3deg);} }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="langs" aria-label="Language"><a href="/" hreflang="en" lang="en">EN</a><a href="/it/" hreflang="it" lang="it" aria-current="page">IT</a><a href="/de/" hreflang="de" lang="de">DE</a><a href="/es/" hreflang="es" lang="es">ES</a></nav>
+
+  <div class="rfchead">
+    <div>Skills Commons
+Richiesta di Fiducia: 1
+Categoria: Standard di diligenza</div>
+    <div class="r">Stato: APERTA — 22 skill
+Licenza: Apache-2.0
+skills-commons.org</div>
+  </div>
+
+  <div class="stamp">Revisione di sicurezza<small>riga per riga · da persone</small></div>
+
+  <h1>La libreria aperta<br>e affidabile di skill AI</h1>
+  <p class="subtitle">La dimensione è facile. <em>La fiducia è il punto.</em></p>
+
+  <h2><span class="no">Sintesi</span></h2>
+  <p class="abstract">Una skill è un metodo in testo semplice (un singolo file <code>.md</code>) che consegni al tuo assistente AI perché svolga un compito professionale con un approccio collaudato. Una skill è anche un insieme di istruzioni che il tuo agente eseguirà con i tuoi permessi — il che rende ogni libreria di skill una catena di fornitura. Questo documento descrive una libreria costruita per quella realtà.</p>
+
+  <h2><span class="no">1.</span>Il problema</h2>
+  <p>La misura esiste, e non è un aneddoto. Analizzando 3.984 skill su due hub pubblici il 5 febbraio 2026, <a href="https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/">Snyk ha rilevato</a> che il <strong>36,82% presentava almeno una falla di sicurezza</strong> e il <strong>13,4% almeno un problema critico</strong> — oltre a 76 payload costruiti per furto di credenziali, backdoor ed esfiltrazione, 8 dei quali ancora scaricabili il giorno della pubblicazione.</p>
+  <p>La causa è strutturale, non accidentale. La prima analisi sistematica di sicurezza del formato, <a href="https://arxiv.org/abs/2604.02837">Towards Secure Agent Skills</a> (Li, Wu, Ling, Cui e Luo, aprile 2026), mappa sette categorie di minaccia lungo il ciclo di vita di una skill e indica <em>l'assenza di una revisione di sicurezza obbligatoria nei marketplace</em> fra le tre debolezze architetturali all'origine delle peggiori.</p>
+  <p>Un file skill è un insieme di istruzioni non firmate che il tuo agente esegue con i tuoi permessi. L'ecosistema è pieno di raccolte grandi; quello che manca è una da cui installare a occhi chiusi. Questa libreria è la risposta a quella frase del paper.</p>
+
+  <h2><span class="no">2.</span>Cosa garantisce ogni skill di questa libreria</h2>
+  <ol class="clauses">
+    <li>Ogni skill <span class="kw ok">DEVE</span> superare una revisione di sicurezza e qualità documentata, riga per riga, prima di essere accettata. Comprese quelle dei maintainer: le rivede un altro maintainer.</li>
+    <li>Ogni skill <span class="kw ok">DEVE</span> essere markdown leggibile in chiaro: quello che leggi è esattamente quello che il tuo agente esegue.</li>
+    <li>Blob codificati, istruzioni nascoste, trucchi a larghezza zero: <span class="kw no">RESPINTI</span> in revisione.</li>
+    <li>Caricamento remoto di istruzioni e vie di esfiltrazione dei dati: <span class="kw no">VIETATI</span>, verificati esplicitamente.</li>
+    <li>Ogni skill <span class="kw ok">DEVE</span> dichiarare come si comporta quando uno strumento manca — "segna N.D. con una motivazione" vale più di un successo indovinato.</li>
+    <li>Le skill portano versione e changelog; i metodi superati vengono segnalati, gli avvisi pubblicati. Indipendenti dal modello per scelta.</li>
+  </ol>
+
+  <h2><span class="no">3.</span>Esempio (estratto dalla libreria iniziale)</h2>
+  <div class="file">
+    <div class="bar"><span>skills/agents/honest-status-report.md</span><span>v1.0.0 · reviewed</span></div>
+    <pre><span class="ln" data-n="1"><span class="cm">---</span></span><span class="ln" data-n="2"><span class="key">name:</span> honest-status-report</span><span class="ln" data-n="3"><span class="key">description:</span> Status reports that declare failures,</span><span class="ln" data-n="4">  blockers and partial results as visibly as successes.</span><span class="ln" data-n="5"><span class="cm">---</span></span><span class="rev"><b>✓ revisione</b> — il frontmatter corrisponde al nome del file; la descrizione dice quando attivarla</span><span class="ln" data-n="22">2. Classify each item, strictly:</span><span class="ln" data-n="23">   - Done &amp; verified — completed AND checked.</span><span class="ln" data-n="24">   - Failed / errored — attempted, went wrong.</span><span class="ln" data-n="25">   - Silently skipped — planned, then untouched.</span><span class="rev"><b>✓ revisione</b> — zero istruzioni nascoste; zero richieste esterne; degradazione dichiarata</span><span class="ln" data-n="41">The order is fixed: problems before achievements.</span></pre>
+  </div>
+  <p>Le skill iniziali vengono da metodi usati ogni giorno in una redazione AI in produzione (oltre 200 articoli con fonti, tre lingue, un settimanale a stampa). Sono state revisionate nello stesso modo in cui lo sarà la tua.</p>
+
+  <h2><span class="no">4.</span>Usare una skill — su qualsiasi assistente</h2>
+  <p>La libreria contiene <strong>22 skill revisionate</strong> in quattro categorie — <code>workplace/</code>, <code>writing/</code>, <code>engineering/</code>, <code>agents/</code>. La <a href="https://github.com/skills-commons/skills-commons/releases/latest">release</a> le distribuisce nella struttura definita dalla <a href="https://agentskills.io/specification">specifica Agent Skills</a>, quindi installare significa copiare una cartella:</p>
+  <ol class="steps">
+    <li><strong>Assistenti che leggono una cartella di skill</strong> — scarica ed estrai la release, poi copia la skill che ti serve:<br><code>cp -r skills-commons-v1.0.0/engineering/commit-message-pro ~/.claude/skills/</code><br>Si attiva quando chiedi quel compito. Copia <code>*/*</code> per installarle tutte e 22.</li>
+    <li><strong>Istruzioni di progetto</strong> (Claude.ai, ChatGPT, Gemini) — incolla il contenuto del file nelle istruzioni di un progetto, GPT personalizzato o Gem. Poi chiedi il compito.</li>
+    <li><strong>Qualsiasi altro assistente</strong> — incolla il file come primo messaggio, poi fai la tua richiesta.</li>
+  </ol>
+  <p>Leggere il file prima di eseguirlo è il punto, perciò i sorgenti restano consultabili un file per skill <a href="https://github.com/skills-commons/skills-commons/tree/main/skills">nel repository</a>. La release è lo stesso contenuto, in forma installabile.</p>
+  <h3>FAQ</h3>
+  <ol class="clauses">
+    <li><strong>Funziona con qualsiasi AI?</strong> Sì, per scelta: le skill sono indipendenti dal modello — nominano capacità ("quando è disponibile l'esecuzione di codice") invece degli strumenti di un singolo fornitore. Un assistente più capace esegue più parti del metodo; ogni skill dichiara come si comporta quando una capacità manca.</li>
+    <li><strong>A cosa serve una skill?</strong> Trasforma un assistente generico in uno specialista di un compito: metodo, input, formato di uscita e regole di qualità, scritti e revisionati. Un prompt improvvisato diventa una procedura ripetibile di cui fidarti due volte.</li>
+    <li><strong>Come funziona?</strong> Il tuo assistente legge il file come istruzioni operative: chiede gli input dichiarati, esegue i passi, consegna l'output dichiarato. Markdown in chiaro — quello che leggi è esattamente quello che esegue.</li>
+    <li><strong>È sicuro?</strong> Ogni accettazione passa da due revisioni umane (qualità e sicurezza); blob codificati e caricamento remoto di istruzioni vengono respinti in revisione. E il formato stesso è la rete di protezione: leggi il file prima di installarlo.</li>
+    <li><strong>Quanto costa?</strong> La libreria è gratuita, Apache-2.0, uso commerciale incluso — mantieni la nota di licenza.</li>
+  </ol>
+
+  <h2><span class="no">5.</span>Come partecipare</h2>
+  <ol class="steps">
+    <li>Sfoglia la libreria, installa il file della skill come descritto nella sezione 4, chiedi il compito.</li>
+    <li>Sei all'inizio? <a href="/write/">RFT 2: Write Your First Skill</a> — anatomia, un esempio revisionato e un editor che genera un file conforme. La guida è in inglese, come le skill.</li>
+    <li>Contribuisci una skill per pull request — il template rispecchia il checklist di sicurezza.</li>
+    <li>Due revisioni umane (qualità e sicurezza) la accettano. Il credito finisce nella skill stessa.</li>
+    <li>Hai trovato qualcosa di pericoloso in una skill accettata? <a href="https://github.com/skills-commons/skills-commons/security">Segnalalo in privato</a> o scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>: rimozione, avviso pubblico, credito.</li>
+  </ol>
+
+  <div class="ctarow">
+    <a class="btn primary" href="https://github.com/skills-commons/skills-commons">Sfoglia la libreria →</a>
+    <a class="btn" href="https://agora-intelligence.com/en/skills/">Catalogo certificato</a>
+  </div>
+
+  <div class="foot">
+    <span>Avviata e mantenuta da <a href="https://agora-intelligence.com">AGORÀ Intelligence</a> — ogni accettazione è revisionata dal team</span>
+    <span><a href="https://github.com/skills-commons/skills-commons">github.com/skills-commons/skills-commons</a> · Apache-2.0</span>
+  </div>
+
+</div>
+</body>
+</html>
