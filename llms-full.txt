@@ -1,0 +1,266 @@
+# Skills Commons — full text
+> The three documents at https://skills-commons.org, concatenated. Generated from the pages themselves.
+
+
+---
+
+# The library
+Source: https://skills-commons.org/
+
+Skills Commons
+Request For Trust: 1
+Category: Standards of care
+Status: OPEN — 22 skills
+License: Apache-2.0
+skills-commons.org
+
+Security reviewedline by line · by humans
+
+# The Trusted Open Library of AI Skills
+
+Size is easy. *Trust is the point.*
+
+## Abstract
+
+A skill is a plain-text method (a single `.md` file) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.
+
+## 1. Problem statement
+
+The scale is measured, not anecdotal. Scanning 3,984 skills across two public hubs on 5 February 2026, [Snyk found](https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/) that **36.82% carried at least one security flaw** and **13.4% at least one critical issue** — plus 76 payloads built for credential theft, backdoors and exfiltration, 8 of which were still downloadable the day the research published.
+The cause is structural rather than accidental. The first systematic security analysis of the format, [Towards Secure Agent Skills](https://arxiv.org/abs/2604.02837) (Li, Wu, Ling, Cui and Luo, April 2026), maps seven threat categories across the skill lifecycle and names *the absence of mandatory marketplace security review* as one of three architectural weaknesses behind the worst of them.
+A skill file is an unsigned set of instructions your agent runs with your permissions. The ecosystem has plenty of large collections; what it lacks is one you can install from with your eyes closed. This library is the answer to the sentence in that paper.
+
+## 2. What every skill in this library guarantees
+
+- Every skill MUST pass a documented, line-by-line security and quality review before merge. Maintainer submissions included: a different maintainer reviews.
+- Every skill MUST be plain, readable markdown: what you read is exactly what your agent executes.
+- Encoded blobs, hidden instructions, zero-width tricks: REJECTED at review.
+- Remote instruction loading and data exfiltration paths: FORBIDDEN, checked explicitly.
+- Every skill MUST declare how it degrades when a tool is unavailable — "mark N.A. with a reason" beats a guessed success.
+- Skills carry versions and changelogs; stale methods get marked, advisories get published. Model-agnostic by design.
+
+## 3. Example (excerpt from the seed library)
+
+skills/agents/honest-status-report.mdv1.0.0 · reviewed
+---name: honest-status-reportdescription: Status reports that declare failures, blockers and partial results as visibly as successes.---**✓ review** — frontmatter matches folder name; description states when to activate2. Classify each item, strictly: - Done & verified — completed AND checked. - Failed / errored — attempted, went wrong. - Silently skipped — planned, then untouched.**✓ review** — zero hidden instructions; zero external fetches; degradation declaredThe order is fixed: problems before achievements.
+
+The seed skills come from methods used daily in a production AI newsroom (200+ sourced articles, three languages, a weekly print magazine). They were reviewed the same way yours will be.
+
+## 4. Using a skill — on any assistant
+
+The library holds **22 reviewed skills** in four categories — `workplace/`, `writing/`, `engineering/`, `agents/`. The [release](https://github.com/skills-commons/skills-commons/releases/latest) ships them in the layout the [Agent Skills specification](https://agentskills.io/specification) defines, so installing is copying a folder:
+
+- **Assistants that read a skills directory** — download and unzip the release, then copy the skill you want: `cp -r skills-commons-v1.0.0/engineering/commit-message-pro ~/.claude/skills/` It activates when you ask for the task. Copy `*/*` to install all 22.
+- **Project instructions** (Claude.ai, ChatGPT, Gemini) — paste the file's contents into a Project, custom GPT or Gem. Ask for the task.
+- **Any other assistant** — paste the file as your first message, then make your request.
+
+Reading the file before you run it is the point, so the sources stay browsable one file per skill in [the repository](https://github.com/skills-commons/skills-commons/tree/main/skills). The release is the same content, shaped for installing.
+
+### FAQ
+
+- **Does it work with any AI?** Yes, by design: skills are model-agnostic — they name capabilities ("when code execution is available") rather than one vendor's tools. A stronger assistant executes more of the method; every skill declares how it degrades when a capability is missing.
+- **What is a skill for?** It turns a general assistant into a specialist for one task: method, inputs, output format and quality rules, written down and reviewed. An improvised prompt becomes a repeatable procedure you can trust twice.
+- **How does it work?** Your assistant reads the file as its operating instructions: it asks for the stated inputs, runs the steps, delivers the stated output. Plain markdown — what you read is exactly what it executes.
+- **Is it safe?** Every merge passes two human reviews (quality + security); encoded blobs and remote instruction loading are rejected at review. And the format itself is the safety net: read the file before you install it.
+- **What does it cost?** The library is free, Apache-2.0, commercial use included — keep the license notice.
+
+## 5. How to participate
+
+- Browse the library, install the skill file as described in section 4, ask for the task.
+- New to the craft? [RFT 2: Write Your First Skill](/write/) — anatomy, a reviewed example, and an editor that generates a conformant file.
+- Contribute one skill per pull request — the template mirrors the security checklist.
+- Two human reviews (quality + security) merge it. Credit lands in the skill itself.
+- Found something dangerous in a merged skill? [Report it privately](https://github.com/skills-commons/skills-commons/security) or write to [hello@agora-intelligence.com](mailto:hello@agora-intelligence.com): removal, advisory, credit.
+
+[Browse the library →](https://github.com/skills-commons/skills-commons)
+[Certified catalog](https://agora-intelligence.com/en/skills/)
+
+Seeded & maintained by [AGORÀ Intelligence](https://agora-intelligence.com) — every merge reviewed by the team
+[github.com/skills-commons/skills-commons](https://github.com/skills-commons/skills-commons) · Apache-2.0 · [Privacy](/privacy/) · [Cookies](#cookies)
+
+This site measures anonymous visits with Google Analytics, and only if you agree. Declining changes nothing about what you can read or download. [Privacy notice](/privacy/).
+
+Accept
+Decline
+
+
+---
+
+# Write Your First Skill
+Source: https://skills-commons.org/write/
+
+Skills Commons
+Request For Trust: 2
+Category: Craft
+Status: LIVING DOCUMENT
+License: Apache-2.0
+[← RFT 1: the library](/)
+
+# Write Your First Skill
+
+Learn the anatomy, study a reviewed example, *generate the file below*.
+
+## Abstract
+
+A skill is a plain-text method your reader hands to an AI assistant. Writing one is closer to writing a procedure for a sharp new colleague than to prompt tinkering: you define the inputs, the steps, the output contract, and the rules that hold when things get ambiguous. This document teaches the anatomy, shows a reviewed example, lists what reviews reject, and ends with an editor that generates a spec-conformant file.
+
+## 1. Anatomy of a skill
+
+- **Frontmatter.** `name` in kebab-case, matching the filename. `description` carries two jobs in one paragraph: what the skill does, and — crucially — *when to activate it* ("Use when asked to…"). Assistants pick skills by this field; a vague description means a skill that sleeps forever. Version, license, authors close the block.
+- **Identity paragraph.** Two or three sentences after the title, second person: who the assistant becomes and what it refuses to compromise on. This is voice and standard in one breath: "You write commit messages worthy of the permanent record."
+- **Inputs.** The numbered list of what the skill needs, with the required ones marked and a rule for gaps (ask and stop, or proceed with labeled assumptions). Ask once — a skill that interrogates in rounds exhausts its user.
+- **Method.** Numbered steps, each one decidable: an instruction the assistant can follow or verify, with the judgment rules spelled out ("when X exceeds Y, do Z"). Steps that say "be thorough" delegate the hard part back to chance.
+- **Output format.** The contract: sections, order, lengths where they matter. Two runs of the same skill should produce the same shape — the format section is what makes a skill repeatable instead of improvised.
+- **Rules.** The invariants that survive every edge case: what gets refused, what gets labeled, what degrades and how. State how the skill behaves when a capability is missing — "mark N.A. with a reason" beats a guessed success.
+
+## 2. A reviewed example, annotated
+
+skills/agents/honest-status-report.mdv1.0.0 · merged
+---
+name: honest-status-report
+description: Status reports that declare failures,
+blockers and partial results as visibly as successes.
+Use when asked for a status update, a progress report,
+or an end-of-task summary.
+---**✓ review** — name matches filename; description states the trigger ("Use when…"): the assistant knows when to wake this skill
+2. Classify each item, strictly:
+- Done & verified — completed AND checked.
+- Failed / errored — attempted, went wrong.
+- Silently skipped — planned, then untouched.**✓ review** — each category is decidable: two readers classify the same item the same way
+The order is fixed: problems before achievements.**✓ review** — an output contract, stated as a rule: the shape survives every run
+
+## 3. What reviews reject
+
+Every submission gets two human reviews (quality + security). These are the recurring rejections — write with this list open:
+
+- REJECTED — **Undecidable steps.** "Analyze carefully", "be helpful", "use best judgment" with zero criteria. A step earns its place when the assistant can tell whether it followed it.
+- REJECTED — **Missing degradation.** The method assumes web access, code execution or file tools, and says zero about what happens on an assistant that lacks them. Declare the fallback.
+- REJECTED — **Hidden or encoded content.** Base64 blobs, zero-width characters, instructions to fetch remote content at runtime. Plain readable markdown is the deal: what the reader sees is what the agent executes.
+- REJECTED — **Exfiltration paths.** Steps that send user data anywhere. A skill transforms what it is given, in place.
+- REJECTED — **Vendor lock phrasing.** "Use the WebFetch tool", "call Code Interpreter". Name capabilities ("when live web access is available"), and the skill works on every assistant.
+- REJECTED — **Marketing in the method.** Superlatives about the skill itself, links to products, self-promotion. The method speaks through its steps.
+- REJECTED — **A missing output contract.** Ten sharp method steps, and zero words on what the deliverable looks like. The format section is half the value.
+
+## 4. The editor — generate your file
+
+Fill the sections; the editor assembles a spec-conformant `.md`. Everything runs in this page — your draft touches zero servers.
+
+Skill name — a few words; the filename becomes kebab-case automatically
+
+What it does — one sentence, concrete
+
+Use when… — the activation trigger the assistant will match
+
+Category
+
+workplace
+writing
+engineering
+agents
+
+Identity paragraph — second person: who the assistant becomes, what it refuses to compromise on
+
+Inputs — one per box; mark the required ones
+
++ add input
+
+Method steps — one per box; each step decidable
+
++ add step
+
+Output format — the contract: sections, order, lengths where they matter
+
+Rules — one per box: invariants, refusals, degradation
+
++ add rule
+
+Author — your name or handle, credited in the file
+
+Generate the file
+Download .md
+
+skills/…generated · draft
+
+## 5. Submit it
+
+- Run your skill on a real case first — the sample output tells you where the method is thin.
+- Fork [the library](https://github.com/skills-commons/skills-commons), add your file under `skills/<category>/<name>.md`, open one pull request per skill.
+- Sign every commit with `git commit -s`. That one flag adds the `Signed-off-by` line certifying you may release the work under Apache-2.0 — the [Developer Certificate of Origin](https://github.com/skills-commons/skills-commons/blob/main/DCO.txt). A required check verifies it, so a PR merges once it is there. Already committed without it? `git commit --amend -s --no-edit` for the last one, `git rebase --signoff main` for several, then `git push --force-with-lease`.
+- Two human reviews follow (quality + security). Credit lands in the file itself.
+
+Seeded & maintained by [AGORÀ Intelligence](https://agora-intelligence.com) — every merge reviewed by the team
+[RFT 1: the library](/) · Apache-2.0 · [Privacy](/privacy/) · [Cookies](#cookies)
+
+This site measures anonymous visits with Google Analytics, and only if you agree. Declining changes nothing about what you can read or download. [Privacy notice](/privacy/).
+
+Accept
+Decline
+
+
+---
+
+# Privacy notice
+Source: https://skills-commons.org/privacy/
+
+Skills Commons
+Privacy notice
+Category: Standards of care
+Controller: AGORÀ Intelligence S.r.l.
+Last updated: 10 August 2026
+[← RFT 1: the library](/)
+
+# Privacy notice
+
+What this site collects, why, and how to say no.
+
+## Abstract
+
+Reading the library, downloading a skill and using the editor require no account and collect nothing about you. Analytics run only after you agree, and declining changes nothing about what you can read or download. The one place that stores personal data is the builder, and only once you choose to sign in with GitHub.
+
+## 1. Who is responsible
+
+The controller is **AGORÀ Intelligence S.r.l.**, Italy, which maintains Skills Commons. For anything in this notice, including the requests in section 6, write to [hello@agora-intelligence.com](mailto:hello@agora-intelligence.com).
+
+## 2. What runs on this site
+
+| Purpose | What is processed | Legal basis | Kept for |
+
+| Serving the pages | Your IP address and browser, in the hosting provider's server logs | Legitimate interest in delivering and securing the site | By the provider, per its own policy |
+
+| Audience measurement | Anonymous usage statistics via Google Analytics 4, with IP anonymisation on | **Your consent**, asked before anything loads | 14 months |
+
+| Remembering your cookie choice | One entry in your browser's local storage (`sc-consent`) | Strictly necessary for a choice you made | Until you clear it |
+
+Until you accept, Google Analytics loads in denied mode: it sets no analytics cookies and records no identifiers. Decline and it stays that way. There is no advertising, no profiling, no cross-site tracking and no sale of data, on any page.
+
+## 3. The builder, if you sign in
+
+[build.skills-commons.org](https://build.skills-commons.org) is optional. Visiting it collects nothing; signing in with GitHub creates an account, and only then does it store your GitHub numeric id, username and avatar URL, plus an access token held encrypted so it can open a pull request in your name. Sessions expire after 30 days. The legal basis is the contract you enter by signing in; the data lives on a server in Frankfurt, Germany. Ask at the address above and the account and its data are deleted.
+
+## 4. Who else sees anything
+
+- **GitHub, Inc.** — hosts these pages and the library. Its servers log requests.
+- **Google Ireland Ltd.** — audience measurement, only with your consent.
+- **DigitalOcean, LLC** — the server behind the builder, located in Germany.
+
+Transfers outside the European Economic Area rest on the European Commission's standard contractual clauses. Nobody else receives your data.
+
+## 5. Changing your mind
+
+Reopen the choice at any time from the [Cookies](#cookies) link in the footer of any page, and pick the other option. Clearing your browser storage has the same effect: the question is asked again on your next visit.
+
+## 6. Your rights
+
+Under the GDPR you may ask for access to your data, its correction or erasure, a restriction of processing, a copy in portable form, and you may object to processing based on legitimate interest. Consent, once given, can be withdrawn at any moment without affecting what came before. Write to [hello@agora-intelligence.com](mailto:hello@agora-intelligence.com); you also have the right to complain to the Italian supervisory authority, the [Garante per la protezione dei dati personali](https://www.garanteprivacy.it).
+
+## 7. Changes
+
+The date in the header shows when this notice last changed. Its history is public in the [site repository](https://github.com/skills-commons/skills-commons.github.io), so every revision can be compared with the one before it.
+
+Maintained by [AGORÀ Intelligence](https://agora-intelligence.com)
+[RFT 1: the library](/) · [Cookies](#cookies)
+
+This site measures anonymous visits with Google Analytics, and only if you agree. Declining changes nothing about what you can read or download. [Privacy notice](/privacy/).
+
+Accept
+Decline

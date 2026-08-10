@@ -660,6 +660,112 @@ def strip_generated(html: str) -> str:
     return html.replace(SELECTOR_CSS.rstrip() + "\n", "")
 
 
+def to_markdown(html: str) -> str:
+    """The readable part of a page, as markdown, for llms-full.txt."""
+    body = html.split('<div class="sheet">', 1)[1].rsplit("</div>", 1)[0]
+    body = re.sub(r'<nav class="langs".*?</nav>', "", body, flags=re.S)
+    body = re.sub(r"<style.*?</style>|<script.*?</script>", "", body, flags=re.S)
+    body = re.sub(r"<br\s*/?>", " ", body)
+
+    body = re.sub(r'<h1[^>]*>(.*?)</h1>', r"\n# \1\n", body, flags=re.S)
+    body = re.sub(r'<h2[^>]*>(.*?)</h2>', r"\n## \1\n", body, flags=re.S)
+    body = re.sub(r'<h3[^>]*>(.*?)</h3>', r"\n### \1\n", body, flags=re.S)
+    body = re.sub(r'<span class="no">(.*?)</span>', r"\1 ", body)
+    body = re.sub(r"<li[^>]*>(.*?)</li>", r"- \1", body, flags=re.S)
+    body = re.sub(r"<t[hd][^>]*>(.*?)</t[hd]>", r"| \1 ", body, flags=re.S)
+    body = re.sub(r"</tr>", "|\n", body)
+    body = re.sub(r'<a [^>]*href="([^"]+)"[^>]*>(.*?)</a>', r"[\2](\1)", body, flags=re.S)
+    body = re.sub(r"<code>(.*?)</code>", r"`\1`", body, flags=re.S)
+    body = re.sub(r"<(strong|b)>(.*?)</\1>", r"**\2**", body, flags=re.S)
+    body = re.sub(r"<(em|i)>(.*?)</\1>", r"*\2*", body, flags=re.S)
+    body = re.sub(r"<br\s*/?>", "\n", body)
+    body = re.sub(r"<[^>]+>", "", body)
+
+    for a, b in [("&amp;", "&"), ("&lt;", "<"), ("&gt;", ">"), ("&quot;", '"'), ("&#39;", "'"), ("&nbsp;", " ")]:
+        body = body.replace(a, b)
+    body = re.sub(r"[ \t]+", " ", body)
+    body = re.sub(r" *\n *", "\n", body)
+    return re.sub(r"\n{3,}", "\n\n", body).strip()
+
+
+def write_discovery(root: str) -> None:
+    """robots.txt, sitemap.xml, llms.txt and llms-full.txt, from the pages."""
+    langs = ["en"] + list(LANGS)
+
+    def url(lang: str, page: str) -> str:
+        return f"{BASE}/{page}" if lang == "en" else f"{BASE}/{lang}/{page}"
+
+    # --- sitemap, with every language declared as an alternate of the others
+    rows = ['<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+            '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for page in PAGES:
+        for lang in langs:
+            rows.append("  <url>")
+            rows.append(f"    <loc>{url(lang, page)}</loc>")
+            for other in langs:
+                rows.append(f'    <xhtml:link rel="alternate" hreflang="{other}" href="{url(other, page)}"/>')
+            rows.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{url("en", page)}"/>')
+            rows.append(f"    <priority>{'1.0' if page == '' else '0.8' if page == 'write/' else '0.3'}</priority>")
+            rows.append("  </url>")
+    rows.append("</urlset>")
+    open(os.path.join(root, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write("\n".join(rows) + "\n")
+
+    # --- robots
+    open(os.path.join(root, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
+        "# Everything here is meant to be read, by people and by machines alike.\n"
+        "User-agent: *\n"
+        "Allow: /\n\n"
+        f"Sitemap: {BASE}/sitemap.xml\n"
+    )
+
+    # --- llms.txt: the map an assistant reads first
+    open(os.path.join(root, "llms.txt"), "w", encoding="utf-8", newline="\n").write(f"""# Skills Commons
+
+> The trusted open library of AI skills. A skill is a plain-text method — a
+> single markdown file — you hand to an AI assistant so it performs a
+> professional task with a reviewed approach. Every skill here passed a
+> documented, line-by-line security and quality review before merging.
+
+The library holds 22 reviewed skills in four categories: workplace, writing,
+engineering and agents. It is free under Apache-2.0, model-agnostic, and
+readable in full before you run any of it.
+
+## Documents
+
+- [The library]({BASE}/): what the library guarantees, why it exists, how to install a skill on any assistant.
+- [Write Your First Skill]({BASE}/write/): the anatomy of a skill, an annotated reviewed example, what reviews reject, and a browser editor that generates a conformant file.
+- [Privacy notice]({BASE}/privacy/): what is collected and on what basis.
+
+## The skills themselves
+
+- [Repository](https://github.com/skills-commons/skills-commons): one markdown file per skill, browsable.
+- [Latest release](https://github.com/skills-commons/skills-commons/releases/latest): the same skills as one directory each, in the layout the Agent Skills specification defines.
+- [Format specification](https://github.com/skills-commons/skills-commons/blob/main/SPEC.md): frontmatter, required sections, the rules a skill must satisfy.
+- [Security policy](https://github.com/skills-commons/skills-commons/blob/main/SECURITY.md): the checklist every submission is reviewed against.
+
+## Optional
+
+- [Full text of these documents]({BASE}/llms-full.txt): the three pages above, in one file.
+- Translations: Italian, German and Spanish exist at /it/, /de/ and /es/. The skills themselves are English by specification.
+- [Builder](https://build.skills-commons.org): optional account for writing and submitting a skill.
+""")
+
+    # --- llms-full.txt: the same documents, whole
+    parts = [
+        "# Skills Commons — full text",
+        f"> The three documents at {BASE}, concatenated. Generated from the pages themselves.",
+    ]
+    titles = {"": "The library", "write/": "Write Your First Skill", "privacy/": "Privacy notice"}
+    for page in PAGES:
+        html = open(os.path.join(root, page, "index.html"), encoding="utf-8").read()
+        parts.append(f"\n\n---\n\n# {titles.get(page, page)}\nSource: {BASE}/{page}\n")
+        parts.append(to_markdown(html))
+    open(os.path.join(root, "llms-full.txt"), "w", encoding="utf-8", newline="\n").write("\n".join(parts) + "\n")
+
+    print(f"  wrote robots.txt, sitemap.xml ({len(PAGES) * len(langs)} urls), llms.txt, llms-full.txt")
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")
     check = "--check" in sys.argv
@@ -694,6 +800,8 @@ def main() -> int:
             open(os.path.join(d, "index.html"), "w", encoding="utf-8", newline="\n").write(out)
             print(f"  wrote {lang}/{page}index.html")
 
+    if not check and not failed:
+        write_discovery(root)
     return 1 if failed else 0
 
 

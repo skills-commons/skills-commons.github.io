@@ -1,0 +1,29 @@
+# Skills Commons
+
+> The trusted open library of AI skills. A skill is a plain-text method — a
+> single markdown file — you hand to an AI assistant so it performs a
+> professional task with a reviewed approach. Every skill here passed a
+> documented, line-by-line security and quality review before merging.
+
+The library holds 22 reviewed skills in four categories: workplace, writing,
+engineering and agents. It is free under Apache-2.0, model-agnostic, and
+readable in full before you run any of it.
+
+## Documents
+
+- [The library](https://skills-commons.org/): what the library guarantees, why it exists, how to install a skill on any assistant.
+- [Write Your First Skill](https://skills-commons.org/write/): the anatomy of a skill, an annotated reviewed example, what reviews reject, and a browser editor that generates a conformant file.
+- [Privacy notice](https://skills-commons.org/privacy/): what is collected and on what basis.
+
+## The skills themselves
+
+- [Repository](https://github.com/skills-commons/skills-commons): one markdown file per skill, browsable.
+- [Latest release](https://github.com/skills-commons/skills-commons/releases/latest): the same skills as one directory each, in the layout the Agent Skills specification defines.
+- [Format specification](https://github.com/skills-commons/skills-commons/blob/main/SPEC.md): frontmatter, required sections, the rules a skill must satisfy.
+- [Security policy](https://github.com/skills-commons/skills-commons/blob/main/SECURITY.md): the checklist every submission is reviewed against.
+
+## Optional
+
+- [Full text of these documents](https://skills-commons.org/llms-full.txt): the three pages above, in one file.
+- Translations: Italian, German and Spanish exist at /it/, /de/ and /es/. The skills themselves are English by specification.
+- [Builder](https://build.skills-commons.org): optional account for writing and submitting a skill.
