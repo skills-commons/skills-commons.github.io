@@ -422,15 +422,181 @@ W: list[tuple[str, dict[str, str]]] = [
         "de": "Es folgen zwei menschliche Prüfungen (Qualität und Sicherheit). Die Nennung steht in der Datei selbst.",
         "es": "Siguen dos revisiones humanas (calidad y seguridad). El crédito queda en el propio archivo.",
     }),
-    ('<span><a href="/">RFT 1: the library</a> · Apache-2.0</span>', {
-        "it": '<span><a href="/it/">RFT 1: la libreria</a> · Apache-2.0</span>',
-        "de": '<span><a href="/de/">RFT 1: die Bibliothek</a> · Apache-2.0</span>',
-        "es": '<span><a href="/es/">RFT 1: la biblioteca</a> · Apache-2.0</span>',
+    ('<span><a href="/">RFT 1: the library</a> · Apache-2.0', {
+        "it": '<span><a href="/it/">RFT 1: la libreria</a> · Apache-2.0',
+        "de": '<span><a href="/de/">RFT 1: die Bibliothek</a> · Apache-2.0',
+        "es": '<span><a href="/es/">RFT 1: la biblioteca</a> · Apache-2.0',
+    }),
+]
+
+# The privacy notice. Written from what the site actually does, so the
+# translations describe the same processing, not a softer version of it.
+P: list[tuple[str, dict[str, str]]] = [
+    ("Skills Commons — Privacy notice", {
+        "it": "Skills Commons — Informativa privacy",
+        "de": "Skills Commons — Datenschutzhinweis",
+        "es": "Skills Commons — Aviso de privacidad",
+    }),
+    ("What Skills Commons collects, why, and how to say no. Analytics run only with consent; the library needs no account at all.", {
+        "it": "Cosa raccoglie Skills Commons, perché, e come dire di no. Le statistiche partono solo con il consenso; la libreria non richiede alcun account.",
+        "de": "Was Skills Commons erhebt, warum, und wie Sie ablehnen. Die Messung läuft nur mit Einwilligung; die Bibliothek braucht überhaupt kein Konto.",
+        "es": "Qué recoge Skills Commons, por qué y cómo decir que no. La analítica se activa solo con consentimiento; la biblioteca no requiere cuenta alguna.",
+    }),
+    ("What Skills Commons collects, why, and how to say no.", {
+        "it": "Cosa raccoglie Skills Commons, perché, e come dire di no.",
+        "de": "Was Skills Commons erhebt, warum, und wie Sie ablehnen.",
+        "es": "Qué recoge Skills Commons, por qué y cómo decir que no.",
+    }),
+    ("Privacy notice\nCategory: Standards of care", {
+        "it": "Informativa privacy\nCategoria: Standard di diligenza",
+        "de": "Datenschutzhinweis\nKategorie: Sorgfaltsstandards",
+        "es": "Aviso de privacidad\nCategoría: Estándares de diligencia",
+    }),
+    ("Controller: AGORÀ Intelligence S.r.l.\nLast updated: 10 August 2026", {
+        "it": "Titolare: AGORÀ Intelligence S.r.l.\nUltimo aggiornamento: 10 agosto 2026",
+        "de": "Verantwortlicher: AGORÀ Intelligence S.r.l.\nStand: 10. August 2026",
+        "es": "Responsable: AGORÀ Intelligence S.r.l.\nÚltima actualización: 10 de agosto de 2026",
+    }),
+    ("<h1>Privacy notice</h1>", {
+        "it": "<h1>Informativa privacy</h1>",
+        "de": "<h1>Datenschutzhinweis</h1>",
+        "es": "<h1>Aviso de privacidad</h1>",
+    }),
+    ("What this site collects, why, and how to say no.", {
+        "it": "Cosa raccoglie questo sito, perché, e come dire di no.",
+        "de": "Was diese Website erhebt, warum, und wie Sie ablehnen.",
+        "es": "Qué recoge este sitio, por qué y cómo decir que no.",
+    }),
+    ("Reading the library, downloading a skill and using the editor require no account and collect nothing about you. Analytics run only after you agree, and declining changes nothing about what you can read or download. The one place that stores personal data is the builder, and only once you choose to sign in with GitHub.", {
+        "it": "Leggere la libreria, scaricare una skill e usare l'editor non richiedono alcun account e non raccolgono nulla su di te. Le statistiche partono solo dopo il tuo consenso, e rifiutare lascia intatto tutto ciò che puoi leggere e scaricare. L'unico punto in cui vengono conservati dati personali è il builder, e soltanto se scegli di accedere con GitHub.",
+        "de": "Die Bibliothek zu lesen, einen Skill herunterzuladen und den Editor zu nutzen verlangt kein Konto und erhebt nichts über Sie. Die Messung startet erst nach Ihrer Einwilligung, und eine Ablehnung ändert nichts daran, was Sie lesen oder herunterladen können. Der einzige Ort, an dem personenbezogene Daten gespeichert werden, ist der Builder — und nur, wenn Sie sich mit GitHub anmelden.",
+        "es": "Leer la biblioteca, descargar una skill y usar el editor no requieren cuenta y no recogen nada sobre ti. La analítica se activa solo tras tu consentimiento, y rechazar no cambia nada de lo que puedes leer o descargar. El único lugar donde se guardan datos personales es el builder, y solo si eliges entrar con GitHub.",
+    }),
+    ("Who is responsible", {
+        "it": "Chi è il titolare", "de": "Wer verantwortlich ist", "es": "Quién es el responsable",
+    }),
+    ('The controller is <strong>AGORÀ Intelligence S.r.l.</strong>, Italy, which maintains Skills Commons. For anything in this notice, including the requests in section 6, write to <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.', {
+        "it": 'Il titolare del trattamento è <strong>AGORÀ Intelligence S.r.l.</strong>, Italia, che mantiene Skills Commons. Per qualsiasi punto di questa informativa, comprese le richieste della sezione 6, scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.',
+        "de": 'Verantwortlicher ist <strong>AGORÀ Intelligence S.r.l.</strong>, Italien, die Skills Commons betreibt. Zu allem in diesem Hinweis, einschließlich der Anliegen aus Abschnitt 6, schreiben Sie an <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.',
+        "es": 'El responsable del tratamiento es <strong>AGORÀ Intelligence S.r.l.</strong>, Italia, que mantiene Skills Commons. Para cualquier punto de este aviso, incluidas las solicitudes de la sección 6, escribe a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.',
+    }),
+    ("What runs on this site", {
+        "it": "Cosa gira su questo sito", "de": "Was auf dieser Website läuft", "es": "Qué se ejecuta en este sitio",
+    }),
+    ("<tr><th>Purpose</th><th>What is processed</th><th>Legal basis</th><th>Kept for</th></tr>", {
+        "it": "<tr><th>Finalità</th><th>Cosa viene trattato</th><th>Base giuridica</th><th>Conservazione</th></tr>",
+        "de": "<tr><th>Zweck</th><th>Was verarbeitet wird</th><th>Rechtsgrundlage</th><th>Speicherdauer</th></tr>",
+        "es": "<tr><th>Finalidad</th><th>Qué se trata</th><th>Base jurídica</th><th>Conservación</th></tr>",
+    }),
+    ("<tr><td>Serving the pages</td><td>Your IP address and browser, in the hosting provider's server logs</td><td>Legitimate interest in delivering and securing the site</td><td>By the provider, per its own policy</td></tr>", {
+        "it": "<tr><td>Erogazione delle pagine</td><td>Indirizzo IP e browser, nei log del fornitore di hosting</td><td>Legittimo interesse a erogare e proteggere il sito</td><td>Dal fornitore, secondo la sua policy</td></tr>",
+        "de": "<tr><td>Auslieferung der Seiten</td><td>IP-Adresse und Browser, in den Serverprotokollen des Hosters</td><td>Berechtigtes Interesse an Bereitstellung und Absicherung</td><td>Durch den Hoster, nach dessen Richtlinie</td></tr>",
+        "es": "<tr><td>Entrega de las páginas</td><td>Tu IP y navegador, en los registros del proveedor de alojamiento</td><td>Interés legítimo en servir y proteger el sitio</td><td>Por el proveedor, según su política</td></tr>",
+    }),
+    ("<tr><td>Audience measurement</td><td>Anonymous usage statistics via Google Analytics 4, with IP anonymisation on</td><td><strong>Your consent</strong>, asked before anything loads</td><td>14 months</td></tr>", {
+        "it": "<tr><td>Misurazione del pubblico</td><td>Statistiche d'uso anonime tramite Google Analytics 4, con anonimizzazione IP attiva</td><td><strong>Il tuo consenso</strong>, chiesto prima di qualsiasi caricamento</td><td>14 mesi</td></tr>",
+        "de": "<tr><td>Reichweitenmessung</td><td>Anonyme Nutzungsstatistiken über Google Analytics 4, mit IP-Anonymisierung</td><td><strong>Ihre Einwilligung</strong>, vor jedem Laden erfragt</td><td>14 Monate</td></tr>",
+        "es": "<tr><td>Medición de audiencia</td><td>Estadísticas de uso anónimas mediante Google Analytics 4, con anonimización de IP</td><td><strong>Tu consentimiento</strong>, solicitado antes de cargar nada</td><td>14 meses</td></tr>",
+    }),
+    ("<tr><td>Remembering your cookie choice</td><td>One entry in your browser's local storage (<code>sc-consent</code>)</td><td>Strictly necessary for a choice you made</td><td>Until you clear it</td></tr>", {
+        "it": "<tr><td>Ricordare la tua scelta sui cookie</td><td>Una voce nella memoria locale del browser (<code>sc-consent</code>)</td><td>Strettamente necessaria per una scelta che hai fatto</td><td>Finché non la cancelli</td></tr>",
+        "de": "<tr><td>Ihre Cookie-Entscheidung merken</td><td>Ein Eintrag im lokalen Speicher des Browsers (<code>sc-consent</code>)</td><td>Unbedingt erforderlich für eine von Ihnen getroffene Wahl</td><td>Bis Sie ihn löschen</td></tr>",
+        "es": "<tr><td>Recordar tu elección sobre cookies</td><td>Una entrada en el almacenamiento local del navegador (<code>sc-consent</code>)</td><td>Estrictamente necesaria para una elección que hiciste</td><td>Hasta que la borres</td></tr>",
+    }),
+    ("Until you accept, Google Analytics loads in denied mode: it sets no analytics cookies and records no identifiers. Decline and it stays that way. There is no advertising, no profiling, no cross-site tracking and no sale of data, on any page.", {
+        "it": "Finché non accetti, Google Analytics resta in modalità negata: non scrive cookie di misurazione e non registra identificatori. Se rifiuti, resta così. Su nessuna pagina esistono pubblicità, profilazione, tracciamento fra siti o vendita di dati.",
+        "de": "Bis Sie zustimmen, läuft Google Analytics im abgelehnten Modus: keine Analyse-Cookies, keine Kennungen. Lehnen Sie ab, bleibt es dabei. Auf keiner Seite gibt es Werbung, Profilbildung, seitenübergreifendes Tracking oder Datenverkauf.",
+        "es": "Hasta que aceptes, Google Analytics permanece en modo denegado: no escribe cookies de medición ni registra identificadores. Si rechazas, sigue así. En ninguna página hay publicidad, perfilado, seguimiento entre sitios ni venta de datos.",
+    }),
+    ("The builder, if you sign in", {
+        "it": "Il builder, se accedi", "de": "Der Builder, wenn Sie sich anmelden", "es": "El builder, si inicias sesión",
+    }),
+    ('<a href="https://build.skills-commons.org">build.skills-commons.org</a> is optional. Visiting it collects nothing; signing in with GitHub creates an account, and only then does it store your GitHub numeric id, username and avatar URL, plus an access token held encrypted so it can open a pull request in your name. Sessions expire after 30 days. The legal basis is the contract you enter by signing in; the data lives on a server in Frankfurt, Germany. Ask at the address above and the account and its data are deleted.', {
+        "it": '<a href="https://build.skills-commons.org">build.skills-commons.org</a> è facoltativo. Visitarlo non raccoglie nulla; accedere con GitHub crea un account, e solo allora vengono conservati il tuo id numerico GitHub, il nome utente, l\'URL dell\'avatar e un token di accesso, custodito cifrato per poter aprire una pull request a tuo nome. Le sessioni scadono dopo 30 giorni. La base giuridica è il contratto che concludi accedendo; i dati risiedono su un server a Francoforte, in Germania. Scrivi all\'indirizzo qui sopra e l\'account e i suoi dati vengono cancellati.',
+        "de": '<a href="https://build.skills-commons.org">build.skills-commons.org</a> ist freiwillig. Der bloße Besuch erhebt nichts; die Anmeldung mit GitHub legt ein Konto an, und erst dann werden Ihre numerische GitHub-ID, der Benutzername, die Avatar-URL und ein verschlüsselt gespeichertes Zugriffstoken abgelegt, damit in Ihrem Namen ein Pull Request geöffnet werden kann. Sitzungen laufen nach 30 Tagen ab. Rechtsgrundlage ist der mit der Anmeldung geschlossene Vertrag; die Daten liegen auf einem Server in Frankfurt am Main. Auf Anfrage an die obige Adresse werden Konto und Daten gelöscht.',
+        "es": '<a href="https://build.skills-commons.org">build.skills-commons.org</a> es opcional. Visitarlo no recoge nada; entrar con GitHub crea una cuenta, y solo entonces se guardan tu id numérico de GitHub, el nombre de usuario, la URL del avatar y un token de acceso, cifrado para poder abrir una pull request en tu nombre. Las sesiones caducan a los 30 días. La base jurídica es el contrato que celebras al entrar; los datos residen en un servidor de Fráncfort, Alemania. Escribe a la dirección anterior y la cuenta y sus datos se eliminan.',
+    }),
+    ("Who else sees anything", {
+        "it": "Chi altro vede qualcosa", "de": "Wer sonst etwas sieht", "es": "Quién más ve algo",
+    }),
+    ("<strong>GitHub, Inc.</strong> — hosts these pages and the library. Its servers log requests.", {
+        "it": "<strong>GitHub, Inc.</strong> — ospita queste pagine e la libreria. I suoi server registrano le richieste.",
+        "de": "<strong>GitHub, Inc.</strong> — hostet diese Seiten und die Bibliothek. Die Server protokollieren Anfragen.",
+        "es": "<strong>GitHub, Inc.</strong> — aloja estas páginas y la biblioteca. Sus servidores registran las peticiones.",
+    }),
+    ("<strong>Google Ireland Ltd.</strong> — audience measurement, only with your consent.", {
+        "it": "<strong>Google Ireland Ltd.</strong> — misurazione del pubblico, solo con il tuo consenso.",
+        "de": "<strong>Google Ireland Ltd.</strong> — Reichweitenmessung, nur mit Ihrer Einwilligung.",
+        "es": "<strong>Google Ireland Ltd.</strong> — medición de audiencia, solo con tu consentimiento.",
+    }),
+    ("<strong>DigitalOcean, LLC</strong> — the server behind the builder, located in Germany.", {
+        "it": "<strong>DigitalOcean, LLC</strong> — il server dietro il builder, situato in Germania.",
+        "de": "<strong>DigitalOcean, LLC</strong> — der Server hinter dem Builder, Standort Deutschland.",
+        "es": "<strong>DigitalOcean, LLC</strong> — el servidor tras el builder, ubicado en Alemania.",
+    }),
+    ("Transfers outside the European Economic Area rest on the European Commission's standard contractual clauses. Nobody else receives your data.", {
+        "it": "I trasferimenti fuori dallo Spazio economico europeo si fondano sulle clausole contrattuali tipo della Commissione europea. Nessun altro riceve i tuoi dati.",
+        "de": "Übermittlungen außerhalb des Europäischen Wirtschaftsraums stützen sich auf die Standardvertragsklauseln der Europäischen Kommission. Niemand sonst erhält Ihre Daten.",
+        "es": "Las transferencias fuera del Espacio Económico Europeo se basan en las cláusulas contractuales tipo de la Comisión Europea. Nadie más recibe tus datos.",
+    }),
+    ("Changing your mind", {
+        "it": "Cambiare idea", "de": "Ihre Meinung ändern", "es": "Cambiar de opinión",
+    }),
+    ('Reopen the choice at any time from the <a href="#cookies">Cookies</a> link in the footer of any page, and pick the other option. Clearing your browser storage has the same effect: the question is asked again on your next visit.', {
+        "it": 'Riapri la scelta quando vuoi dal link <a href="#cookies">Cookie</a> in fondo a qualsiasi pagina, e seleziona l\'altra opzione. Svuotare la memoria del browser ha lo stesso effetto: la domanda ricompare alla visita successiva.',
+        "de": 'Öffnen Sie die Auswahl jederzeit über den Link <a href="#cookies">Cookies</a> im Fuß jeder Seite und wählen Sie die andere Option. Den Browserspeicher zu leeren wirkt genauso: Die Frage erscheint beim nächsten Besuch erneut.',
+        "es": 'Reabre la elección cuando quieras desde el enlace <a href="#cookies">Cookies</a> del pie de cualquier página y elige la otra opción. Vaciar el almacenamiento del navegador tiene el mismo efecto: la pregunta reaparece en tu siguiente visita.',
+    }),
+    ("Your rights", {"it": "I tuoi diritti", "de": "Ihre Rechte", "es": "Tus derechos"}),
+    ('Under the GDPR you may ask for access to your data, its correction or erasure, a restriction of processing, a copy in portable form, and you may object to processing based on legitimate interest. Consent, once given, can be withdrawn at any moment without affecting what came before. Write to <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; you also have the right to complain to the Italian supervisory authority, the <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.', {
+        "it": 'Ai sensi del GDPR puoi chiedere l\'accesso ai tuoi dati, la loro rettifica o cancellazione, la limitazione del trattamento, una copia in formato portabile, e puoi opporti ai trattamenti fondati sul legittimo interesse. Il consenso, una volta prestato, è revocabile in qualsiasi momento senza pregiudicare quanto avvenuto prima. Scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; hai inoltre diritto di reclamo all\'autorità di controllo italiana, il <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.',
+        "de": 'Nach der DSGVO können Sie Auskunft über Ihre Daten, deren Berichtigung oder Löschung, die Einschränkung der Verarbeitung und eine Kopie in übertragbarer Form verlangen sowie der Verarbeitung auf Grundlage berechtigter Interessen widersprechen. Eine erteilte Einwilligung ist jederzeit widerrufbar, ohne dass die bisherige Verarbeitung berührt wird. Schreiben Sie an <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; zudem steht Ihnen die Beschwerde bei der italienischen Aufsichtsbehörde zu, dem <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.',
+        "es": 'Conforme al RGPD puedes solicitar el acceso a tus datos, su rectificación o supresión, la limitación del tratamiento, una copia en formato portátil, y puedes oponerte a los tratamientos basados en el interés legítimo. El consentimiento, una vez prestado, puede retirarse en cualquier momento sin afectar a lo anterior. Escribe a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; también tienes derecho a reclamar ante la autoridad de control italiana, el <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.',
+    }),
+    ("Changes", {"it": "Modifiche", "de": "Änderungen", "es": "Cambios"}),
+    ('The date in the header shows when this notice last changed. Its history is public in the <a href="https://github.com/skills-commons/skills-commons.github.io">site repository</a>, so every revision can be compared with the one before it.', {
+        "it": 'La data in testata indica quando questa informativa è cambiata l\'ultima volta. La sua storia è pubblica nel <a href="https://github.com/skills-commons/skills-commons.github.io">repository del sito</a>, quindi ogni revisione è confrontabile con la precedente.',
+        "de": 'Das Datum im Kopf zeigt, wann dieser Hinweis zuletzt geändert wurde. Seine Historie ist im <a href="https://github.com/skills-commons/skills-commons.github.io">Repository der Website</a> öffentlich, jede Fassung lässt sich also mit der vorherigen vergleichen.',
+        "es": 'La fecha del encabezado indica cuándo cambió por última vez este aviso. Su historial es público en el <a href="https://github.com/skills-commons/skills-commons.github.io">repositorio del sitio</a>, así que cada revisión puede compararse con la anterior.',
+    }),
+    ('<span>Maintained by <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>', {
+        "it": '<span>Mantenuto da <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>',
+        "de": '<span>Betreut von <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>',
+        "es": '<span>Mantenido por <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>',
+    }),
+    ('<span><a href="/">RFT 1: the library</a> · <a href="#cookies">Cookies</a></span>', {
+        "it": '<span><a href="/it/">RFT 1: la libreria</a> · <a href="#cookies">Cookie</a></span>',
+        "de": '<span><a href="/de/">RFT 1: die Bibliothek</a> · <a href="#cookies">Cookies</a></span>',
+        "es": '<span><a href="/es/">RFT 1: la biblioteca</a> · <a href="#cookies">Cookies</a></span>',
+    }),
+]
+
+# Shown on every page, so translated once and appended to each table.
+COMMON: list[tuple[str, dict[str, str]]] = [
+    ('This site measures anonymous visits with Google Analytics, and only if you agree. Declining changes nothing about what you can read or download. <a href="/privacy/">Privacy notice</a>.', {
+        "it": 'Questo sito misura le visite in forma anonima con Google Analytics, e solo se sei d\'accordo. Rifiutare lascia intatto tutto ciò che puoi leggere e scaricare. <a href="/it/privacy/">Informativa privacy</a>.',
+        "de": 'Diese Website misst Besuche anonym mit Google Analytics, und nur wenn Sie zustimmen. Eine Ablehnung ändert nichts daran, was Sie lesen oder herunterladen können. <a href="/de/privacy/">Datenschutzhinweis</a>.',
+        "es": 'Este sitio mide las visitas de forma anónima con Google Analytics, y solo si estás de acuerdo. Rechazar no cambia nada de lo que puedes leer o descargar. <a href="/es/privacy/">Aviso de privacidad</a>.',
+    }),
+    ('<button type="button" class="yes" id="cbar-yes">Accept</button>', {
+        "it": '<button type="button" class="yes" id="cbar-yes">Accetto</button>',
+        "de": '<button type="button" class="yes" id="cbar-yes">Zustimmen</button>',
+        "es": '<button type="button" class="yes" id="cbar-yes">Acepto</button>',
+    }),
+    ('<button type="button" id="cbar-no">Decline</button>', {
+        "it": '<button type="button" id="cbar-no">Rifiuto</button>',
+        "de": '<button type="button" id="cbar-no">Ablehnen</button>',
+        "es": '<button type="button" id="cbar-no">Rechazo</button>',
+    }),
+    ('<a href="/privacy/">Privacy</a> · <a href="#cookies">Cookies</a>', {
+        "it": '<a href="/it/privacy/">Privacy</a> · <a href="#cookies">Cookie</a>',
+        "de": '<a href="/de/privacy/">Datenschutz</a> · <a href="#cookies">Cookies</a>',
+        "es": '<a href="/es/privacy/">Privacidad</a> · <a href="#cookies">Cookies</a>',
     }),
 ]
 
 # path relative to the site root -> its translation table
-PAGES: dict[str, list] = {"": T, "write/": W}
+PAGES: dict[str, list] = {"": T, "write/": W, "privacy/": P}
 
 SELECTOR_CSS = """
   .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
@@ -480,9 +646,9 @@ def build(lang: str | None, source: str, page: str, table: list, check: bool):
     code = lang or "en"
     html = html.replace('<html lang="en">', f'<html lang="{code}">', 1)
     html = html.replace('<link rel="icon"', alternates(page) + '\n<link rel="icon"', 1)
-    html = html.replace(
-        "  @media (max-width:600px)",
-        SELECTOR_CSS.rstrip() + "\n  @media (max-width:600px)", 1)
+    # Anchor on </style>, which every page has. Anchoring on a media query that
+    # only the landing page carries left the selector unstyled everywhere else.
+    html = html.replace("</style>", SELECTOR_CSS + "</style>", 1)
     html = html.replace('<div class="sheet">\n\n', '<div class="sheet">\n\n' + selector(code, page), 1)
     return html, missing
 
@@ -506,6 +672,7 @@ def main() -> int:
         label = page or "index.html"
 
         _, missing = build(None, clean, page, table, check=True)
+        table = table + COMMON
         if missing:
             failed = True
             print(f"{label}: {len(missing)} string(s) no longer in the source — the translation is stale:")

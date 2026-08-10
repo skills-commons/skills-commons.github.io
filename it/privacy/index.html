@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<!-- Google Analytics, off until the visitor says otherwise (Consent Mode v2) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'granted',
+    security_storage: 'granted', wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('sc-consent') === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) { /* storage blocked: stay denied */ }
+  gtag('js', new Date());
+  gtag('config', 'G-GPLMERFBVV', { anonymize_ip: true });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GPLMERFBVV"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills Commons — Informativa privacy</title>
+<meta name="description" content="Cosa raccoglie Skills Commons, perché, e come dire di no. Le statistiche partono solo con il consenso; la libreria non richiede alcun account.">
+<meta property="og:title" content="Skills Commons — Informativa privacy">
+<meta property="og:description" content="Cosa raccoglie Skills Commons, perché, e come dire di no.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skills-commons.org/privacy/">
+<link rel="alternate" hreflang="en" href="https://skills-commons.org/privacy/">
+<link rel="alternate" hreflang="it" href="https://skills-commons.org/it/privacy/">
+<link rel="alternate" hreflang="de" href="https://skills-commons.org/de/privacy/">
+<link rel="alternate" hreflang="es" href="https://skills-commons.org/es/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://skills-commons.org/privacy/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='6' fill='%23f4f1ea'/%3E%3Ctext x='7' y='31' font-family='monospace' font-size='17' font-weight='bold' fill='%231f241c'%3E.md%3C/text%3E%3Crect x='6' y='36' width='36' height='4' fill='%23bb3a2a'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper:#f4f1ea; --paper2:#ece8de; --ink:#1f241c; --dim:#6b6f62;
+    --rule:#d7d2c4; --stamp:#bb3a2a; --ok:#2f6b45; --link:#1f5aa8;
+    --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.75; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(#00000006 1px, transparent 1px); background-size:4px 4px; }
+  .sheet { max-width:820px; margin:0 auto; padding:48px 28px 120px; position:relative; }
+  .rfchead { display:flex; justify-content:space-between; gap:16px; color:var(--dim); font-size:13px;
+    border-bottom:3px double var(--rule); padding-bottom:14px; }
+  .rfchead div { white-space:pre-line; }
+  .rfchead .r { text-align:right; }
+  h1 { font-size:clamp(22px,4vw,32px); font-weight:700; text-align:center; margin:52px 0 6px; letter-spacing:-0.5px; }
+  .subtitle { text-align:center; color:var(--dim); margin-bottom:40px; }
+  h2 { font-size:16px; margin:44px 0 12px; font-weight:700; }
+  h2 .no { color:var(--dim); margin-right:10px; }
+  p { margin:12px 0; }
+  .abstract { border-left:4px solid var(--rule); padding:4px 0 4px 18px; color:#3a4034; }
+  table { border-collapse:collapse; width:100%; margin:16px 0; font-size:13.5px; }
+  th, td { border:1px solid var(--rule); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--paper2); font-weight:700; }
+  ul { margin:12px 0 12px 22px; }
+  li { margin:6px 0; }
+  a { color:var(--link); }  .foot { margin-top:64px; border-top:3px double var(--rule); padding-top:16px; color:var(--dim);
+    font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .foot a { color:var(--dim); }
+  .cbar { position:fixed; left:0; right:0; bottom:0; z-index:50; display:none;
+    background:var(--paper2); border-top:3px double var(--rule); padding:16px 20px;
+    font-size:13px; line-height:1.6; }
+  .cbar .in { max-width:820px; margin:0 auto; display:flex; gap:18px;
+    align-items:center; flex-wrap:wrap; justify-content:space-between; }
+  .cbar p { margin:0; flex:1 1 340px; color:#3a4034; }
+  .cbar .acts { display:flex; gap:8px; flex:0 0 auto; }
+  .cbar button { font-family:var(--mono); font-size:13px; font-weight:700; cursor:pointer;
+    padding:9px 16px; border-radius:7px; border:2px solid var(--ink); background:var(--paper);
+    color:var(--ink); }
+  .cbar button.yes { background:var(--ink); color:var(--paper); }
+  .cbar button:hover { transform:translate(1px,1px); }
+
+  .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
+  .langs a { display:inline-block; padding:3px 9px; border:1px solid var(--rule); border-radius:5px;
+    color:var(--dim); text-decoration:none; background:#fbfaf6; }
+  .langs a:hover { border-color:var(--ink); color:var(--ink); }
+  .langs a[aria-current="page"] { background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="langs" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">EN</a><a href="/it/privacy/" hreflang="it" lang="it" aria-current="page">IT</a><a href="/de/privacy/" hreflang="de" lang="de">DE</a><a href="/es/privacy/" hreflang="es" lang="es">ES</a></nav>
+
+  <div class="rfchead">
+    <div>Skills Commons
+Informativa privacy
+Categoria: Standard di diligenza</div>
+    <div class="r">Titolare: AGORÀ Intelligence S.r.l.
+Ultimo aggiornamento: 10 agosto 2026
+<a href="/">← RFT 1: the library</a></div>
+  </div>
+
+  <h1>Informativa privacy</h1>
+  <p class="subtitle">Cosa raccoglie questo sito, perché, e come dire di no.</p>
+
+  <h2><span class="no">Abstract</span></h2>
+  <p class="abstract">Leggere la libreria, scaricare una skill e usare l'editor non richiedono alcun account e non raccolgono nulla su di te. Le statistiche partono solo dopo il tuo consenso, e rifiutare lascia intatto tutto ciò che puoi leggere e scaricare. L'unico punto in cui vengono conservati dati personali è il builder, e soltanto se scegli di accedere con GitHub.</p>
+
+  <h2><span class="no">1.</span>Chi è il titolare</h2>
+  <p>Il titolare del trattamento è <strong>AGORÀ Intelligence S.r.l.</strong>, Italia, che mantiene Skills Commons. Per qualsiasi punto di questa informativa, comprese le richieste della sezione 6, scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.</p>
+
+  <h2><span class="no">2.</span>Cosa gira su questo sito</h2>
+  <table>
+    <tr><th>Finalità</th><th>Cosa viene trattato</th><th>Base giuridica</th><th>Conservazione</th></tr>
+    <tr><td>Erogazione delle pagine</td><td>Indirizzo IP e browser, nei log del fornitore di hosting</td><td>Legittimo interesse a erogare e proteggere il sito</td><td>Dal fornitore, secondo la sua policy</td></tr>
+    <tr><td>Misurazione del pubblico</td><td>Statistiche d'uso anonime tramite Google Analytics 4, con anonimizzazione IP attiva</td><td><strong>Il tuo consenso</strong>, chiesto prima di qualsiasi caricamento</td><td>14 mesi</td></tr>
+    <tr><td>Ricordare la tua scelta sui cookie</td><td>Una voce nella memoria locale del browser (<code>sc-consent</code>)</td><td>Strettamente necessaria per una scelta che hai fatto</td><td>Finché non la cancelli</td></tr>
+  </table>
+  <p>Finché non accetti, Google Analytics resta in modalità negata: non scrive cookie di misurazione e non registra identificatori. Se rifiuti, resta così. Su nessuna pagina esistono pubblicità, profilazione, tracciamento fra siti o vendita di dati.</p>
+
+  <h2><span class="no">3.</span>Il builder, se accedi</h2>
+  <p><a href="https://build.skills-commons.org">build.skills-commons.org</a> è facoltativo. Visitarlo non raccoglie nulla; accedere con GitHub crea un account, e solo allora vengono conservati il tuo id numerico GitHub, il nome utente, l'URL dell'avatar e un token di accesso, custodito cifrato per poter aprire una pull request a tuo nome. Le sessioni scadono dopo 30 giorni. La base giuridica è il contratto che concludi accedendo; i dati risiedono su un server a Francoforte, in Germania. Scrivi all'indirizzo qui sopra e l'account e i suoi dati vengono cancellati.</p>
+
+  <h2><span class="no">4.</span>Chi altro vede qualcosa</h2>
+  <ul>
+    <li><strong>GitHub, Inc.</strong> — ospita queste pagine e la libreria. I suoi server registrano le richieste.</li>
+    <li><strong>Google Ireland Ltd.</strong> — misurazione del pubblico, solo con il tuo consenso.</li>
+    <li><strong>DigitalOcean, LLC</strong> — il server dietro il builder, situato in Germania.</li>
+  </ul>
+  <p>I trasferimenti fuori dallo Spazio economico europeo si fondano sulle clausole contrattuali tipo della Commissione europea. Nessun altro riceve i tuoi dati.</p>
+
+  <h2><span class="no">5.</span>Cambiare idea</h2>
+  <p>Riapri la scelta quando vuoi dal link <a href="#cookies">Cookie</a> in fondo a qualsiasi pagina, e seleziona l'altra opzione. Svuotare la memoria del browser ha lo stesso effetto: la domanda ricompare alla visita successiva.</p>
+
+  <h2><span class="no">6.</span>I tuoi diritti</h2>
+  <p>Ai sensi del GDPR puoi chiedere l'accesso ai tuoi dati, la loro rettifica o cancellazione, la limitazione del trattamento, una copia in formato portabile, e puoi opporti ai trattamenti fondati sul legittimo interesse. Il consenso, una volta prestato, è revocabile in qualsiasi momento senza pregiudicare quanto avvenuto prima. Scrivi a <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; hai inoltre diritto di reclamo all'autorità di controllo italiana, il <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.</p>
+
+  <h2><span class="no">7.</span>Modifiche</h2>
+  <p>La data in testata indica quando questa informativa è cambiata l'ultima volta. La sua storia è pubblica nel <a href="https://github.com/skills-commons/skills-commons.github.io">repository del sito</a>, quindi ogni revisione è confrontabile con la precedente.</p>
+
+  <div class="foot">
+    <span>Mantenuto da <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>
+    <span><a href="/it/">RFT 1: la libreria</a> · <a href="#cookies">Cookie</a></span>
+  </div>
+
+</div>
+
+<div class="cbar" id="cbar" role="dialog" aria-live="polite" aria-label="Cookies">
+  <div class="in">
+    <p id="cbar-text">Questo sito misura le visite in forma anonima con Google Analytics, e solo se sei d'accordo. Rifiutare lascia intatto tutto ciò che puoi leggere e scaricare. <a href="/it/privacy/">Informativa privacy</a>.</p>
+    <div class="acts">
+      <button type="button" class="yes" id="cbar-yes">Accetto</button>
+      <button type="button" id="cbar-no">Rifiuto</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById('cbar');
+  var KEY = 'sc-consent';
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return 'denied'; } }
+  function decide(value) {
+    try { localStorage.setItem(KEY, value); } catch (e) {}
+    if (value === 'granted' && typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+    bar.style.display = 'none';
+  }
+  if (!stored()) bar.style.display = 'block';
+  document.getElementById('cbar-yes').addEventListener('click', function () { decide('granted'); });
+  document.getElementById('cbar-no').addEventListener('click', function () { decide('denied'); });
+  // Any link to #cookies reopens the choice, so it can be changed later.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#cookies"]');
+    if (a) { e.preventDefault(); bar.style.display = 'block'; }
+  });
+})();
+</script>
+</body>
+</html>

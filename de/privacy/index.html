@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<!-- Google Analytics, off until the visitor says otherwise (Consent Mode v2) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'granted',
+    security_storage: 'granted', wait_for_update: 500
+  });
+  try {
+    if (localStorage.getItem('sc-consent') === 'granted') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+  } catch (e) { /* storage blocked: stay denied */ }
+  gtag('js', new Date());
+  gtag('config', 'G-GPLMERFBVV', { anonymize_ip: true });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GPLMERFBVV"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skills Commons — Datenschutzhinweis</title>
+<meta name="description" content="Was Skills Commons erhebt, warum, und wie Sie ablehnen. Die Messung läuft nur mit Einwilligung; die Bibliothek braucht überhaupt kein Konto.">
+<meta property="og:title" content="Skills Commons — Datenschutzhinweis">
+<meta property="og:description" content="Was Skills Commons erhebt, warum, und wie Sie ablehnen.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://skills-commons.org/privacy/">
+<link rel="alternate" hreflang="en" href="https://skills-commons.org/privacy/">
+<link rel="alternate" hreflang="it" href="https://skills-commons.org/it/privacy/">
+<link rel="alternate" hreflang="de" href="https://skills-commons.org/de/privacy/">
+<link rel="alternate" hreflang="es" href="https://skills-commons.org/es/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://skills-commons.org/privacy/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='6' fill='%23f4f1ea'/%3E%3Ctext x='7' y='31' font-family='monospace' font-size='17' font-weight='bold' fill='%231f241c'%3E.md%3C/text%3E%3Crect x='6' y='36' width='36' height='4' fill='%23bb3a2a'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper:#f4f1ea; --paper2:#ece8de; --ink:#1f241c; --dim:#6b6f62;
+    --rule:#d7d2c4; --stamp:#bb3a2a; --ok:#2f6b45; --link:#1f5aa8;
+    --mono:ui-monospace,"Cascadia Code","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--mono); font-size:15px; line-height:1.75; }
+  body::before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.5;
+    background-image:radial-gradient(#00000006 1px, transparent 1px); background-size:4px 4px; }
+  .sheet { max-width:820px; margin:0 auto; padding:48px 28px 120px; position:relative; }
+  .rfchead { display:flex; justify-content:space-between; gap:16px; color:var(--dim); font-size:13px;
+    border-bottom:3px double var(--rule); padding-bottom:14px; }
+  .rfchead div { white-space:pre-line; }
+  .rfchead .r { text-align:right; }
+  h1 { font-size:clamp(22px,4vw,32px); font-weight:700; text-align:center; margin:52px 0 6px; letter-spacing:-0.5px; }
+  .subtitle { text-align:center; color:var(--dim); margin-bottom:40px; }
+  h2 { font-size:16px; margin:44px 0 12px; font-weight:700; }
+  h2 .no { color:var(--dim); margin-right:10px; }
+  p { margin:12px 0; }
+  .abstract { border-left:4px solid var(--rule); padding:4px 0 4px 18px; color:#3a4034; }
+  table { border-collapse:collapse; width:100%; margin:16px 0; font-size:13.5px; }
+  th, td { border:1px solid var(--rule); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:var(--paper2); font-weight:700; }
+  ul { margin:12px 0 12px 22px; }
+  li { margin:6px 0; }
+  a { color:var(--link); }  .foot { margin-top:64px; border-top:3px double var(--rule); padding-top:16px; color:var(--dim);
+    font-size:13px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+  .foot a { color:var(--dim); }
+  .cbar { position:fixed; left:0; right:0; bottom:0; z-index:50; display:none;
+    background:var(--paper2); border-top:3px double var(--rule); padding:16px 20px;
+    font-size:13px; line-height:1.6; }
+  .cbar .in { max-width:820px; margin:0 auto; display:flex; gap:18px;
+    align-items:center; flex-wrap:wrap; justify-content:space-between; }
+  .cbar p { margin:0; flex:1 1 340px; color:#3a4034; }
+  .cbar .acts { display:flex; gap:8px; flex:0 0 auto; }
+  .cbar button { font-family:var(--mono); font-size:13px; font-weight:700; cursor:pointer;
+    padding:9px 16px; border-radius:7px; border:2px solid var(--ink); background:var(--paper);
+    color:var(--ink); }
+  .cbar button.yes { background:var(--ink); color:var(--paper); }
+  .cbar button:hover { transform:translate(1px,1px); }
+
+  .langs { display:flex; gap:2px; justify-content:flex-end; margin:0 0 14px; font-size:12.5px; }
+  .langs a { display:inline-block; padding:3px 9px; border:1px solid var(--rule); border-radius:5px;
+    color:var(--dim); text-decoration:none; background:#fbfaf6; }
+  .langs a:hover { border-color:var(--ink); color:var(--ink); }
+  .langs a[aria-current="page"] { background:var(--ink); border-color:var(--ink); color:var(--paper); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="langs" aria-label="Language"><a href="/privacy/" hreflang="en" lang="en">EN</a><a href="/it/privacy/" hreflang="it" lang="it">IT</a><a href="/de/privacy/" hreflang="de" lang="de" aria-current="page">DE</a><a href="/es/privacy/" hreflang="es" lang="es">ES</a></nav>
+
+  <div class="rfchead">
+    <div>Skills Commons
+Datenschutzhinweis
+Kategorie: Sorgfaltsstandards</div>
+    <div class="r">Verantwortlicher: AGORÀ Intelligence S.r.l.
+Stand: 10. August 2026
+<a href="/">← RFT 1: the library</a></div>
+  </div>
+
+  <h1>Datenschutzhinweis</h1>
+  <p class="subtitle">Was diese Website erhebt, warum, und wie Sie ablehnen.</p>
+
+  <h2><span class="no">Abstract</span></h2>
+  <p class="abstract">Die Bibliothek zu lesen, einen Skill herunterzuladen und den Editor zu nutzen verlangt kein Konto und erhebt nichts über Sie. Die Messung startet erst nach Ihrer Einwilligung, und eine Ablehnung ändert nichts daran, was Sie lesen oder herunterladen können. Der einzige Ort, an dem personenbezogene Daten gespeichert werden, ist der Builder — und nur, wenn Sie sich mit GitHub anmelden.</p>
+
+  <h2><span class="no">1.</span>Wer verantwortlich ist</h2>
+  <p>Verantwortlicher ist <strong>AGORÀ Intelligence S.r.l.</strong>, Italien, die Skills Commons betreibt. Zu allem in diesem Hinweis, einschließlich der Anliegen aus Abschnitt 6, schreiben Sie an <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>.</p>
+
+  <h2><span class="no">2.</span>Was auf dieser Website läuft</h2>
+  <table>
+    <tr><th>Zweck</th><th>Was verarbeitet wird</th><th>Rechtsgrundlage</th><th>Speicherdauer</th></tr>
+    <tr><td>Auslieferung der Seiten</td><td>IP-Adresse und Browser, in den Serverprotokollen des Hosters</td><td>Berechtigtes Interesse an Bereitstellung und Absicherung</td><td>Durch den Hoster, nach dessen Richtlinie</td></tr>
+    <tr><td>Reichweitenmessung</td><td>Anonyme Nutzungsstatistiken über Google Analytics 4, mit IP-Anonymisierung</td><td><strong>Ihre Einwilligung</strong>, vor jedem Laden erfragt</td><td>14 Monate</td></tr>
+    <tr><td>Ihre Cookie-Entscheidung merken</td><td>Ein Eintrag im lokalen Speicher des Browsers (<code>sc-consent</code>)</td><td>Unbedingt erforderlich für eine von Ihnen getroffene Wahl</td><td>Bis Sie ihn löschen</td></tr>
+  </table>
+  <p>Bis Sie zustimmen, läuft Google Analytics im abgelehnten Modus: keine Analyse-Cookies, keine Kennungen. Lehnen Sie ab, bleibt es dabei. Auf keiner Seite gibt es Werbung, Profilbildung, seitenübergreifendes Tracking oder Datenverkauf.</p>
+
+  <h2><span class="no">3.</span>Der Builder, wenn Sie sich anmelden</h2>
+  <p><a href="https://build.skills-commons.org">build.skills-commons.org</a> ist freiwillig. Der bloße Besuch erhebt nichts; die Anmeldung mit GitHub legt ein Konto an, und erst dann werden Ihre numerische GitHub-ID, der Benutzername, die Avatar-URL und ein verschlüsselt gespeichertes Zugriffstoken abgelegt, damit in Ihrem Namen ein Pull Request geöffnet werden kann. Sitzungen laufen nach 30 Tagen ab. Rechtsgrundlage ist der mit der Anmeldung geschlossene Vertrag; die Daten liegen auf einem Server in Frankfurt am Main. Auf Anfrage an die obige Adresse werden Konto und Daten gelöscht.</p>
+
+  <h2><span class="no">4.</span>Wer sonst etwas sieht</h2>
+  <ul>
+    <li><strong>GitHub, Inc.</strong> — hostet diese Seiten und die Bibliothek. Die Server protokollieren Anfragen.</li>
+    <li><strong>Google Ireland Ltd.</strong> — Reichweitenmessung, nur mit Ihrer Einwilligung.</li>
+    <li><strong>DigitalOcean, LLC</strong> — der Server hinter dem Builder, Standort Deutschland.</li>
+  </ul>
+  <p>Übermittlungen außerhalb des Europäischen Wirtschaftsraums stützen sich auf die Standardvertragsklauseln der Europäischen Kommission. Niemand sonst erhält Ihre Daten.</p>
+
+  <h2><span class="no">5.</span>Ihre Meinung ändern</h2>
+  <p>Öffnen Sie die Auswahl jederzeit über den Link <a href="#cookies">Cookies</a> im Fuß jeder Seite und wählen Sie die andere Option. Den Browserspeicher zu leeren wirkt genauso: Die Frage erscheint beim nächsten Besuch erneut.</p>
+
+  <h2><span class="no">6.</span>Ihre Rechte</h2>
+  <p>Nach der DSGVO können Sie Auskunft über Ihre Daten, deren Berichtigung oder Löschung, die Einschränkung der Verarbeitung und eine Kopie in übertragbarer Form verlangen sowie der Verarbeitung auf Grundlage berechtigter Interessen widersprechen. Eine erteilte Einwilligung ist jederzeit widerrufbar, ohne dass die bisherige Verarbeitung berührt wird. Schreiben Sie an <a href="mailto:hello@agora-intelligence.com">hello@agora-intelligence.com</a>; zudem steht Ihnen die Beschwerde bei der italienischen Aufsichtsbehörde zu, dem <a href="https://www.garanteprivacy.it">Garante per la protezione dei dati personali</a>.</p>
+
+  <h2><span class="no">7.</span>Änderungen</h2>
+  <p>Das Datum im Kopf zeigt, wann dieser Hinweis zuletzt geändert wurde. Seine Historie ist im <a href="https://github.com/skills-commons/skills-commons.github.io">Repository der Website</a> öffentlich, jede Fassung lässt sich also mit der vorherigen vergleichen.</p>
+
+  <div class="foot">
+    <span>Betreut von <a href="https://agora-intelligence.com">AGORÀ Intelligence</a></span>
+    <span><a href="/de/">RFT 1: die Bibliothek</a> · <a href="#cookies">Cookies</a></span>
+  </div>
+
+</div>
+
+<div class="cbar" id="cbar" role="dialog" aria-live="polite" aria-label="Cookies">
+  <div class="in">
+    <p id="cbar-text">Diese Website misst Besuche anonym mit Google Analytics, und nur wenn Sie zustimmen. Eine Ablehnung ändert nichts daran, was Sie lesen oder herunterladen können. <a href="/de/privacy/">Datenschutzhinweis</a>.</p>
+    <div class="acts">
+      <button type="button" class="yes" id="cbar-yes">Zustimmen</button>
+      <button type="button" id="cbar-no">Ablehnen</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById('cbar');
+  var KEY = 'sc-consent';
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return 'denied'; } }
+  function decide(value) {
+    try { localStorage.setItem(KEY, value); } catch (e) {}
+    if (value === 'granted' && typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+    }
+    bar.style.display = 'none';
+  }
+  if (!stored()) bar.style.display = 'block';
+  document.getElementById('cbar-yes').addEventListener('click', function () { decide('granted'); });
+  document.getElementById('cbar-no').addEventListener('click', function () { decide('denied'); });
+  // Any link to #cookies reopens the choice, so it can be changed later.
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href="#cookies"]');
+    if (a) { e.preventDefault(); bar.style.display = 'block'; }
+  });
+})();
+</script>
+</body>
+</html>
