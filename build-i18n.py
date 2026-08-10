@@ -469,7 +469,10 @@ def build(lang: str | None, source: str, page: str, table: list, check: bool):
             missing.append(english[:70])
             continue
         if lang:
-            html = html.replace(english, translations[lang], 1)
+            # Every occurrence, not just the first. A headline lives in <title>,
+            # in og:title and in <h1>; replacing one of them left the rest in
+            # English and, worse, sent the next replacement to the wrong place.
+            html = html.replace(english, translations[lang])
 
     if check:
         return html, missing
