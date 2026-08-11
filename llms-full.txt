@@ -20,6 +20,12 @@ Security reviewedline by line · by humans
 
 Size is easy. *Trust is the point.*
 
+## Wanted: 100 skills
+
+This library stays deliberately small — around a hundred skills, never thousands. A collection nobody can read through is a collection nobody checked, and those already exist. So the number that matters here is what is missing, and it is published in the open.
+Pick a topic, write one method, and a person reads it line by line. Every skill so far was written by the founding team: the first one merged from outside is worth more to this library than the next fifty written inside it.
+[See the 100 we want →](https://github.com/skills-commons/skills-commons/blob/main/candidates/TOPICS.md)
+
 ## Abstract
 
 A skill is a plain-text method (a single `.md` file) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.
@@ -74,6 +80,7 @@ Reading the file before you run it is the point, so the sources stay browsable o
 - Found something dangerous in a merged skill? [Report it privately](https://github.com/skills-commons/skills-commons/security) or write to [hello@agora-intelligence.com](mailto:hello@agora-intelligence.com): removal, advisory, credit.
 
 [Browse the library →](https://github.com/skills-commons/skills-commons)
+[Write one we are missing](https://github.com/skills-commons/skills-commons/blob/main/candidates/TOPICS.md)
 [Certified catalog](https://agora-intelligence.com/en/skills/)
 
 Seeded & maintained by [AGORÀ Intelligence](https://agora-intelligence.com) — every merge reviewed by the team

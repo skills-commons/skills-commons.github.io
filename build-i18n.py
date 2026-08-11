@@ -70,6 +70,32 @@ T: list[tuple[str, dict[str, str]]] = [
         "es": "El tamaño es fácil. <em>La confianza es lo que cuenta.</em>",
     }),
 
+    # --- wanted hero ------------------------------------------------------
+    ("<h2>Wanted: 100 skills</h2>", {
+        "it": "<h2>Cercasi: 100 skill</h2>",
+        "de": "<h2>Gesucht: 100 Skills</h2>",
+        "es": "<h2>Se buscan: 100 skills</h2>",
+    }),
+    ("This library stays deliberately small — around a hundred skills, never thousands. A collection nobody can read through is a collection nobody checked, and those already exist. So the number that matters here is what is missing, and it is published in the open.", {
+        "it": "Questa libreria resta piccola per scelta — un centinaio di skill, mai migliaia. Una raccolta che nessuno riesce a leggere tutta è una raccolta che nessuno ha controllato, e di quelle ce ne sono già. Quindi il numero che conta qui è quello che manca, ed è pubblicato alla luce del sole.",
+        "de": "Diese Bibliothek bleibt bewusst klein — rund hundert Skills, niemals tausende. Eine Sammlung, die niemand ganz lesen kann, ist eine Sammlung, die niemand geprüft hat, und davon gibt es bereits genug. Die Zahl, die hier zählt, ist deshalb das, was fehlt — und die steht offen da.",
+        "es": "Esta biblioteca sigue siendo pequeña a propósito — un centenar de skills, nunca miles. Una colección que nadie puede leer entera es una colección que nadie ha revisado, y de esas ya hay varias. Así que el número que importa aquí es lo que falta, y está publicado a la vista.",
+    }),
+    ("Pick a topic, write one method, and a person reads it line by line. Every skill so far was written by the founding team: the first one merged from outside is worth more to this library than the next fifty written inside it.", {
+        "it": "Scegli un tema, scrivi un metodo, e una persona lo legge riga per riga. Finora ogni skill è stata scritta dal team fondatore: la prima che arriva da fuori vale per questa libreria più delle prossime cinquanta scritte dentro.",
+        "de": "Wählen Sie ein Thema, schreiben Sie eine Methode, und ein Mensch liest sie Zeile für Zeile. Bisher stammt jeder Skill vom Gründungsteam: der erste von außen aufgenommene ist für diese Bibliothek mehr wert als die nächsten fünfzig aus dem eigenen Haus.",
+        "es": "Elige un tema, escribe un método, y una persona lo lee línea por línea. Hasta ahora cada skill la ha escrito el equipo fundador: la primera que llegue de fuera vale para esta biblioteca más que las cincuenta siguientes escritas dentro.",
+    }),
+    (">See the 100 we want →</a>", {
+        "it": ">Guarda le 100 che cerchiamo →</a>",
+        "de": ">Die 100 gesuchten ansehen →</a>",
+        "es": ">Mira las 100 que buscamos →</a>",
+    }),
+    (">Write one we are missing</a>", {
+        "it": ">Scrivine una che manca</a>",
+        "de": ">Schreiben Sie einen, der fehlt</a>",
+        "es": ">Escribe una que falte</a>",
+    }),
     # --- abstract ---------------------------------------------------------
     ('<span class="no">Abstract</span>', {
         "it": '<span class="no">Sintesi</span>',
