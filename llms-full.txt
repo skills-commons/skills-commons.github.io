@@ -20,12 +20,6 @@ Security reviewedline by line · by humans
 
 Size is easy. *Trust is the point.*
 
-## Wanted: 100 skills
-
-This library stays deliberately small — around a hundred skills, never thousands. A collection nobody can read through is a collection nobody checked, and those already exist. So the number that matters here is what is missing, and it is published in the open.
-Pick a topic, write one method, and a person reads it line by line. Credit lands in the skill's own frontmatter and stays there.
-[See the 100 we want →](https://github.com/skills-commons/skills-commons/blob/main/candidates/TOPICS.md)
-
 ## Abstract
 
 A skill is a plain-text method (a single `.md` file) you hand to your AI assistant so it performs a professional task with a proven approach. A skill is also a set of instructions your agent will execute with your permissions — which makes every skill library a supply chain. This document describes a library built for that reality.
