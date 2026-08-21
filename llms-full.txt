@@ -23,7 +23,7 @@ Size is easy. *Trust is the point.*
 ## Wanted: 100 skills
 
 This library stays deliberately small — around a hundred skills, never thousands. A collection nobody can read through is a collection nobody checked, and those already exist. So the number that matters here is what is missing, and it is published in the open.
-Pick a topic, write one method, and a person reads it line by line. Every skill so far was written by the founding team: the first one merged from outside is worth more to this library than the next fifty written inside it.
+Pick a topic, write one method, and a person reads it line by line. Credit lands in the skill's own frontmatter and stays there.
 [See the 100 we want →](https://github.com/skills-commons/skills-commons/blob/main/candidates/TOPICS.md)
 
 ## Abstract
