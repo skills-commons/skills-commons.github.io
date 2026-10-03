@@ -1,0 +1,13 @@
+
+# Audit di sicurezza 03/10/2026: permessi di Claude Code, copie, chiavi e dump mai nel repo.
+.env
+.env.*
+!.env.example
+!.env.production
+.claude/
+settings.local.json*
+*.bak
+*.pem
+*.key
+*.sqlite3
+*.sql
